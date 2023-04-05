@@ -1,7 +1,5 @@
-import React from "react";
 
 import {
-    GitHubBanner,
     Refine,
     LegacyAuthProvider as AuthProvider,
 } from "@refinedev/core";
@@ -12,13 +10,8 @@ import {
     ErrorComponent,
 } from "@refinedev/mui";
 import { CssBaseline, GlobalStyles } from "@mui/material";
-import {
-    AccountCircleOutlined,
-    ChatBubbleOutline,
-    PeopleAltOutlined,
-    StarOutlineRounded,
-    VillaOutlined,
-} from "@mui/icons-material";
+
+
 
 import dataProvider from "@refinedev/simple-rest";
 import routerProvider from "@refinedev/react-router-v6/legacy";
@@ -39,6 +32,17 @@ import {
     AgentProfile,
     EditProperty,
 } from "pages";
+
+//ICONS
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
+import {
+    AccountCircleOutlined,
+    PeopleAltOutlined,
+} from "@mui/icons-material";
+
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -127,7 +131,6 @@ function App() {
 
     return (
         <ColorModeContextProvider>
-            <GitHubBanner />
             <CssBaseline />
             <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
             <RefineSnackbarProvider>
@@ -138,35 +141,46 @@ function App() {
                     catchAll={<ErrorComponent />}
                     resources={[
                         {
+                            // Applicants
                             name: "properties",
                             list: AllProperties,
                             show: PropertyDetails,
                             create: CreateProperty,
                             edit: EditProperty,
-                            icon: <VillaOutlined />,
+                            icon: <PersonAddAltOutlinedIcon />,
                         },
                         {
+                            //ADMINS
                             name: "agents",
                             list: Agents,
                             show: AgentProfile,
+                             icon: <BadgeOutlinedIcon />,
+                        },
+                        {
+
+                            name: "Employee",
+                            list: Home,
                             icon: <PeopleAltOutlined />,
                         },
                         {
-                            name: "reviews",
+                            name: "Jobs",
                             list: Home,
-                            icon: <StarOutlineRounded />,
+                            icon: <WorkOutlineOutlinedIcon />,
                         },
                         {
-                            name: "messages",
-                            list: Home,
-                            icon: <ChatBubbleOutline />,
-                        },
-                        {
+
                             name: "my-profile",
                             options: { label: "My Profile " },
                             list: MyProfile,
                             icon: <AccountCircleOutlined />,
                         },
+                        {
+                            name: "Timeoff",
+                            list: Home,
+                            icon: <HighlightOffOutlinedIcon />,
+                    
+                          },
+                          
                     ]}
                     Title={Title}
                     Sider={Sider}

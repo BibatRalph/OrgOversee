@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
             color="default"
             position="sticky"
             elevation={0}
-            sx={{ background: "#fcfcf" }}
+            sx={{ background: "#FCFCFC" }}
         >
             <Toolbar>
                 <Stack
@@ -24,13 +24,14 @@ export const Header: React.FC = () => {
                 >
                     {showUserInfo && (
                         <Stack direction="row" gap="16px" alignItems="center">
-                            {user.avatar && (
-                                <Avatar src={user?.avatar} alt={user?.name} />
-                            )}
+                            
                             {user.name && (
                                 <Typography variant="subtitle2">
                                     {user?.name}
                                 </Typography>
+                            )}
+                            {user.avatar && (
+                                <Avatar src={user?.avatar} alt={user?.name} />
                             )}
                         </Stack>
                     )}

@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
-import yariga from "./yariga.svg";
-
-export { logo, yariga };
+import OrgSL from "./OrgSL.png";
+import OrgLOGO from "./OrgLOGO.png";
+export {  OrgSL, OrgLOGO};

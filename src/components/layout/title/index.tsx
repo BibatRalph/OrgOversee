@@ -2,7 +2,7 @@ import React from "react";
 import { useRouterContext, TitleProps } from "@refinedev/core";
 import { Button } from "@mui/material";
 
-import { logo, yariga } from "assets";
+import { OrgSL, OrgLOGO } from "assets";
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => {
     const { Link } = useRouterContext();
@@ -11,9 +11,9 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => {
         <Button fullWidth variant="text" disableRipple>
             <Link to="/">
                 {collapsed ? (
-                    <img src={logo} alt="Yariga" width="28px" />
+                    <img src={OrgSL} alt="OrgOversee" width="45px" />
                 ) : (
-                    <img src={yariga} alt="Refine" width="140px" />
+                    <img src={OrgSL} alt="OrgOversee" width="100px"/>
                 )}
             </Link>
         </Button>
