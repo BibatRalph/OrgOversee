@@ -141,6 +141,11 @@ function App() {
                     catchAll={<ErrorComponent />}
                     resources={[
                         {
+                            name: "Jobs",
+                            list: Home,
+                            icon: <WorkOutlineOutlinedIcon />,
+                        },
+                        {
                             // Applicants
                             name: "properties",
                             list: AllProperties,
@@ -149,13 +154,7 @@ function App() {
                             edit: EditProperty,
                             icon: <PersonAddAltOutlinedIcon />,
                         },
-                        {
-                            //ADMINS
-                            name: "agents",
-                            list: Agents,
-                            show: AgentProfile,
-                             icon: <BadgeOutlinedIcon />,
-                        },
+                      
                         {
 
                             name: "Employee",
@@ -163,9 +162,11 @@ function App() {
                             icon: <PeopleAltOutlined />,
                         },
                         {
-                            name: "Jobs",
-                            list: Home,
-                            icon: <WorkOutlineOutlinedIcon />,
+                            //ADMINS
+                            name: "agents",
+                            list: Agents,
+                            show: AgentProfile,
+                             icon: <BadgeOutlinedIcon />,
                         },
                         {
 
