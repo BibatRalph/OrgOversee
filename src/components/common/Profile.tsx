@@ -2,7 +2,7 @@ import { Email, Phone, Place } from "@mui/icons-material";
 import { Box, Stack, Typography } from "@mui/material";
 
 import { ProfileProps, PropertyProps } from "interfaces/common";
-import PropertyCard from "./PropertyCard";
+import ApplicantCard from "./ApplicantCard";
 
 function checkImage(url: any) {
     const img = new Image();
@@ -179,7 +179,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                     }}
                 >
                     {properties?.map((property: PropertyProps) => (
-                        <PropertyCard
+                        <ApplicantCard
                             key={property._id}
                             id={property._id}
                             title={property.title}

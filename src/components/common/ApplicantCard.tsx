@@ -11,7 +11,7 @@ import {
 
 import { PropertyCardProps } from "interfaces/property";
 
-const PropertyCard = ({
+const ApplicantCard = ({
     id,
     title,
     location,
@@ -21,7 +21,8 @@ const PropertyCard = ({
     return (
         <Card
             component={Link}
-            to={`/properties/show/${id}`}
+            // CLICK
+            to={`/Applicants/show/${id}`}
             sx={{
                 maxWidth: "330px",
                 padding: "10px",
@@ -82,4 +83,4 @@ const PropertyCard = ({
     );
 };
 
-export default PropertyCard;
+export default ApplicantCard;

@@ -147,7 +147,8 @@ function App() {
                         },
                         {
                             // Applicants
-                            name: "properties",
+                            // ex properties
+                            name: "Applicants",
                             list: AllProperties,
                             show: PropertyDetails,
                             create: CreateProperty,

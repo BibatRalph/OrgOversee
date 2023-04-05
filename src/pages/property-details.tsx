@@ -26,7 +26,7 @@ const PropertyDetails = () => {
     const { queryResult } = useShow();
     const { mutate } = useDelete();
     const { id } = useParams();
-
+    
     const { data, isLoading, isError } = queryResult;
 
     const propertyDetails = data?.data ?? {};
@@ -48,12 +48,12 @@ const PropertyDetails = () => {
         if (response) {
             mutate(
                 {
-                    resource: "properties",
+                    resource: "Applicants",
                     id: id as string,
                 },
                 {
                     onSuccess: () => {
-                        navigate("/properties");
+                        navigate("/Applicants");
                     },
                 },
             );
@@ -284,7 +284,8 @@ const PropertyDetails = () => {
                                 handleClick={() => {
                                     if (isCurrentUser) {
                                         navigate(
-                                            `/properties/edit/${propertyDetails._id}`,
+                                            // EDIT
+                                            `/Applicants/edit/${propertyDetails._id}`,
                                         );
                                     }
                                 }}

@@ -11,7 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
-import { PropertyCard, CustomButton } from "components";
+import { ApplicantCard, CustomButton } from "components";
 
 const AllProperties = () => {
     const navigate = useNavigate();
@@ -61,7 +61,7 @@ const AllProperties = () => {
                     <Typography fontSize={25} fontWeight={700} color="#11142d">
                         {!allProperties.length
                             ? "There are no properties"
-                            : "All Properties"}
+                            : "All Applicants"}
                     </Typography>
                     <Box
                         mb={2}
@@ -76,6 +76,8 @@ const AllProperties = () => {
                             gap={2}
                             flexWrap="wrap"
                             mb={{ xs: "20px", sm: 0 }}
+                            
+                            
                         >
                             <CustomButton
                                 title={`Sort price ${
@@ -88,7 +90,7 @@ const AllProperties = () => {
                             <TextField
                                 variant="outlined"
                                 color="info"
-                                placeholder="Search by title"
+                                placeholder="Search by name"
                                 value={currentFilterValues.title}
                                 onChange={(e) => {
                                     setFilters([
@@ -142,28 +144,28 @@ const AllProperties = () => {
                                     </MenuItem>
                                 ))}
                             </Select>
-                        </Box>
-                    </Box>
-                </Stack>
-            </Box>
 
-            <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-            >
-                <CustomButton
-                    title="Add Property"
-                    handleClick={() => navigate("/properties/create")}
+                            <CustomButton
+                    title="Add Applicant" 
+                    // CREATE
+                    handleClick={() => navigate("/Applicants/create")}
                     backgroundColor="#475be8"
                     color="#fcfcfc"
                     icon={<Add />}
                 />
-            </Stack>
+                        </Box>
+                    </Box>
+                    
+                </Stack>
+            </Box>
+
+        
+            
+           
 
             <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
                 {allProperties?.map((property) => (
-                    <PropertyCard
+                    <ApplicantCard
                         key={property._id}
                         id={property._id}
                         title={property.title}

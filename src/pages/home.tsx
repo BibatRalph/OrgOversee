@@ -5,12 +5,12 @@ import {
     PieChart,
     PropertyReferrals,
     TotalRevenue,
-    PropertyCard,
+    ApplicantCard,
 } from "components";
 
 const Home = () => {
     const { data, isLoading, isError } = useList({
-        resource: "properties",
+        resource: "Applicants",
         config: {
             pagination: {
                 pageSize: 4,
@@ -18,7 +18,7 @@ const Home = () => {
         },
     });
 
-    const latestProperties = data?.data ?? [];
+    const latestApplicant = data?.data ?? [];
 
     if (isLoading) return <Typography>Loading...</Typography>;
     if (isError) return <Typography>Something went wrong!</Typography>;
@@ -84,8 +84,8 @@ const Home = () => {
                     mt={2.5}
                     sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}
                 >
-                    {latestProperties.map((property) => (
-                        <PropertyCard
+                    {latestApplicant.map((property) => (
+                        <ApplicantCard
                             key={property._id}
                             id={property._id}
                             title={property.title}
