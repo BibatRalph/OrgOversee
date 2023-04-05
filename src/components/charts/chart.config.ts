@@ -2,12 +2,16 @@ import { ApexOptions } from "apexcharts";
 
 export const TotalRevenueSeries = [
     {
-        name: "Last Month",
+        name: "Applicants",
         data: [183, 124, 115, 85, 143, 143, 96],
     },
     {
-        name: "Running Month",
+        name: "Employees",
         data: [95, 84, 72, 44, 108, 108, 47],
+    },
+    {
+        name: "Jobs",
+        data: [15, 44, 33, 44, 8, 18, 17],
     },
 ];
 
@@ -18,7 +22,7 @@ export const TotalRevenueOptions: ApexOptions = {
             show: false,
         },
     },
-    colors: ["#475BE8", "#CFC8FF"],
+    colors: ["#475BE8", "#CFC8FF", "#7FBA7A"],
     plotOptions: {
         bar: {
             borderRadius: 4,
@@ -40,9 +44,7 @@ export const TotalRevenueOptions: ApexOptions = {
         categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
     },
     yaxis: {
-        title: {
-            text: "$ (thousands)",
-        },
+      
     },
     fill: {
         opacity: 1,
@@ -54,7 +56,7 @@ export const TotalRevenueOptions: ApexOptions = {
     tooltip: {
         y: {
             formatter(val: number) {
-                return `$ ${val} thousands`;
+                return ` ${val} `;
             },
         },
     },
