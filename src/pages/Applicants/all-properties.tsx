@@ -55,19 +55,20 @@ const AllProperties = () => {
     if (isError) return <Typography>Error...</Typography>;
 
     return (
-        <Box>
-            <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-                <Stack direction="column" width="100%">
-                    <Typography fontSize={25} fontWeight={700} color="#11142d">
+        <Box > 
+            <Typography fontSize={25} fontWeight={700} color="#11142d">
                         {!allProperties.length
                             ? "There are no properties"
                             : "All Applicants"}
-                    </Typography>
+            </Typography>
+            <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 4}} >
+                <Stack direction="column" width="100%">
+                   
                     <Box
                         mb={2}
                         mt={3}
                         display="flex"
-                        width="84%"
+                        width="100%"
                         justifyContent="space-between"
                         flexWrap="wrap"
                     >
@@ -162,8 +163,8 @@ const AllProperties = () => {
         
             
            
-
-            <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
+            {/* CARDS */}
+            <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
                 {allProperties?.map((property) => (
                     <ApplicantCard
                         key={property._id}

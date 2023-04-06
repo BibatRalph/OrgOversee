@@ -10,6 +10,8 @@ import {
     MenuItem,
     Button,
 } from "@mui/material";
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 import { FormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
@@ -26,7 +28,7 @@ const Form = ({
     return (
         <Box>
             <Typography fontSize={25} fontWeight={700} color="#11142d">
-                {type} a Property
+                {type} a Applicant
             </Typography>
 
             <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
@@ -36,7 +38,7 @@ const Form = ({
                         width: "100%",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "20px",
+                        gap: "10px",
                     }}
                     onSubmit={handleSubmit(onFinishHandler)}
                 >
@@ -49,12 +51,13 @@ const Form = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter property name
+                            Enter Applicant name
                         </FormHelperText>
                         <TextField
                             fullWidth
                             required
                             id="outlined-basic"
+                            label="Name"
                             color="info"
                             variant="outlined"
                             {...register("title", { required: true })}
@@ -99,7 +102,7 @@ const Form = ({
                                     color: "#11142d",
                                 }}
                             >
-                                Select Property Type
+                                Select Applicant Type
                             </FormHelperText>
                             <Select
                                 variant="outlined"
@@ -131,7 +134,7 @@ const Form = ({
                                     color: "#11142d",
                                 }}
                             >
-                                Enter property price
+                                Enter Applicant Age
                             </FormHelperText>
                             <TextField
                                 fullWidth
@@ -139,6 +142,7 @@ const Form = ({
                                 id="outlined-basic"
                                 color="info"
                                 type="number"
+                                label="Age"
                                 variant="outlined"
                                 {...register("price", { required: true })}
                             />
@@ -154,7 +158,7 @@ const Form = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter Location
+                            Applicant Location
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -162,6 +166,7 @@ const Form = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
+                            label="Location "
                             {...register("location", { required: true })}
                         />
                     </FormControl>
@@ -179,30 +184,31 @@ const Form = ({
                                 fontWeight={500}
                                 my="10px"
                             >
-                                Property Photo
+                                Applicant Photo
                             </Typography>
 
-                            <Button
-                                component="label"
-                                sx={{
-                                    width: "fit-content",
-                                    color: "#2ed480",
-                                    textTransform: "capitalize",
-                                    fontSize: 16,
-                                }}
+                            <IconButton 
+                            color="primary" aria-label="upload picture" component="label"
+                            sx={{
+                                width: "fit-content",
+                                color: "#2ed480",
+                                textTransform: "capitalize",
+                                fontSize: 16,
+                            }}
                             >
-                                Upload *
-                                <input
-                                    hidden
-                                    accept="image/*"
-                                    type="file"
-                                    onChange={(
-                                        e: React.ChangeEvent<HTMLInputElement>,
-                                    ) => {
-                                        handleImageChange(e.target.files![0]);
-                                    }}
-                                />
-                            </Button>
+                            <input
+                             hidden accept="image/*" type="file" 
+                             onChange={(
+                                 e: React.ChangeEvent<HTMLInputElement>,
+                             ) => {
+                                 handleImageChange(e.target.files![0]);
+                             }}
+                             />
+                              
+                             <PhotoCamera /> Upload
+                            </IconButton>
+
+
                         </Stack>
                         <Typography
                             fontSize={14}

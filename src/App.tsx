@@ -26,11 +26,10 @@ import {
     Home,
     Agents,
     MyProfile,
-    PropertyDetails,
-    AllProperties,
-    CreateProperty,
+    PropertyDetails,AllProperties,CreateProperty,EditProperty,
     AgentProfile,
-    EditProperty,
+    editJobs,createJobs,allJobs,jobDetails,
+
 } from "pages";
 
 //ICONS
@@ -140,9 +139,12 @@ function App() {
                     ReadyPage={ReadyPage}
                     catchAll={<ErrorComponent />}
                     resources={[
-                        {
+                        {   
                             name: "Jobs",
-                            list: Home,
+                            list: allJobs,
+                            show: jobDetails,
+                            create: createJobs,
+                            edit: editJobs,
                             icon: <WorkOutlineOutlinedIcon />,
                         },
                         {
@@ -164,14 +166,14 @@ function App() {
                         },
                         {
                             //ADMINS
-                            name: "agents",
+                            name: "Agents",
                             list: Agents,
                             show: AgentProfile,
                              icon: <BadgeOutlinedIcon />,
                         },
                         {
 
-                            name: "my-profile",
+                            name: "My-profile",
                             options: { label: "My Profile " },
                             list: MyProfile,
                             icon: <AccountCircleOutlined />,

@@ -47,7 +47,7 @@ const ApplicantCard = ({
                     flexDirection: "row",
                     justifyContent: "space-between",
                     gap: "10px",
-                    paddingX: "5px",
+                    paddingX: "50px",
                 }}
             >
                 <Stack direction="column" gap={1}>
