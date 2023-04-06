@@ -10,9 +10,22 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
-
 import { ApplicantCard, CustomButton } from "components";
-
+//NEW UI
+import { Paper } from '@mui/material'
+import { CreateButton } from "@refinedev/mui";
+import {
+    Grid,
+    InputBase,
+    IconButton,
+    Pagination,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import React from "react";
+import {
+    useTranslate,
+} from "@refinedev/core";
+import { useModalForm } from "@refinedev/react-hook-form";
 const AllProperties = () => {
     const navigate = useNavigate();
 
@@ -55,43 +68,38 @@ const AllProperties = () => {
     if (isError) return <Typography>Error...</Typography>;
 
     return (
-        <Box > 
-            <Typography fontSize={25} fontWeight={700} color="#11142d">
-                        {!allProperties.length
-                            ? "There are no properties"
-                            : "All Applicants"}
-            </Typography>
-            <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 4}} >
-                <Stack direction="column" width="100%">
-                   
-                    <Box
-                        mb={2}
-                        mt={3}
-                        display="flex"
-                        width="100%"
-                        justifyContent="space-between"
-                        flexWrap="wrap"
-                    >
-                        <Box
+        <>
+          <Paper
+    sx={{
+        paddingX: { xs: 3, md: 2 },
+        paddingY: { xs: 2, md: 3 },
+        my: 0.5,
+    }}
+> 
+{/* TOP BAR */}
+<Grid item xs={16} md={12}  >
+
+
+         <Stack
                             display="flex"
-                            gap={2}
+                            justifyContent="space-between"
+                            alignItems="baseline"
                             flexWrap="wrap"
-                            mb={{ xs: "20px", sm: 0 }}
-                            
-                            
-                        >
-                            <CustomButton
-                                title={`Sort price ${
-                                    currentPrice === "asc" ? "↑" : "↓"
-                                }`}
-                                handleClick={() => toggleSort("price")}
-                                backgroundColor="#475be8"
-                                color="#fcfcfc"
-                            />
-                            <TextField
-                                variant="outlined"
-                                color="info"
-                                placeholder="Search by name"
+                            padding={1}
+                            direction="row"
+                            gap={2}
+         >
+            <Typography variant="h5" >
+                                    {!allProperties.length
+                                        ? "There are no properties"
+                                        : "All Applicants"}
+            </Typography>   
+      
+                <TextField
+                                label="Search" variant="standard"
+                                color="primary"
+                                placeholder="Name of the Applicant"
+                                size="small"
                                 value={currentFilterValues.title}
                                 onChange={(e) => {
                                     setFilters([
@@ -105,11 +113,40 @@ const AllProperties = () => {
                                     ]);
                                 }}
                             />
+        </Stack>
+        <Stack
+                            display="flex"
+                            justifyContent="flex-end"
+                            alignItems="baseline"
+                            flexWrap="wrap"
+                            padding={1}
+                            direction="row"
+                            gap={2}
+         >
+              <CreateButton
+                     variant="outlined"
+                    sx={{ marginBottom: "5px" }}
+                    >
+                Create Applicant
+                </CreateButton>
+            <CustomButton
+                                
+                                title={`Sort price ${
+                                    currentPrice === "asc" ? "↑" : "↓"
+                                }`}
+                                handleClick={() => toggleSort("price")}
+                                backgroundColor="#475be8"
+                                color="#fcfcfc"
+                               
+                            />
+                            
+                        
                             <Select
                                 variant="outlined"
                                 color="info"
                                 displayEmpty
                                 required
+                                size="small"
                                 inputProps={{ "aria-label": "Without label" }}
                                 defaultValue=""
                                 value={currentFilterValues.propertyType}
@@ -144,28 +181,14 @@ const AllProperties = () => {
                                         {type}
                                     </MenuItem>
                                 ))}
-                            </Select>
-
-                            <CustomButton
-                    title="Add Applicant" 
-                    // CREATE
-                    handleClick={() => navigate("/Applicants/create")}
-                    backgroundColor="#475be8"
-                    color="#fcfcfc"
-                    icon={<Add />}
-                />
-                        </Box>
-                    </Box>
-                    
-                </Stack>
-            </Box>
-
-        
+                            </Select>    
+                            
+            </Stack>
             
-           
-            {/* CARDS */}
-            <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
-                {allProperties?.map((property) => (
+{/* END OF TOP BAR */}
+   {/* CARDS */}
+   <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
+   {allProperties?.map((property) => (
                     <ApplicantCard
                         key={property._id}
                         id={property._id}
@@ -175,11 +198,22 @@ const AllProperties = () => {
                         photo={property.photo}
                     />
                 ))}
-            </Box>
-
-            {allProperties.length > 0 && (
+                
+           </Box>
+           {/* PAGANATION */}
+           <Stack
+                            display="flex"
+                            justifyContent="center"
+                            alignItems="baseline"
+                            flexWrap="wrap"
+                            padding={1}
+                            direction="row"
+                            gap={2}
+         >
+{allProperties.length > 0 && (
                 <Box display="flex" gap={2} mt={3} flexWrap="wrap">
                     <CustomButton
+                    
                         title="Previous"
                         handleClick={() => setCurrent((prev) => prev - 1)}
                         backgroundColor="#475be8"
@@ -204,6 +238,7 @@ const AllProperties = () => {
                         disabled={current === pageCount}
                     />
                     <Select
+                        size="small"
                         variant="outlined"
                         color="info"
                         displayEmpty
@@ -224,7 +259,12 @@ const AllProperties = () => {
                     </Select>
                 </Box>
             )}
-        </Box>
+            </Stack>
+            </Grid>
+            
+          
+        </Paper>
+        </>
     );
 };
 

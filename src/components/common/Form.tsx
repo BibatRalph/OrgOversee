@@ -10,12 +10,33 @@ import {
     MenuItem,
     Button,
 } from "@mui/material";
+import { Paper } from '@mui/material'
+import { CreateButton } from "@refinedev/mui";
+import {
+    Grid,
+    InputBase,
+    Pagination,
+} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-
 import { FormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
-
+import {
+    HttpError,
+    IResourceComponentsProps,
+    useTranslate,
+  } from "@refinedev/core";
+  import { useForm } from "@refinedev/react-hook-form";
+  import { Controller } from "react-hook-form";
+  import { Create } from "@refinedev/mui";
+  import {
+    FormControlLabel,
+    Avatar,
+    FormLabel,
+    Radio,
+    RadioGroup,
+    TextFieldProps,
+  } from "@mui/material";
 const Form = ({
     type,
     register,
@@ -26,12 +47,34 @@ const Form = ({
     propertyImage,
 }: FormProps) => {
     return (
-        <Box>
-            <Typography fontSize={25} fontWeight={700} color="#11142d">
-                {type} a Applicant
-            </Typography>
+        <>
+    
+    <Paper
+    sx={{
+        paddingX: { xs: 3, md: 2 },
+        paddingY: { xs: 2, md: 3 },
+        my: 0.5,
+    }}
+> 
 
-            <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
+<Grid item xs={16} md={12}>
+
+
+         <Stack
+                            display="flex"
+                            justifyContent="space-between"
+                            alignItems="baseline"
+                            flexWrap="wrap"
+                            padding={1}
+                            direction="row"
+                            gap={2}
+                        >
+                     
+<Typography variant="h5">
+  Create Applicant
+</Typography>
+
+        
                 <form
                     style={{
                         marginTop: "20px",
@@ -226,8 +269,11 @@ const Form = ({
                         color="#fcfcfc"
                     />
                 </form>
-            </Box>
-        </Box>
+                </Stack>    
+                </Grid>
+              
+                </Paper>
+        </>
     );
 };
 
