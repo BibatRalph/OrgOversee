@@ -76,10 +76,10 @@ const AllProperties = () => {
         my: 0.5,
     }}
 > 
-{/* TOP BAR */}
+
 <Grid item xs={16} md={12}  >
 
-
+{/* TOP BAR */}
          <Stack
                             display="flex"
                             justifyContent="space-between"
@@ -95,6 +95,7 @@ const AllProperties = () => {
                                         : "All Applicants"}
             </Typography>   
       
+         
                 <TextField
                                 label="Search" variant="standard"
                                 color="primary"
@@ -113,7 +114,9 @@ const AllProperties = () => {
                                     ]);
                                 }}
                             />
+                         
         </Stack>
+          {/* 2nd TOP BAR*/}
         <Stack
                             display="flex"
                             justifyContent="flex-end"
@@ -183,11 +186,10 @@ const AllProperties = () => {
                                 ))}
                             </Select>    
                             
-            </Stack>
-            
+            </Stack> 
 {/* END OF TOP BAR */}
    {/* CARDS */}
-   <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
+   <Grid mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
    {allProperties?.map((property) => (
                     <ApplicantCard
                         key={property._id}
@@ -196,10 +198,11 @@ const AllProperties = () => {
                         location={property.location}
                         price={property.price}
                         photo={property.photo}
+                     
                     />
                 ))}
                 
-           </Box>
+           </Grid>
            {/* PAGANATION */}
            <Stack
                             display="flex"

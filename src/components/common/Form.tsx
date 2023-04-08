@@ -36,6 +36,7 @@ import {
     Radio,
     RadioGroup,
     TextFieldProps,
+    Input,
   } from "@mui/material";
 const Form = ({
     type,
@@ -56,11 +57,9 @@ const Form = ({
         my: 0.5,
     }}
 > 
-
 <Grid item xs={16} md={12}>
-
-
-         <Stack
+    {/* TOP BAR */}
+<Stack
                             display="flex"
                             justifyContent="space-between"
                             alignItems="baseline"
@@ -74,9 +73,100 @@ const Form = ({
   Create Applicant
 </Typography>
 
-        
-                <form
-                    style={{
+</Stack> 
+
+
+                            {/* FIRST COL */}
+                                <Stack
+                                    gap={1}
+                                    justifyContent="center"
+                                    alignItems="center"
+                                >
+                                        {/* AVATAR  */}
+                                        
+                                      <label htmlFor="avatar-input">
+                                      <IconButton 
+                            color="primary" aria-label="upload picture" component="label"
+                            sx={{
+                                width: "fit-content",
+                                color: "#2ed480",
+                                textTransform: "capitalize",
+                                fontSize: 16,
+                            }}
+                            >
+                            <input
+                             hidden accept="image/*" type="file" 
+                             onChange={(
+                                 e: React.ChangeEvent<HTMLInputElement>,
+                             ) => {
+                                 handleImageChange(e.target.files![0]);
+                             }}
+                             />
+                              
+                            
+                           
+                                        <Avatar
+                                            sx={{
+                                                cursor: "Point",
+                                                width: {
+                                                    xs: "120px",
+                                                    md: "160px",
+                                                    lg: "200px",
+                                                },
+                                                height: {
+                                                    xs: "120px",
+                                                    md: "160px",
+                                                    lg: "200px",
+                                                },
+                                            }}      
+                                             />       
+                                              </IconButton>
+                                             </label>
+                            {/* UPLOAD PHOTO */}
+                
+                        <Stack direction="row" gap={2}>
+                            <Typography
+                                color="#11142d"
+                                fontSize={16}
+                                fontWeight={500}
+                                my="10px"
+                            >
+                                Applicant Photo
+                            </Typography>
+
+                            <IconButton 
+                            color="primary" aria-label="upload picture" component="label"
+                            sx={{
+                                width: "fit-content",
+                                color: "#2ed480",
+                                textTransform: "capitalize",
+                                fontSize: 16,
+                            }}
+                            >
+                            <input
+                             hidden accept="image/*" type="file" 
+                             onChange={(
+                                 e: React.ChangeEvent<HTMLInputElement>,
+                             ) => {
+                                 handleImageChange(e.target.files![0]);
+                             }}
+                             />
+                              
+                             <PhotoCamera /> Upload
+                            </IconButton>
+
+
+                        </Stack>
+                        <Typography
+                            fontSize={14}
+                            color="#808191"
+                            sx={{ wordBreak: "break-all" }}
+                        >
+                            {propertyImage?.name}
+                        </Typography>
+                    
+           <form
+               style={{
                         marginTop: "20px",
                         width: "100%",
                         display: "flex",
@@ -86,6 +176,7 @@ const Form = ({
                     onSubmit={handleSubmit(onFinishHandler)}
                 >
                     <FormControl>
+                  
                         <FormHelperText
                             sx={{
                                 fontWeight: 500,
@@ -134,7 +225,7 @@ const Form = ({
                             {...register("description", { required: true })}
                         />
                     </FormControl>
-
+                            {/* HALF INPUT "Type and Age" */}
                     <Stack direction="row" gap={4}>
                         <FormControl sx={{ flex: 1 }}>
                             <FormHelperText
@@ -213,55 +304,7 @@ const Form = ({
                             {...register("location", { required: true })}
                         />
                     </FormControl>
-
-                    <Stack
-                        direction="column"
-                        gap={1}
-                        justifyContent="center"
-                        mb={2}
-                    >
-                        <Stack direction="row" gap={2}>
-                            <Typography
-                                color="#11142d"
-                                fontSize={16}
-                                fontWeight={500}
-                                my="10px"
-                            >
-                                Applicant Photo
-                            </Typography>
-
-                            <IconButton 
-                            color="primary" aria-label="upload picture" component="label"
-                            sx={{
-                                width: "fit-content",
-                                color: "#2ed480",
-                                textTransform: "capitalize",
-                                fontSize: 16,
-                            }}
-                            >
-                            <input
-                             hidden accept="image/*" type="file" 
-                             onChange={(
-                                 e: React.ChangeEvent<HTMLInputElement>,
-                             ) => {
-                                 handleImageChange(e.target.files![0]);
-                             }}
-                             />
-                              
-                             <PhotoCamera /> Upload
-                            </IconButton>
-
-
-                        </Stack>
-                        <Typography
-                            fontSize={14}
-                            color="#808191"
-                            sx={{ wordBreak: "break-all" }}
-                        >
-                            {propertyImage?.name}
-                        </Typography>
-                    </Stack>
-
+                             {/* SUBMIT */}
                     <CustomButton
                         type="submit"
                         title={formLoading ? "Submitting..." : "Submit"}
@@ -269,9 +312,13 @@ const Form = ({
                         color="#fcfcfc"
                     />
                 </form>
+                {/* FIRST COL */}
                 </Stack>    
-                </Grid>
-              
+                
+                 {/* CONTENTS */}
+                </Grid>  
+               
+                
                 </Paper>
         </>
     );

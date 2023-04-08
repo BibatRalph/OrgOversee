@@ -1,4 +1,4 @@
-import { Paper } from '@mui/material'
+import { Paper, Select, TextField } from '@mui/material'
 import { CreateButton } from "@refinedev/mui";
 import {
     Grid,
@@ -8,20 +8,20 @@ import {
     Stack,
     Pagination,
 } from "@mui/material";
+import { ApplicantCard, CustomButton } from "components";
 import SearchIcon from "@mui/icons-material/Search";
 const allJobs = () => {
   return (
     <>
-     <Paper
-    sx={{
-        paddingX: { xs: 3, md: 2 },
-        paddingY: { xs: 2, md: 3 },
-        my: 0.5,
-    }}
+    <Paper
+sx={{
+  paddingX: { xs: 3, md: 2 },
+  paddingY: { xs: 2, md: 3 },
+  my: 0.5,
+}}
 > 
 
-<Grid container columns={16}>
-<Grid item xs={16} md={12}>
+<Grid item xs={16} md={12}  >
 
 
          <Stack
@@ -35,39 +35,56 @@ const allJobs = () => {
                         >
                      
 <Typography variant="h5">
-  Jobs
+  Listed Jobs
 </Typography>
-                            {/* Create */}
-                            <CreateButton
+{/* SEARCH BAR */}
+<TextField
+                                label="Search" variant="standard"
+                                color="primary"
+                                placeholder="Name of the Applicant"
+                                size="small"
+                          
+                            />
+
+          </Stack>
+      
+   {/* 2nd TOP BAR*/}
+   <Stack
+                            display="flex"
+                            justifyContent="flex-end"
+                            alignItems="baseline"
+                            flexWrap="wrap"
+                            padding={1}
+                            direction="row"
+                            gap={2}
+                        >
+                               <CreateButton
                                 
                                 variant="outlined"
                                 sx={{ marginBottom: "5px" }}
                             >
                                Create Job
                             </CreateButton>
-{/* SEARCH BAR */}
-<Paper
-                                component="form"
-                                sx={{
-                 
-                     
-                                    alignItems: "center",
-                                    width: 400,
-                                }}
+                            <CreateButton
+                                
+                                variant="outlined"
+                                sx={{ marginBottom: "5px" }}
                             >
-                                <IconButton
-                                    type="submit"
-                                    sx={{ p: "10px" }}
-                                    aria-label="search"
-                                >
-                                    <SearchIcon />
-                                </IconButton>
-        </Paper>
-          </Stack>
-          {/* END OF TOP BAR */}
-          <Grid container>
+                               Sort
+                            </CreateButton>
+                            <Select
+                             size="small"
+                             >
+
+                            </Select>
                         
-                                    <Grid
+
+   </Stack>
+       {/* END OF TOP BAR */}
+
+    {/* CARDS */}
+   <Grid mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
+                            <Grid
                                         item
                                         xs={12}
                                         md={6}
@@ -80,8 +97,17 @@ const allJobs = () => {
                                     </Grid>
                   
                         </Grid>
-                        {/* PAGE */}
-                        <Pagination
+                        {/* PAGANATION */}
+                        <Stack
+                            display="flex"
+                            justifyContent="center"
+                            alignItems="baseline"
+                            flexWrap="wrap"
+                            padding={1}
+                            direction="row"
+                            gap={2}
+         >
+      <Pagination
                             
                             variant="outlined"
                             color="primary"
@@ -99,25 +125,9 @@ const allJobs = () => {
                             
                             }}
                         />
+       </Stack>
   </Grid>
-  <Grid
-                        item
-                        sm={0}
-                        md={4}
-                        sx={{
-                            display: {
-                                xs: "none",
-                                md: "block",
-                            },
-                        }}
-                    >
-                        <Stack padding="8px">
-                            <Typography variant="subtitle1">
-                              Filter
-                            </Typography>
-                        </Stack>
-                    </Grid>
-  </Grid>
+  
 </Paper>
     </>
    
