@@ -9,8 +9,9 @@ import {
     Pagination,
 } from "@mui/material";
 import { ApplicantCard, CustomButton } from "components";
-import SearchIcon from "@mui/icons-material/Search";
+import { useNavigate } from 'react-router-dom';
 const allJobs = () => {
+    const navitage = useNavigate();
   return (
     <>
     <Paper
@@ -22,14 +23,13 @@ sx={{
 > 
 
 <Grid item xs={16} md={12}  >
-
-
+   {/* TOP BAR */}
          <Stack
                             display="flex"
                             justifyContent="space-between"
                             alignItems="baseline"
                             flexWrap="wrap"
-                            padding={1}
+                            padding={2}
                             direction="row"
                             gap={2}
                         >
@@ -54,7 +54,7 @@ sx={{
                             justifyContent="flex-end"
                             alignItems="baseline"
                             flexWrap="wrap"
-                            padding={1}
+                            padding={2}
                             direction="row"
                             gap={2}
                         >

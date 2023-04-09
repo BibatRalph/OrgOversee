@@ -85,13 +85,13 @@ const AllProperties = () => {
                             justifyContent="space-between"
                             alignItems="baseline"
                             flexWrap="wrap"
-                            padding={1}
+                            padding={2}
                             direction="row"
                             gap={2}
          >
             <Typography variant="h5" >
                                     {!allProperties.length
-                                        ? "There are no properties"
+                                        ? "There are no Applicants"
                                         : "All Applicants"}
             </Typography>   
       
@@ -134,19 +134,19 @@ const AllProperties = () => {
                 </CreateButton>
             <CustomButton
                                 
-                                title={`Sort price ${
+                                title={`Sort Age ${
                                     currentPrice === "asc" ? "↑" : "↓"
                                 }`}
                                 handleClick={() => toggleSort("price")}
-                                backgroundColor="#475be8"
-                                color="#fcfcfc"
+                                backgroundColor="initial"
+                                color="primary"
                                
                             />
                             
                         
                             <Select
                                 variant="outlined"
-                                color="info"
+                                color="primary"
                                 displayEmpty
                                 required
                                 size="small"
@@ -219,8 +219,8 @@ const AllProperties = () => {
                     
                         title="Previous"
                         handleClick={() => setCurrent((prev) => prev - 1)}
-                        backgroundColor="#475be8"
-                        color="#fcfcfc"
+                        backgroundColor="initial"
+                        color="primary"
                         disabled={!(current > 1)}
                     />
                     <Box
@@ -236,14 +236,14 @@ const AllProperties = () => {
                     <CustomButton
                         title="Next"
                         handleClick={() => setCurrent((prev) => prev + 1)}
-                        backgroundColor="#475be8"
-                        color="#fcfcfc"
+                        backgroundColor="initial"
+                        color="primary"
                         disabled={current === pageCount}
                     />
                     <Select
                         size="small"
                         variant="outlined"
-                        color="info"
+                        color="primary"
                         displayEmpty
                         required
                         inputProps={{ "aria-label": "Without label" }}

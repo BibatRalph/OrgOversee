@@ -1,5 +1,4 @@
 import {
-    Box,
     Typography,
     FormControl,
     FormHelperText,
@@ -8,36 +7,15 @@ import {
     Stack,
     Select,
     MenuItem,
-    Button,
-} from "@mui/material";
-import { Paper } from '@mui/material'
-import { CreateButton } from "@refinedev/mui";
-import {
     Grid,
-    InputBase,
-    Pagination,
+    Avatar,
+    Paper
 } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { FormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
-import {
-    HttpError,
-    IResourceComponentsProps,
-    useTranslate,
-  } from "@refinedev/core";
-  import { useForm } from "@refinedev/react-hook-form";
-  import { Controller } from "react-hook-form";
-  import { Create } from "@refinedev/mui";
-  import {
-    FormControlLabel,
-    Avatar,
-    FormLabel,
-    Radio,
-    RadioGroup,
-    TextFieldProps,
-    Input,
-  } from "@mui/material";
+
 const Form = ({
     type,
     register,
@@ -49,7 +27,6 @@ const Form = ({
 }: FormProps) => {
     return (
         <>
-    
     <Paper
     sx={{
         paddingX: { xs: 3, md: 2 },
@@ -61,16 +38,16 @@ const Form = ({
     {/* TOP BAR */}
 <Stack
                             display="flex"
-                            justifyContent="space-between"
+                            justifyContent="center"
                             alignItems="baseline"
                             flexWrap="wrap"
-                            padding={1}
+                            padding={2}
                             direction="row"
                             gap={2}
                         >
                      
 <Typography variant="h5">
-  Create Applicant
+  Applicant Details
 </Typography>
 
 </Stack> 
@@ -133,14 +110,16 @@ const Form = ({
                             >
                                 Applicant Photo
                             </Typography>
+                            </Stack>
 
+                            <Stack direction="row" gap={2}>
                             <IconButton 
                             color="primary" aria-label="upload picture" component="label"
                             sx={{
                                 width: "fit-content",
                                 color: "#2ed480",
                                 textTransform: "capitalize",
-                                fontSize: 16,
+                                fontSize: 15,
                             }}
                             >
                             <input
@@ -150,12 +129,9 @@ const Form = ({
                              ) => {
                                  handleImageChange(e.target.files![0]);
                              }}
-                             />
-                              
+                             />               
                              <PhotoCamera /> Upload
                             </IconButton>
-
-
                         </Stack>
                         <Typography
                             fontSize={14}
@@ -190,13 +166,15 @@ const Form = ({
                         <TextField
                             fullWidth
                             required
-                            id="outlined-basic"
+                            id="standard-basic"
                             label="Name"
-                            color="info"
-                            variant="outlined"
+                            color="primary"
+                            variant="standard"
                             {...register("title", { required: true })}
                         />
                     </FormControl>
+                  
+
                     <FormControl>
                         <FormHelperText
                             sx={{
@@ -206,26 +184,19 @@ const Form = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter Description
+                            Applicant Location
                         </FormHelperText>
-                        <TextareaAutosize
-                            minRows={5}
+                        <TextField
+                            fullWidth
                             required
-                            placeholder="Write description"
-                            color="info"
-                            style={{
-                                width: "100%",
-                                background: "transparent",
-                                fontSize: "16px",
-                                borderColor: "rgba(0,0,0,0.23)",
-                                borderRadius: 6,
-                                padding: 10,
-                                color: "#919191",
-                            }}
-                            {...register("description", { required: true })}
+                            id="standard-basic"
+                            color="primary"
+                            variant="standard"
+                            label="Location "
+                            {...register("location", { required: true })}
                         />
                     </FormControl>
-                            {/* HALF INPUT "Type and Age" */}
+                         {/* HALF INPUT "Type and Age" */}
                     <Stack direction="row" gap={4}>
                         <FormControl sx={{ flex: 1 }}>
                             <FormHelperText
@@ -240,7 +211,7 @@ const Form = ({
                             </FormHelperText>
                             <Select
                                 variant="outlined"
-                                color="info"
+                                color="primary"
                                 displayEmpty
                                 required
                                 inputProps={{ "aria-label": "Without label" }}
@@ -259,6 +230,7 @@ const Form = ({
                                 <MenuItem value="chalet">Chalet</MenuItem>
                             </Select>
                         </FormControl>
+                        
                         <FormControl>
                             <FormHelperText
                                 sx={{
@@ -273,8 +245,8 @@ const Form = ({
                             <TextField
                                 fullWidth
                                 required
-                                id="outlined-basic"
-                                color="info"
+                                id="standard-basic"
+                                color="primary"
                                 type="number"
                                 label="Age"
                                 variant="outlined"
@@ -292,26 +264,40 @@ const Form = ({
                                 color: "#11142d",
                             }}
                         >
-                            Applicant Location
+                            Enter Description
                         </FormHelperText>
-                        <TextField
-                            fullWidth
+                        <TextareaAutosize
+                            minRows={5}
                             required
-                            id="outlined-basic"
-                            color="info"
-                            variant="outlined"
-                            label="Location "
-                            {...register("location", { required: true })}
+                            placeholder="Write description"
+                            color="primary"
+                            style={{
+                                width: "100%",
+                                background: "transparent",
+                                fontSize: "16px",
+                                borderColor: "rgba(0,0,0,0.23)",
+                                borderRadius: 6,
+                                padding: 10,
+                                color: "#919191",
+                            }}
+                            {...register("description", { required: true })}
                         />
                     </FormControl>
-                             {/* SUBMIT */}
-                    <CustomButton
+                       
+                    
+                       {/* SUBMIT */}
+                       <Grid mt="10px">
+                             <CustomButton
                         type="submit"
-                        title={formLoading ? "Submitting..." : "Submit"}
+                        title={formLoading ? "Submitting..." : "SUBMIT"}
                         backgroundColor="#475be8"
                         color="#fcfcfc"
+                   
                     />
+                             </Grid>
+                
                 </form>
+                      
                 {/* FIRST COL */}
                 </Stack>    
                 
