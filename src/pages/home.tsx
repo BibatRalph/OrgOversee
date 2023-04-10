@@ -1,5 +1,5 @@
 import { useList } from "@refinedev/core";
-import { Typography, Box, Stack } from "@mui/material";
+import { Typography, Box, Stack, Paper } from "@mui/material";
 
 import {
     PieChart,
@@ -24,10 +24,13 @@ const Home = () => {
     if (isError) return <Typography>Something went wrong!</Typography>;
 
     return (
-        <Box>
-            <Typography fontSize={25} fontWeight={700} color="#11142D">
-                Dashboard
+        <Box >
+            
+            <Typography fontSize={25} fontWeight={600} >
+                Welcome Back Overseer
             </Typography>
+           
+         
 
             <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
                 <PieChart
@@ -77,7 +80,7 @@ const Home = () => {
                 mt="25px"
             >
                 <Typography fontSize="18px" fontWeight={600} color="#11142d">
-                    Latest Applicants
+                    Recent Applicants
                 </Typography>
 
                 <Box

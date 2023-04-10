@@ -16,7 +16,7 @@ const TotalRevenue = () => {
             borderRadius="15px"
         >
             <Typography fontSize={18} fontWeight={600} color="#11142d">
-                Chart Graph
+            Statistical Graph
             </Typography>
 
             <Stack my="20px" direction="row" gap={4} flexWrap="wrap">
