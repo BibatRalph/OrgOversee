@@ -102,7 +102,7 @@ export const Login: React.FC = () => {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                color="secondary" 
+                color="info" 
               />
               <TextField
                 margin="normal"
@@ -113,10 +113,10 @@ export const Login: React.FC = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                color="secondary" 
+                color="info" 
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="secondary" />}
+                control={<Checkbox value="remember" color="info" />}
                 label="Remember me"
               />
 
@@ -125,7 +125,7 @@ export const Login: React.FC = () => {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                color="inherit"
+                color="info"
               >
                 Sign In
               </Button>
@@ -138,13 +138,13 @@ export const Login: React.FC = () => {
               <Grid container>
          
                 <Grid item xs>
-                  <Link href="#" variant="body2" color="inherit">
+                  <Link href="#" variant="body2" color="#475be8">
                     Forgot password?
                   </Link>
                 </Grid>
 
                 <Grid item>
-                  <Link href="#" variant="body2"  color="inherit">
+                  <Link href="#" variant="body2"  color="#475be8">
                     {"Don't have an account?"}
                   </Link>
                 </Grid>
