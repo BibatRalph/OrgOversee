@@ -1,17 +1,61 @@
-import { Paper, Select, TextField } from '@mui/material'
+import { useTable } from "@refinedev/core";
 import { CreateButton } from "@refinedev/mui";
 import {
     Grid,
     Typography,
-    InputBase,
-    IconButton,
+    Box,
     Stack,
-    Pagination,
+    MenuItem,
+    Paper, Select, TextField 
 } from "@mui/material";
-import { ApplicantCard, CustomButton } from "components";
+import { CustomButton } from "components";
+import { useMemo } from "react";
 import { useNavigate } from 'react-router-dom';
+import JobCard from "components/common/JobCard";
 const allJobs = () => {
     const navitage = useNavigate();
+
+    const {
+      tableQueryResult: { data, isLoading, isError },
+      current,
+      setCurrent,
+      setPageSize,
+      pageCount,
+      sorter,
+      setSorter,
+      filters,
+      setFilters,
+  } = useTable();
+
+  //If i dont have data, turn it into empty array so no error.
+  const allData = data?.data ?? [];
+
+  //SORT
+   const currentPrice = sorter.find((item) => item.field === "Salary")?.order;
+
+    const toggleSort = (field: string) => {
+        setSorter([{ field, order: currentPrice === "asc" ? "desc" : "asc" }]);
+    };
+
+    //SEARCH and Filter
+    const currentFilterValues = useMemo(() => {
+        const logicalFilters = filters.flatMap((item) =>
+            "field" in item ? item : [],
+        );
+
+        return {
+            title:
+                logicalFilters.find((item) => item.field === "jobTitle")?.value || "",
+                jobType:
+                logicalFilters.find((item) => item.field === "jobType")?.value || "",
+        };
+    }, [filters]);
+
+
+  //Front End State handling auto done by Refine
+  if (isLoading) return <Typography>Loading...</Typography>;
+  if (isError) return <Typography>Error...</Typography>;
+
   return (
     <>
     <Paper
@@ -41,11 +85,21 @@ sx={{
 <TextField
                                 label="Search" variant="standard"
                                 color="primary"
-                                placeholder="Name of the Applicant"
+                                placeholder="Job Title"
                                 size="small"
-                          
+                                value={currentFilterValues.title}
+                                onChange={(e) => {
+                                    setFilters([
+                                        {
+                                            field: "jobTitle",
+                                            operator: "contains",
+                                            value: e.currentTarget.value
+                                                ? e.currentTarget.value
+                                                : undefined,
+                                        },
+                                    ]);
+                                }}
                             />
-
           </Stack>
       
    {/* 2nd TOP BAR*/}
@@ -65,18 +119,55 @@ sx={{
                             >
                                Create Job
                             </CreateButton>
-                            <CreateButton
-                                
-                                variant="outlined"
-                                sx={{ marginBottom: "5px" }}
-                            >
-                               Sort
-                            </CreateButton>
-                            <Select
-                             size="small"
-                             >
 
-                            </Select>
+                             <CustomButton
+                                
+                                title={`Sort Salary ${
+                                    currentPrice === "asc" ? "↑" : "↓"
+                                }`}
+                                handleClick={() => toggleSort("Salary")}
+                                backgroundColor="initial"
+                                color="primary"
+                               
+                            />
+
+                                {/* <Select
+                                variant="outlined"
+                                color="primary"
+                                displayEmpty
+                                required
+                                size="small"
+                                inputProps={{ "aria-label": "Without label" }}
+                                defaultValue=""
+                                value={currentFilterValues.jobType}
+                                onChange={(e) => {
+                                    setFilters(
+                                        [
+                                            {
+                                                field: "jobType",
+                                                operator: "eq",
+                                                value: e.target.value,
+                                            },
+                                        ],
+                                        "replace",
+                                    );
+                                }}
+                            >
+                                <MenuItem value="">All</MenuItem>
+                                {[
+                                    
+                                    "Full-time employment",
+                                    "Part-time employment",
+                                    
+                                ].map((type) => (
+                                    <MenuItem
+                                        key={type}
+                                        value={type.toLowerCase()}
+                                    >
+                                        {type}
+                                    </MenuItem>
+                                ))}
+                            </Select>     */}
                         
 
    </Stack>
@@ -84,21 +175,24 @@ sx={{
 
     {/* CARDS */}
    <Grid mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
-                            <Grid
-                                        item
-                                        xs={12}
-                                        md={6}
-                                        lg={4}
-                                        xl={3}
-                                      
-                                        sx={{ padding: "8px" }}
-                                    >
-                                      CARD LIST
-                                    </Grid>
+                       
+                                        {allData?.map((Jobs) => (
+                    <JobCard
+                        key={Jobs._id}
+                        id={Jobs._id}
+                        jobTitle={Jobs.jobTitle}
+                        jobType={Jobs.jobType}
+                        experience={Jobs.experience}
+                        Salary={Jobs.Salary}
+                        location={Jobs.location}
+                     
+                    />
+                ))}
+                                
                   
                         </Grid>
-                        {/* PAGANATION */}
-                        <Stack
+                    {/* PAGANATION */}
+           <Stack
                             display="flex"
                             justifyContent="center"
                             alignItems="baseline"
@@ -107,28 +201,60 @@ sx={{
                             direction="row"
                             gap={2}
          >
-      <Pagination
-                            
-                            variant="outlined"
-                            color="primary"
-                            shape="rounded"
-                            sx={{
-                                display: "flex",
-                                justifyContent: "end",
-                                paddingY: "20px",
-                            }}
-                            onChange={(
-                                event: React.ChangeEvent<unknown>,
-                                page: number,
-                            ) => {
-                                event.preventDefault();
-                            
-                            }}
-                        />
-       </Stack>
-  </Grid>
-  
-</Paper>
+{allData.length > 0 && (
+                <Box display="flex" gap={2} mt={3} flexWrap="wrap">
+                    <CustomButton
+                    
+                        title="Previous"
+                        handleClick={() => setCurrent((prev) => prev - 1)}
+                        backgroundColor="initial"
+                        color="primary"
+                        disabled={!(current > 1)}
+                    />
+                    <Box
+                        display={{ xs: "hidden", sm: "flex" }}
+                        alignItems="center"
+                        gap="5px"
+                    >
+                        Page{" "}
+                        <strong>
+                            {current} of {pageCount}
+                        </strong>
+                    </Box>
+                    <CustomButton
+                        title="Next"
+                        handleClick={() => setCurrent((prev) => prev + 1)}
+                        backgroundColor="initial"
+                        color="primary"
+                        disabled={current === pageCount}
+                    />
+                    <Select
+                        size="small"
+                        variant="outlined"
+                        color="primary"
+                        displayEmpty
+                        required
+                        inputProps={{ "aria-label": "Without label" }}
+                        defaultValue={10}
+                        onChange={(e) =>
+                            setPageSize(
+                                e.target.value ? Number(e.target.value) : 10,
+                            )
+                        }
+                    >
+                        {[10, 20, 30, 40, 50].map((size) => (
+                            <MenuItem key={size} value={size}>
+                                Show {size}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </Box>
+            )}
+            </Stack>
+            </Grid>
+            
+          
+        </Paper>
     </>
    
   )

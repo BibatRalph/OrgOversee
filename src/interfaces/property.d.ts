@@ -20,3 +20,12 @@ export interface PropertyCardProps {
     price: string;
     photo: string;
 }
+
+export interface JobCardProps {
+    id?: BaseKey | undefined;
+    jobTitle: string;
+    jobType: string;
+    experience: string;
+    Salary: string;
+    location: string;
+}

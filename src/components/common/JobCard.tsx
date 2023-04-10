@@ -9,39 +9,26 @@ import {
     Stack,
 } from "@mui/material";
 
-import { PropertyCardProps } from "interfaces/property";
+import { JobCardProps } from "interfaces/property";
 
-const ApplicantCard = ({
-    id,
-    title,
-    location,
-    price,
-    photo,
-}: PropertyCardProps) => {
-    return (
-        <Card
+const JobCard = ({
+    id, jobTitle, jobType, experience, Salary, location }: JobCardProps ) => {
+  return (
+    <Card
             component={Link}
             // CLICK
-            to={`/Applicants/show/${id}`}
+            to={`/Jobs/show/${id}`}
             sx={{
                 maxWidth: "330px",
                 padding: "10px",
                 "&:hover": {
-                    boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.1)",
+                    boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.2)",
                     transform: "scale3d(1.05, 1.05, 3)"
                 },
                 cursor: "pointer",
             }}
             elevation={1}
         >
-            <CardMedia
-                component="img"
-                width="100%"
-                height={210}
-                image={photo}
-                alt="card image"
-                sx={{ borderRadius: "10px" }}
-            />
             <CardContent
                 sx={{
                     display: "flex",
@@ -53,7 +40,13 @@ const ApplicantCard = ({
             >
                 <Stack direction="column" gap={1}>
                     <Typography fontSize={16} fontWeight={500} color="#11142d">
-                        {title}
+                        {jobTitle}
+                    </Typography>
+                    <Typography fontSize={16} fontWeight={300} color="#11142d">
+                        {jobType}
+                    </Typography>
+                    <Typography fontSize={16} fontWeight={300} color="#11142d">
+                        {experience}
                     </Typography>
                     <Stack direction="row" gap={0.5} alignItems="flex-start">
                         <Place
@@ -68,20 +61,14 @@ const ApplicantCard = ({
                         </Typography>
                     </Stack>
                 </Stack>
-                <Box
-                    px={1.5}
-                    py={0.5}
-                    borderRadius={1}
-                    bgcolor="#dadefa"
-                    height="fit-content"
-                >
-                    <Typography fontSize={12} fontWeight={600} color="#475be8">
-                        ${price}
+                
+                    <Typography fontSize={16} fontWeight={300} color="primary">
+                        ${Salary}
                     </Typography>
-                </Box>
+                
             </CardContent>
         </Card>
-    );
-};
+  )
+}
 
-export default ApplicantCard;
+export default JobCard

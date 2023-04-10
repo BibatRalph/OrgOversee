@@ -197,9 +197,9 @@ const FormJob = ({
                                     required: true,
                                 })}
                             >
-                                <MenuItem value="fullTime">
+                                <MenuItem value="Full-time employment">
 Full-time employment</MenuItem>
-                                <MenuItem value="partTime">Part-time employment</MenuItem>
+                                <MenuItem value="Part-time employment">Part-time employment</MenuItem>
                             </Select>
                         </FormControl>
                                 

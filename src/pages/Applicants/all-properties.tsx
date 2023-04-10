@@ -1,4 +1,3 @@
-import { Add } from "@mui/icons-material";
 import { useTable } from "@refinedev/core";
 import {
     Box,
@@ -7,6 +6,7 @@ import {
     TextField,
     Select,
     MenuItem,
+    Grid
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
@@ -14,18 +14,7 @@ import { ApplicantCard, CustomButton } from "components";
 //NEW UI
 import { Paper } from '@mui/material'
 import { CreateButton } from "@refinedev/mui";
-import {
-    Grid,
-    InputBase,
-    IconButton,
-    Pagination,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import React from "react";
-import {
-    useTranslate,
-} from "@refinedev/core";
-import { useModalForm } from "@refinedev/react-hook-form";
+
 const AllProperties = () => {
     const navigate = useNavigate();
 
@@ -122,7 +111,7 @@ const AllProperties = () => {
                             justifyContent="flex-end"
                             alignItems="baseline"
                             flexWrap="wrap"
-                            padding={1}
+                            padding={2}
                             direction="row"
                             gap={2}
          >
@@ -188,7 +177,7 @@ const AllProperties = () => {
                             
             </Stack> 
 {/* END OF TOP BAR */}
-   {/* CARDS */}
+   {/* DATA CARDS */}
    <Grid mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
    {allProperties?.map((property) => (
                     <ApplicantCard
