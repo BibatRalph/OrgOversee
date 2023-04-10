@@ -48,6 +48,7 @@ const CreateProperty = () => {
             handleImageChange={handleImageChange}
             onFinishHandler={onFinishHandler}
             propertyImage={propertyImage}
+            
         />
     );
 };

@@ -135,7 +135,7 @@ const FormJob = ({
                             color="primary"
                             variant="standard"
                             label="Job Title"
-                            {...register("location", { required: true })}
+                            {...register("jobTitle", { required: true })}
                         />
                         </FormControl>
           
@@ -275,7 +275,6 @@ Full-time employment</MenuItem>
                                 variant="outlined"
                                 color="primary"
                                 displayEmpty
-                                
                                 required
                                 defaultValue="No experience"
                                 {...register("experience", {
@@ -302,13 +301,16 @@ Full-time employment</MenuItem>
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="Skills"/>}
           renderValue={(selected) => (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
+            {...register("skillSet", { required: true, })}
+            >
               {selected.map((value) => (
                 <Chip key={value} label={value} />
               ))}
             </Box>
           )}
           MenuProps={MenuProps}
+    
         >
           {SkillSet.map((name) => (
             <MenuItem
