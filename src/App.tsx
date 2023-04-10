@@ -62,6 +62,7 @@ function App() {
         login: async ({ credential }: CredentialResponse) => {
             const profileObj = credential ? parseJwt(credential) : null;
 
+            //Login MAIN
             if (profileObj) {
                 const response = await fetch(
                     "http://localhost:8080/api/v1/users",

@@ -68,15 +68,14 @@ const FormJob = ({
 
 //LOCATION
     const Location = [
-    { title: 'Head Office-Philippines', vacancy: 7 },
-    { title: 'Remote-Philippines', vacancy: 13 },
-    { title: 'Head Office-United States', vacancy: 2 },
-    { title: 'Remote-United States', vacancy: 1 },
+    { title: 'Head Office-Philippines'},
+    { title: 'Remote-Philippines' },
+    { title: 'Head Office-United States' },
+    { title: 'Remote-United States' },
     ]
 
   interface LocationOption {
     title: string;
-    vacancy: number;
   }
   const defaultProps = {
     options: Location,
@@ -248,16 +247,21 @@ Full-time employment</MenuItem>
                         >
                             Additional Job Details
                         </FormHelperText>
+
                         <Autocomplete
         {...defaultProps}
         id="auto-complete"
         color="primary"
         autoComplete
         includeInputInList
+        isOptionEqualToValue={(option, value) =>
+          option.title === value.title
+        }
         renderInput={(params) => (
           <TextField {...params} fullWidth required label="Location" variant="outlined" {...register("location", { required: true })}/>
         )}
-      />                
+      />     
+
              </FormControl>
 
              <FormControl sx={{ flex: 1 }}>
@@ -300,9 +304,10 @@ Full-time employment</MenuItem>
           value={Skillset}
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="Skills"/>}
+         
           renderValue={(selected) => (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
-            {...register("skillSet", { required: true, })}
+         
             >
               {selected.map((value) => (
                 <Chip key={value} label={value} />
@@ -310,13 +315,12 @@ Full-time employment</MenuItem>
             </Box>
           )}
           MenuProps={MenuProps}
-    
         >
           {SkillSet.map((name) => (
             <MenuItem
               key={name}
               value={name}
-              
+              {...register("skillSet", { required: true, })}
             >
               {name}
             </MenuItem>
@@ -347,7 +351,7 @@ Full-time employment</MenuItem>
                        <Grid mt="10px">
                              <CustomButton
                         type="submit"
-                        title={formLoading ? "Submitting..." : "SUBMIT"}
+                        title={formLoading ? "Submitting..." : "Submit"}
                         backgroundColor="#475be8"
                         color="#fcfcfc"
                    
