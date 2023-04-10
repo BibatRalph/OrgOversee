@@ -9,9 +9,7 @@ import {
     Place,
     Star,
 } from "@mui/icons-material";
-
 import { CustomButton } from "components";
-
 function checkImage(url: any) {
     const img = new Image();
     img.src = url;
