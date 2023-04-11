@@ -1,5 +1,5 @@
 import { Email, Phone, Place } from "@mui/icons-material";
-import { Box, Stack, Typography, Paper,Grid } from "@mui/material";
+import { Box, Stack, Typography,Grid,Paper} from "@mui/material";
 
 import { ProfileProps, PropertyProps } from "interfaces/common";
 import ApplicantCard from "./ApplicantCard";
@@ -104,7 +104,7 @@ sx={{
                                         fontWeight={500}
                                         color="#808191"
                                     >
-                                        Location
+                                        Address
                                     </Typography>
                                     <Box
                                         display="flex"
@@ -183,12 +183,11 @@ sx={{
                     </Box>
                 </Box>
             </Box>
-        </Box>
-
+      
         {properties.length > 0 && (
             <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
                 <Typography fontSize={18} fontWeight={600} color="#11142D">
-                    {type} Applicants
+                    {type} Properties
                 </Typography>
 
                 <Box
@@ -212,12 +211,15 @@ sx={{
                 </Box>
             </Box>
         )}
+    </Box>
+
 </Grid>
 </Paper>
 </>
-
     
+       
 
+       
 );
 
 export default Profile;
