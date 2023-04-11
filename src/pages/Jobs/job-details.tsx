@@ -85,8 +85,8 @@ const jobDetails = () => {
             > 
               {/* First col */}
                 <Box flex={1} maxWidth={1450}
-                    border="1px solid #E4E4E4"
-                    borderRadius={1}
+                   border="1px solid #E4E4E4"
+                   borderRadius={1}
                     sx={{
                       paddingX: { xs: 3, md: 2 },
                       paddingY: { xs: 2, md: 3 },
@@ -98,7 +98,7 @@ const jobDetails = () => {
   justifyContent="center"
   alignItems="flex-start"
   spacing={4}
- 
+
 >
                               <Typography
                                   fontSize={28}
