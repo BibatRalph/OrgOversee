@@ -1,5 +1,5 @@
 import { Email, Phone, Place } from "@mui/icons-material";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, Paper,Grid } from "@mui/material";
 
 import { ProfileProps, PropertyProps } from "interfaces/common";
 import ApplicantCard from "./ApplicantCard";
@@ -11,12 +11,33 @@ function checkImage(url: any) {
 }
 
 const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
-    <Box>
-        <Typography fontSize={25} fontWeight={700} color="#11142D">
-            {type} Profile
-        </Typography>
+    <>
+    <Paper
+sx={{
+  paddingX: { xs: 3, md: 1 },
+  paddingY: { xs: 2, md: 3 },
+  my: 0.5,
+}}
+> 
 
-        <Box mt="20px" borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
+<Grid item xs={16} md={12}  >
+   {/* TOP BAR */}
+         <Stack
+                            display="flex"
+                            justifyContent="space-between"
+                            alignItems="baseline"
+                            flexWrap="wrap"
+                            padding={3}
+                            direction="row"
+                            gap={2}
+                        >
+                     
+<Typography variant="h5">
+{type} Profile
+</Typography>
+</Stack>
+{/* CONTENT */}
+<Box mt="20px" borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
             <Box
                 sx={{
                     display: "flex",
@@ -72,7 +93,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                                     {name}
                                 </Typography>
                                 <Typography fontSize={16} color="#808191">
-                                    Realestate Agent
+                                Talent acquisition specialist
                                 </Typography>
                             </Stack>
 
@@ -83,7 +104,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                                         fontWeight={500}
                                         color="#808191"
                                     >
-                                        Address
+                                        Location
                                     </Typography>
                                     <Box
                                         display="flex"
@@ -167,7 +188,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
         {properties.length > 0 && (
             <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
                 <Typography fontSize={18} fontWeight={600} color="#11142D">
-                    {type} Properties
+                    {type} Applicants
                 </Typography>
 
                 <Box
@@ -191,7 +212,12 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                 </Box>
             </Box>
         )}
-    </Box>
+</Grid>
+</Paper>
+</>
+
+    
+
 );
 
 export default Profile;

@@ -1,5 +1,4 @@
 import { useGetIdentity, useOne } from "@refinedev/core";
-
 import { Profile } from "components";
 
 const MyProfile = () => {

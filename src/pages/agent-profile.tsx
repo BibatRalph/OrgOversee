@@ -20,7 +20,7 @@ const AgentProfile = () => {
 
     return (
         <Profile
-            type="Agent"
+            type="Talent"
             name={myProfile.name}
             email={myProfile.email}
             avatar={myProfile.avatar}
