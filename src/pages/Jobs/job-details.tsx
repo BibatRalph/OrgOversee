@@ -81,9 +81,17 @@ const jobDetails = () => {
                 display="flex"
                 flexDirection={{ xs: "column", lg: "row" }}
                 gap={4}
-            >
+                
+            > 
               {/* First col */}
                 <Box flex={1} maxWidth={1450}
+                    border="1px solid #E4E4E4"
+                    borderRadius={1}
+                    sx={{
+                      paddingX: { xs: 3, md: 2 },
+                      paddingY: { xs: 2, md: 3 },
+                      my: 0.5,
+                  }}
                 >             
 <Stack
   direction="row"
@@ -104,14 +112,41 @@ const jobDetails = () => {
 
   </Stack>
          {/* MAIN DETAILS */}
-  <Stack
-       mt={3}
-       direction="column"
-       justifyContent="flex-start"
-       alignItems="flex-start"
-       spacing={1}  
-   
-> 
+         <Stack
+           mt={3}
+           direction="row"
+           justifyContent="space-evenly"
+           alignItems="stretch"
+           spacing={3}
+           
+>
+
+                            <Typography
+                                fontSize={18}
+                                fontWeight={1000}
+                                color="#11142D"
+                                textTransform="capitalize"
+                            >
+                               What's the job all about?
+                               <Typography
+                                fontSize={18}
+                                fontWeight={500}
+                                color="#11142D"
+                                textTransform="capitalize"
+                            >
+                              Job Description : {jobDetails.description}
+                            </Typography>
+                            </Typography>
+                            </Stack>
+                            {/* OTHERS */}
+<Stack
+           mt={3}
+           direction="row"
+           justifyContent="space-around"
+             alignItems="stretch"
+           spacing={3}
+           
+>
 <Typography
                                 fontSize={18}
                                 fontWeight={1000}
@@ -119,9 +154,8 @@ const jobDetails = () => {
                                 textTransform="capitalize"
                                 
                             >
-                               All about the job?
-                            </Typography>
-                            <Typography
+                               Job details?
+                               <Typography
                                 fontSize={18}
                                 fontWeight={500}
                                 color="#11142D"
@@ -131,15 +165,7 @@ const jobDetails = () => {
                                Job Type : {jobDetails.jobType}
                             </Typography>
                     
-                            <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                            >
-                               Monthly Salary : ${jobDetails.Salary}
-                            </Typography>
-<Typography
+                              <Typography
                                 fontSize={18}
                                 fontWeight={500}
                                 color="#11142D"
@@ -163,32 +189,28 @@ const jobDetails = () => {
                             >
                               Required Experience :{jobDetails.experience}
                             </Typography>
-</Stack>
- {/* SECONDARY details */}
-<Stack
-         mt={3}
-         direction="column"
-         justifyContent="flex-start"
-         alignItems="flex-start"
-         spacing={1}
->
+                            </Typography>
+
 <Typography
                                 fontSize={18}
                                 fontWeight={1000}
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                               What's the job all about?
-                            </Typography>
-<Typography
+                               Job offers?
+                         
+                               <Typography
                                 fontSize={18}
                                 fontWeight={500}
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                              Job Description : {jobDetails.description}
+                               Monthly Salary : ${jobDetails.Salary}
                             </Typography>
+                            </Typography>
+
                             </Stack>
+                   
                 </Box>   
                 
            {/* Right Col */}
