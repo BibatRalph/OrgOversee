@@ -90,14 +90,14 @@ const jobDetails = () => {
   justifyContent="center"
   alignItems="flex-start"
   spacing={4}
-  border="1px solid #E4E4E4"
-  borderRadius={2}
+ 
 >
                               <Typography
                                   fontSize={28}
                                   fontWeight={1000}
                                   color="#11142D"
                                   textTransform="capitalize"
+                                  
                               >
                                 {jobDetails.jobTitle}
                               </Typography>
@@ -110,12 +110,14 @@ const jobDetails = () => {
        justifyContent="flex-start"
        alignItems="flex-start"
        spacing={1}  
+   
 > 
 <Typography
                                 fontSize={18}
                                 fontWeight={1000}
                                 color="#11142D"
                                 textTransform="capitalize"
+                                
                             >
                                All about the job?
                             </Typography>
