@@ -19,7 +19,7 @@ const JobCard = ({
             // CLICK
             to={`/Jobs/show/${id}`}
             sx={{
-                maxWidth: "330px",
+                maxWidth: "315px",
                 padding: "10px",
                 "&:hover": {
                     boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.2)",

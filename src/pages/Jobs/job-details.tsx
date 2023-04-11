@@ -1,5 +1,6 @@
 import { Typography, Box, Stack,Paper,
-  Grid, } from "@mui/material";
+  Grid,
+ } from "@mui/material";
 import { useDelete, useGetIdentity, useShow } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -11,6 +12,9 @@ import {
     Star,
 } from "@mui/icons-material";
 import { CustomButton } from "components";
+
+
+//Check IMG
 function checkImage(url: any) {
   const img = new Image();
   img.src = url;
@@ -41,6 +45,26 @@ const jobDetails = () => {
 
   const isCurrentUser = user.email === jobDetails.creator.email;
 
+  const handleDeleteProperty = () => {
+    const response = confirm(
+        "Are you sure you want to delete this Job?",
+    );
+    if (response) {
+        mutate(
+            {
+                resource: "Jobs",
+                id: id as string,
+            },
+            {
+                onSuccess: () => {
+                    navigate("/Jobs");
+                },
+            },
+        );
+    }
+};
+
+
   return (
     <>
     <Paper
@@ -51,63 +75,75 @@ const jobDetails = () => {
     }}
 > 
 <Grid item xs={16} md={12}>
-    {/* TOP BAR */}
-<Stack
-                            display="flex"
-                            justifyContent="center"
-                            alignItems="baseline"
-                            flexWrap="wrap"
-                            padding={2}
-                            direction="row"
-                            gap={2}
-                        >
-                     
-<Typography variant="h5">
- Job Details
-</Typography>
-</Stack> 
-
-{/* CONTENTs */}  
-
-            {/* seperate by col */}
+      {/* CONTENTs */}  
             <Box
-                mt="20px"
+                mt={1}
                 display="flex"
                 flexDirection={{ xs: "column", lg: "row" }}
                 gap={4}
             >
-              {/* Divider */}
-                <Box flex={1} maxWidth={1264}>
-
-                    {/* Details Box */}
-                    <Box mt="15px" >
-                      
+              {/* First col */}
+                <Box flex={1} maxWidth={1450}
+                >             
 <Stack
   direction="row"
   justifyContent="center"
   alignItems="flex-start"
   spacing={4}
-  
+  border="1px solid #E4E4E4"
+  borderRadius={2}
 >
+                              <Typography
+                                  fontSize={28}
+                                  fontWeight={1000}
+                                  color="#11142D"
+                                  textTransform="capitalize"
+                              >
+                                {jobDetails.jobTitle}
+                              </Typography>
 
+  </Stack>
+         {/* MAIN DETAILS */}
+  <Stack
+       mt={3}
+       direction="column"
+       justifyContent="flex-start"
+       alignItems="flex-start"
+       spacing={1}  
+> 
 <Typography
-                                fontSize={28}
+                                fontSize={18}
                                 fontWeight={1000}
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                               {jobDetails.jobTitle}
+                               All about the job?
                             </Typography>
-
-  </Stack>
-         {/* MAIN DETAILS */}
-               <Typography
+                            <Typography
+                                fontSize={18}
+                                fontWeight={500}
+                                color="#11142D"
+                                textTransform="capitalize"
+                                
+                            >
+                               Job Type : {jobDetails.jobType}
+                            </Typography>
+                    
+                            <Typography
                                 fontSize={18}
                                 fontWeight={500}
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                                {jobDetails.jobType}
+                               Monthly Salary : ${jobDetails.Salary}
+                            </Typography>
+<Typography
+                                fontSize={18}
+                                fontWeight={500}
+                                color="#11142D"
+                                textTransform="capitalize"
+                            >
+                               Department : {jobDetails.department}
                             </Typography>
                             <Typography
                                 fontSize={18}
@@ -115,7 +151,7 @@ const jobDetails = () => {
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                                {jobDetails.department}
+                               Job Location : {jobDetails.location}
                             </Typography>
                             <Typography
                                 fontSize={18}
@@ -123,39 +159,37 @@ const jobDetails = () => {
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                                {jobDetails.description}
+                              Required Experience :{jobDetails.experience}
                             </Typography>
-                            <Typography
+</Stack>
+ {/* SECONDARY details */}
+<Stack
+         mt={3}
+         direction="column"
+         justifyContent="flex-start"
+         alignItems="flex-start"
+         spacing={1}
+>
+<Typography
+                                fontSize={18}
+                                fontWeight={1000}
+                                color="#11142D"
+                                textTransform="capitalize"
+                            >
+                               What's the job all about?
+                            </Typography>
+<Typography
                                 fontSize={18}
                                 fontWeight={500}
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                                {jobDetails.location}
+                              Job Description : {jobDetails.description}
                             </Typography>
-                            <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                            >
-                                {jobDetails.experience}
-                            </Typography>
-                            <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                            >
-                                ${jobDetails.Salary}
-                            </Typography>
+                            </Stack>
+                </Box>   
                 
-                        
-                           
-                  </Box>   
-                </Box>
-                
-              {/* Creator Box */}
+           {/* Right Col */}
                 <Box
                     width="100%"
                     flex={1}
@@ -164,6 +198,8 @@ const jobDetails = () => {
                     flexDirection="column"
                     gap="20px"
                 >
+                    
+                     {/* Creator Box */}
                     <Stack
                         width="100%"
                         p={2}
@@ -173,6 +209,7 @@ const jobDetails = () => {
                         border="1px solid #E4E4E4"
                         borderRadius={2}
                     >
+                      
                         <Stack
                             mt={2}
                             justifyContent="center"
@@ -206,10 +243,6 @@ const jobDetails = () => {
                             }}
                         />
                           </Box>
-                      
-                          
-                    
-
                             <Box mt="15px">
                                 <Typography
                                     fontSize={18}
@@ -263,19 +296,20 @@ const jobDetails = () => {
                            
                                 Job Posts
                             </Typography>
+                            
                         </Stack>
-                  
                         <Stack
                             width="100%"
-                            mt="25px"
                             direction="row"
                             flexWrap="wrap"
                             gap={2}
+                            mt={1}
                         >
+                              
                             <CustomButton
                                 title={!isCurrentUser ? "Message" : "Edit"}
-                                backgroundColor="#475BE8"
-                                color="#FCFCFC"
+                                backgroundColor=""
+                                color="info"
                                 fullWidth
                                 icon={
                                     !isCurrentUser ? <ChatBubble /> : <Edit />
@@ -284,7 +318,7 @@ const jobDetails = () => {
                                     if (isCurrentUser) {
                                         navigate(
                                             // EDIT
-                                            `/Applicants/edit/${jobDetails._id}`,
+                                            `/Jobs/edit/${jobDetails._id}`,
                                         );
                                     }
                                 }}
@@ -292,28 +326,32 @@ const jobDetails = () => {
                             <CustomButton
                                 title={!isCurrentUser ? "Call" : "Delete"}
                                 backgroundColor={
-                                    !isCurrentUser ? "#2ED480" : "#d42e2e"
+                                    !isCurrentUser ? "" : ""
                                 }
-                                color="#FCFCFC"
+                                color="#d42e2e"
                                 fullWidth
                                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                                 handleClick={() => {
-                                    // if (isCurrentUser) handleDeleteProperty();
+                                    if (isCurrentUser) handleDeleteProperty();
                                 }}
                             />
                         </Stack>
                     </Stack>
 
-                    <Stack>
+                
+                </Box>
+                
+            </Box>
+            <Stack mt={3}>
                         <img
                             src="https://serpmedia.org/scigen/images/googlemaps-nyc-standard.png?crc=3787557525"
                             width="100%"
-                            height={306}
+                            height={250}
                             style={{ borderRadius: 10, objectFit: "cover" }}
                         />
                     </Stack>
 
-                    <Box>
+                    <Box mt={3}>
                         <CustomButton
                             title="Apply"
                             backgroundColor="#475BE8"
@@ -321,9 +359,6 @@ const jobDetails = () => {
                             fullWidth
                         />
                     </Box>
-                </Box>
-            </Box>
-        
 </Grid>
 
 </Paper>
