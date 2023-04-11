@@ -1,9 +1,10 @@
-import { EmailOutlined, LocationCity, Phone, Place, PeopleAltOutlined } from "@mui/icons-material";
+import { EmailOutlined, Place} from "@mui/icons-material";
 import { useGetIdentity } from "@refinedev/core";
 import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { AgentCardProp, InfoBarProps } from "interfaces/agent";
-
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 function checkImage(url: any) {
     const img = new Image();
     img.src = url;
@@ -29,7 +30,8 @@ const AgentCard = ({
     name,
     email,
     avatar,
-    noOfProperties,
+    noOfApps,
+    noOfJobs,
 }: AgentCardProp) => {
     const { data: currentUser } = useGetIdentity({
         v3LegacyAuthProviderCompatible: true,
@@ -67,7 +69,7 @@ const AgentCard = ({
                 alt="user"
                 width={90}
                 height={90}
-                style={{ borderRadius: 8, objectFit: "cover" }}
+                style={{ borderRadius: 100, objectFit: "cover" }}
             />
             <Stack
                 direction="column"
@@ -104,12 +106,12 @@ const AgentCard = ({
                         name="Philippines"
                     />
                     <InfoBar
-                        icon={<Phone sx={{ color: "#808191" }} />}
-                        name="+502-3231-4141"
+                        icon={<PersonAddAltOutlinedIcon sx={{ color: "#808191" }} />}
+                        name={`${noOfApps} Applicant Created`}
                     />
-                    <InfoBar
-                        icon={<PeopleAltOutlined sx={{ color: "#808191" }} />}
-                        name={`${noOfProperties} Applicant`}
+                     <InfoBar
+                        icon={<WorkOutlineOutlinedIcon sx={{ color: "#808191" }} />}
+                        name={`${noOfJobs} Jobs Posted`}
                     />
                 </Stack>
             </Stack>

@@ -5,7 +5,8 @@ export interface AgentCardProp {
     name: string;
     email: string;
     avatar: string;
-    noOfProperties: number;
+    noOfApps: number;
+    noOfJobs: number;
 }
 
 export interface InfoBarProps {

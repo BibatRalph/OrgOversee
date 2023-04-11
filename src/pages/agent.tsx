@@ -54,7 +54,8 @@ const Agents = () => {
                     name={agent.name}
                     email={agent.email}
                     avatar={agent.avatar}
-                    noOfProperties={agent.allProperties.length}
+                    noOfApps={agent.allProperties.length}
+                    noOfJobs={agent.allJobs.length}
                 />
             ))}
         </Box>
