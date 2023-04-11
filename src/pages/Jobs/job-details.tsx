@@ -307,7 +307,7 @@ const jobDetails = () => {
                                 color="#11142D"
                             >
                                 {jobDetails.creator.allProperties.length}{" "}
-                                Applicants
+                                Pending Applicant
                             </Typography>
                             <Typography
                                 mt={1}
