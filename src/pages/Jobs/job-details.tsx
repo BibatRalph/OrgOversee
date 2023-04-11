@@ -111,16 +111,13 @@ const jobDetails = () => {
                               </Typography>
 
   </Stack>
-         {/* MAIN DETAILS */}
-         <Stack
+  <Stack
            mt={3}
            direction="row"
-           justifyContent="space-evenly"
+           justifyContent="flex-start"
            alignItems="stretch"
-           spacing={3}
-           
+           spacing={1}   
 >
-
                             <Typography
                                 fontSize={18}
                                 fontWeight={1000}
@@ -137,14 +134,15 @@ const jobDetails = () => {
                               Job Description : {jobDetails.description}
                             </Typography>
                             </Typography>
-                            </Stack>
-                            {/* OTHERS */}
+                            </Stack>    
+         {/* MAIN DETAILS */}
+             
 <Stack
            mt={3}
            direction="row"
            justifyContent="space-around"
              alignItems="stretch"
-           spacing={3}
+           spacing={75}
            
 >
 <Typography
@@ -210,6 +208,7 @@ const jobDetails = () => {
                             </Typography>
 
                             </Stack>
+     
                    
                 </Box>   
                 
@@ -366,14 +365,7 @@ const jobDetails = () => {
                 </Box>
                 
             </Box>
-            <Stack mt={3}>
-                        <img
-                            src="https://serpmedia.org/scigen/images/googlemaps-nyc-standard.png?crc=3787557525"
-                            width="100%"
-                            height={250}
-                            style={{ borderRadius: 10, objectFit: "cover" }}
-                        />
-                    </Stack>
+       
 
                     <Box mt={3}>
                         <CustomButton

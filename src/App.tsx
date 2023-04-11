@@ -166,8 +166,9 @@ function App() {
                             icon: <PeopleAltOutlined />,
                         },
                         {
-                            //ADMINS
-                            name: "Agents",
+                            //Talents
+                            //ex Agents
+                            name: "Talents",
                             list: Agents,
                             show: AgentProfile,
                              icon: <BadgeOutlinedIcon />,
