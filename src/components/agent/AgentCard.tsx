@@ -1,8 +1,7 @@
-import { EmailOutlined, LocationCity, Phone, Place } from "@mui/icons-material";
+import { EmailOutlined, LocationCity, Phone, Place, PeopleAltOutlined } from "@mui/icons-material";
 import { useGetIdentity } from "@refinedev/core";
 import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-
 import { AgentCardProp, InfoBarProps } from "interfaces/agent";
 
 function checkImage(url: any) {
@@ -39,7 +38,7 @@ const AgentCard = ({
     const generateLink = () => {
         if (currentUser.email === email) return "/my-profile";
 
-        return `/agents/show/${id}`;
+        return `/Talents/show/${id}`;
     };
 
     return (
@@ -53,8 +52,10 @@ const AgentCard = ({
                 gap: "20px",
                 padding: "20px",
                 "&:hover": {
-                    boxShadow: "0 22px 45px 2px rgba(176,176,176,0.1)",
+                    boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.2)",
+                    
                 },
+                cursor: "pointer",
             }}
         >
             <img
@@ -84,7 +85,7 @@ const AgentCard = ({
                         {name}
                     </Typography>
                     <Typography fontSize={14} color="#808191">
-                        Real-Estate Agent
+                    Talent acquisition specialist
                     </Typography>
                 </Stack>
                 <Stack
@@ -100,15 +101,15 @@ const AgentCard = ({
                     />
                     <InfoBar
                         icon={<Place sx={{ color: "#808191" }} />}
-                        name="London"
+                        name="Philippines"
                     />
                     <InfoBar
                         icon={<Phone sx={{ color: "#808191" }} />}
                         name="+502-3231-4141"
                     />
                     <InfoBar
-                        icon={<LocationCity sx={{ color: "#808191" }} />}
-                        name={`${noOfProperties} Properties`}
+                        icon={<PeopleAltOutlined sx={{ color: "#808191" }} />}
+                        name={`${noOfProperties} Applicant`}
                     />
                 </Stack>
             </Stack>
