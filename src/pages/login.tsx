@@ -128,13 +128,8 @@ export const Login: React.FC = () => {
                 color="info"
               >
                 Sign In
-              </Button>
-           
-         
+              </Button>     
                
-        
-           
-          
               <Grid container>
          
                 <Grid item xs>
