@@ -373,6 +373,11 @@ const jobDetails = () => {
                             backgroundColor="#475BE8"
                             color="#FCFCFC"
                             fullWidth
+                            handleClick={() => {
+                                navigate(
+                                `/Applicants/create/${jobDetails._id}`,
+                                );
+                            }}
                         />
                     </Box>
 </Grid>

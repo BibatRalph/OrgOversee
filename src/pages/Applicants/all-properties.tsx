@@ -30,8 +30,11 @@ const AllProperties = () => {
         setFilters,
     } = useTable();
 
+    //GET data from refine
     const allProperties = data?.data ?? [];
 
+
+    //Additional features
     const currentPrice = sorter.find((item) => item.field === "price")?.order;
 
     const toggleSort = (field: string) => {
