@@ -88,13 +88,12 @@ const jobDetails = () => {
       {/* CONTENTs */}  
             <Box
                 mt={1}
-                display="flex"
-                flexDirection={{ xs: "column", lg: "row" }}
+     
                 gap={4}
                 
             > 
               {/* First col */}
-                <Box flex={1} maxWidth={1450}
+                <Box 
                    border="1px solid #E4E4E4"
                    borderRadius={1}
                     sx={{
@@ -222,8 +221,26 @@ const jobDetails = () => {
                    
                 </Box>   
                 
-           {/* Right Col */}
+         
+
+            </Box>
+       
+
+                    <Box mt={3}>
+                        <CustomButton
+                            title="Apply"
+                            backgroundColor="#475BE8"
+                            color="#FCFCFC"
+                            fullWidth
+                            handleClick={() => {
+                                 handleApplyJob();
+                            }}
+                        />
+                    </Box>
+                  
                 <Box
+                    
+                    mt={3}
                     width="100%"
                     flex={1}
                     maxWidth={326}
@@ -241,6 +258,7 @@ const jobDetails = () => {
                         alignItems="center"
                         border="1px solid #E4E4E4"
                         borderRadius={2}
+                        
                     >
                       
                         <Stack
@@ -373,24 +391,10 @@ const jobDetails = () => {
 
                 
                 </Box>
-                
-            </Box>
-       
-
-                    <Box mt={3}>
-                        <CustomButton
-                            title="Apply"
-                            backgroundColor="#475BE8"
-                            color="#FCFCFC"
-                            fullWidth
-                            handleClick={() => {
-                                 handleApplyJob();
-                            }}
-                        />
-                    </Box>
 </Grid>
 
 </Paper>
+
 </>
               
   )
