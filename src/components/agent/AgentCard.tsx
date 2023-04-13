@@ -107,7 +107,7 @@ const AgentCard = ({
                     />
                     <InfoBar
                         icon={<PersonAddAltOutlinedIcon sx={{ color: "#808191" }} />}
-                        name={`${noOfApps} Applicant Created`}
+                        name={`${noOfApps} Application Created`}
                     />
                      <InfoBar
                         icon={<WorkOutlineOutlinedIcon sx={{ color: "#808191" }} />}

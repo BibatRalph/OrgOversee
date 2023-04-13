@@ -187,7 +187,7 @@ sx={{
         {properties.length > 0 && (
             <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
                 <Typography fontSize={18} fontWeight={600} color="#11142D">
-                    {type} Applicant
+                    {type} Application
                 </Typography>
 
                 <Box

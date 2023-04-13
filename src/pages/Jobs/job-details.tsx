@@ -1,7 +1,7 @@
 import { Typography, Box, Stack,Paper,
   Grid,
  } from "@mui/material";
-import { useDelete, useGetIdentity, useShow } from "@refinedev/core";
+import { useDelete, useGetIdentity, useShow,useCreate } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import {
     ChatBubble,
@@ -28,12 +28,14 @@ const jobDetails = () => {
       v3LegacyAuthProviderCompatible: true,
   });
   const { queryResult } = useShow();
-  const { mutate } = useDelete();
+  const { mutate } = useCreate();
   const { id } = useParams();
   
   const { data, isLoading, isError } = queryResult;
 
   const jobDetails = data?.data ?? {};
+
+  console.log(jobDetails);
 
   if (isLoading) {
       return <div>Loading...</div>;
@@ -45,15 +47,23 @@ const jobDetails = () => {
 
   const isCurrentUser = user.email === jobDetails.creator.email;
 
-  const handleDeleteProperty = () => {
+// CREATE APPLICANTS
+  const handleApplyJob = () => {
     const response = confirm(
-        "Are you sure you want to delete this Job?",
+        "Are you sure you want to Apply for this Job?",
     );
     if (response) {
         mutate(
             {
-                resource: "Jobs",
-                id: id as string,
+                resource: "Applicants",
+               
+                values: {
+                    // REQ
+                    photo: user.avatar,
+                    email: user.email,
+                    jobID: jobDetails._id,
+                    
+                },
             },
             {
                 onSuccess: () => {
@@ -355,7 +365,7 @@ const jobDetails = () => {
                                 fullWidth
                                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                                 handleClick={() => {
-                                    if (isCurrentUser) handleDeleteProperty();
+                                    if (isCurrentUser) handleApplyJob();
                                 }}
                             />
                         </Stack>
@@ -374,9 +384,7 @@ const jobDetails = () => {
                             color="#FCFCFC"
                             fullWidth
                             handleClick={() => {
-                                navigate(
-                                `/Applicants/create/${jobDetails._id}`,
-                                );
+                                 handleApplyJob();
                             }}
                         />
                     </Box>
