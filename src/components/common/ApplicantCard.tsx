@@ -39,7 +39,7 @@ const ApplicantCard = ({
                 width="100%"
                 height={210}
                 image={photo}
-                alt="Edit to Add Photo"
+                alt="Photo"
                 sx={{ borderRadius: "10px" }}
             />
             <CardContent

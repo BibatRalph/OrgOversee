@@ -35,7 +35,7 @@ const AllProperties = () => {
 
 
     //Additional features
-    const currentPrice = sorter.find((item) => item.field === "price")?.order;
+    const currentPrice = sorter.find((item) => item.field === "age")?.order;
 
     const toggleSort = (field: string) => {
         setSorter([{ field, order: currentPrice === "asc" ? "desc" : "asc" }]);

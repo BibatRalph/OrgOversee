@@ -235,7 +235,7 @@ const Form = ({
                             </FormHelperText>
                             <TextField
                             fullWidth
-                            required
+                            
                             id="standard-basic"
                             label="Personal Email"
                             color="primary"
@@ -279,7 +279,7 @@ const Form = ({
                         <FormControl sx={{ flex: 1 }}>
                         <TextField
                                 fullWidth
-                                required
+                                
                                 id="standard-basic"
                                 color="primary"
                                 label="Location"
@@ -292,7 +292,7 @@ const Form = ({
                         <FormControl>
                             <TextField
                                 fullWidth
-                                required
+                                
                                 id="standard-basic"
                                 color="primary"
                                 type="number"
@@ -316,7 +316,7 @@ const Form = ({
                         </FormHelperText>
                         <TextareaAutosize
                             minRows={5}
-                            required
+                            
                             placeholder="Write description"
                             color="primary"
                             style={{
@@ -344,7 +344,7 @@ const Form = ({
                             </FormHelperText>
                     <TextField
                             fullWidth
-                            required
+                            
                             id="standard-basic"
                             label="Job title "
                             color="primary"
@@ -365,7 +365,7 @@ const Form = ({
                             </FormHelperText>
                             <TextField
                             fullWidth
-                            required
+                            
                             id="standard-basic"
                             label="Ongoing"
                             color="primary"
@@ -387,7 +387,7 @@ const Form = ({
                             </FormHelperText>
                             <TextField
                             fullWidth
-                            required
+                            
                             id="standard-basic"
                             label="Ongoing "
                             color="primary"
