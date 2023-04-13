@@ -225,11 +225,12 @@ const jobDetails = () => {
 
             </Box>
        
-
+                    {/* APPLY JOB */}
                     <Box mt={3}>
                         <CustomButton
-                            title="Apply"
-                            backgroundColor="#475BE8"
+                            disabled={!isCurrentUser ? false : true }
+                            title={!isCurrentUser ? "Apply" : "You own this job cannot apply" }
+                            backgroundColor={!isCurrentUser ? "#475BE8" : "#FCFCFC" }
                             color="#FCFCFC"
                             fullWidth
                             handleClick={() => {
@@ -373,8 +374,10 @@ const jobDetails = () => {
                                         );
                                     }
                                 }}
-                            />
+                            /> 
+                            
                             <CustomButton
+                              
                                 title={!isCurrentUser ? "Call" : "Delete"}
                                 backgroundColor={
                                     !isCurrentUser ? "" : ""
@@ -385,6 +388,7 @@ const jobDetails = () => {
                                 handleClick={() => {
                                     if (isCurrentUser) handleApplyJob();
                                 }}
+                            
                             />
                         </Stack>
                     </Stack>
