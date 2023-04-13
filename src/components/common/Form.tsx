@@ -243,19 +243,33 @@ const Form = ({
                             {...register("persoEmail", { required: false })}
                             
                         />
-                                        <TextField
-                            fullWidth
-                            required
-                            id="standard-basic"
-                            label="Gender"
-                            color="primary"
-                            variant="standard"
-                            {...register("gender", { required: false })}
-                        />
+                   
                         </FormControl>
 
                         <FormControl sx={{ flex: 1 }}>
-               
+                        <FormHelperText
+                                sx={{
+                                    fontWeight: 500,
+                                    margin: "10px 0",
+                                    fontSize: 16,
+                                    color: "#11142d",
+                                }}
+                            >
+                             Gender
+                            </FormHelperText>
+                        <Select
+                                variant="outlined"
+                                color="primary"
+                                
+                                placeholder="Gender"
+                                {...register("gender", {
+                                    required: false,
+                                })}
+                            >
+                                <MenuItem value="Male">Male</MenuItem>
+                                <MenuItem value="Female">Female</MenuItem>
+                           
+                            </Select>
             
                         </FormControl>
                                 
@@ -268,7 +282,6 @@ const Form = ({
                                 required
                                 id="standard-basic"
                                 color="primary"
-                                type="number"
                                 label="Location"
                                 variant="standard"
                                 {...register("location", { required: false })}
