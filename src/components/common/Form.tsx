@@ -161,7 +161,7 @@ const Form = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter Applicant name
+                            Profile Information
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -169,34 +169,11 @@ const Form = ({
                             id="standard-basic"
                             label="Name"
                             color="primary"
-                            variant="standard"
-                            {...register("title", { required: true })}
+                            disabled
+                            {...register("name", { required: false })}
                         />
                     </FormControl>
                   
-
-                    <FormControl>
-                        <FormHelperText
-                            sx={{
-                                fontWeight: 500,
-                                margin: "10px 0",
-                                fontSize: 16,
-                                color: "#11142d",
-                            }}
-                        >
-                            Applicant Location
-                        </FormHelperText>
-                        <TextField
-                            fullWidth
-                            required
-                            id="standard-basic"
-                            color="primary"
-                            variant="standard"
-                            label="Location "
-                            {...register("location", { required: true })}
-                        />
-                    </FormControl>
-                         {/* HALF INPUT "Type and Age" */}
                     <Stack direction="row" gap={4}>
                         <FormControl sx={{ flex: 1 }}>
                             <FormHelperText
@@ -207,31 +184,19 @@ const Form = ({
                                     color: "#11142d",
                                 }}
                             >
-                                Select Applicant Type
+                              Email
                             </FormHelperText>
-                            <Select
-                                variant="outlined"
-                                color="primary"
-                                displayEmpty
-                                required
-                                inputProps={{ "aria-label": "Without label" }}
-                                defaultValue="apartment"
-                                {...register("propertyType", {
-                                    required: true,
-                                })}
-                            >
-                                <MenuItem value="apartment">Apartment</MenuItem>
-                                <MenuItem value="villa">Villa</MenuItem>
-                                <MenuItem value="farmhouse">farmhouse</MenuItem>
-                                <MenuItem value="condos">Condos</MenuItem>
-                                <MenuItem value="townhouse">Townhouse</MenuItem>
-                                <MenuItem value="duplex">Duplex</MenuItem>
-                                <MenuItem value="studio">Studio</MenuItem>
-                                <MenuItem value="chalet">Chalet</MenuItem>
-                            </Select>
+                            <TextField
+                            fullWidth
+                            required
+                            id="standard-basic"
+                            label="Email"
+                            color="primary"
+                            disabled
+                            {...register("email", { required: false })}
+                        />
                         </FormControl>
-                        
-                        <FormControl>
+                        <FormControl sx={{ flex: 1 }}>
                             <FormHelperText
                                 sx={{
                                     fontWeight: 500,
@@ -240,8 +205,78 @@ const Form = ({
                                     color: "#11142d",
                                 }}
                             >
-                                Enter Applicant Age
+                              Job ID
                             </FormHelperText>
+                            <TextField
+                            fullWidth
+                            required
+                            id="standard-basic"
+                            label="Job ID"
+                            color="primary"
+                            disabled
+                            {...register("jobID", { required: false })}
+                        />
+                        </FormControl>
+                                
+                    </Stack>
+
+                         {/* Personal Info */}
+                         <Stack direction="row" gap={4}>
+                        <FormControl sx={{ flex: 1 }}>
+                        <FormHelperText
+                                sx={{
+                                    fontWeight: 500,
+                                    margin: "10px 0",
+                                    fontSize: 16,
+                                    color: "#11142d",
+                                }}
+                            >
+                             Personal Information
+                            </FormHelperText>
+                            <TextField
+                            fullWidth
+                            required
+                            id="standard-basic"
+                            label="Personal Email"
+                            color="primary"
+                            variant="standard"
+                            {...register("persoEmail", { required: false })}
+                            
+                        />
+                                        <TextField
+                            fullWidth
+                            required
+                            id="standard-basic"
+                            label="Gender"
+                            color="primary"
+                            variant="standard"
+                            {...register("gender", { required: false })}
+                        />
+                        </FormControl>
+
+                        <FormControl sx={{ flex: 1 }}>
+               
+            
+                        </FormControl>
+                                
+                    </Stack>
+
+                    <Stack direction="row" gap={4}>
+                        <FormControl sx={{ flex: 1 }}>
+                        <TextField
+                                fullWidth
+                                required
+                                id="standard-basic"
+                                color="primary"
+                                type="number"
+                                label="Location"
+                                variant="standard"
+                                {...register("location", { required: false })}
+                            />
+                         
+                        </FormControl>
+                        
+                        <FormControl>
                             <TextField
                                 fullWidth
                                 required
@@ -249,8 +284,8 @@ const Form = ({
                                 color="primary"
                                 type="number"
                                 label="Age"
-                                variant="outlined"
-                                {...register("price", { required: true })}
+                                variant="standard"
+                                {...register("age", { required: false })}
                             />
                         </FormControl>
                     </Stack>
@@ -264,7 +299,7 @@ const Form = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter Description
+                             Description
                         </FormHelperText>
                         <TextareaAutosize
                             minRows={5}
@@ -280,10 +315,77 @@ const Form = ({
                                 padding: 10,
                                 color: "#919191",
                             }}
-                            {...register("description", { required: true })}
+                            {...register("description", { required: false })}
                         />
                     </FormControl>
-                       
+
+                    <FormHelperText
+                                sx={{
+                                    fontWeight: 500,
+                                    margin: "10px 0",
+                                    fontSize: 16,
+                                    color: "#11142d",
+                                }}
+                            >
+                              Applying for
+                            </FormHelperText>
+                    <TextField
+                            fullWidth
+                            required
+                            id="standard-basic"
+                            label="Job title "
+                            color="primary"
+                            disabled
+                            {...register("jobTitleTarget", { required: false })}
+                        />
+                    <Stack direction="row" gap={4}>
+                                <FormControl sx={{ flex: 1 }}>
+                            <FormHelperText
+                                sx={{
+                                    fontWeight: 500,
+                                    margin: "10px 0",
+                                    fontSize: 16,
+                                    color: "#11142d",
+                                }}
+                            >
+                              Status
+                            </FormHelperText>
+                            <TextField
+                            fullWidth
+                            required
+                            id="standard-basic"
+                            label="Ongoing"
+                            color="primary"
+                            disabled
+                            {...register("stats", { required: false })}
+                        />
+                        
+                        </FormControl>
+                        <FormControl sx={{ flex: 1 }}>
+                        <FormHelperText
+                                sx={{
+                                    fontWeight: 500,
+                                    margin: "10px 0",
+                                    fontSize: 16,
+                                    color: "#11142d",
+                                }}
+                            >
+                              Result
+                            </FormHelperText>
+                            <TextField
+                            fullWidth
+                            required
+                            id="standard-basic"
+                            label="Ongoing "
+                            color="primary"
+                            disabled
+                            {...register("result", { required: false })}
+                        />
+                        </FormControl>
+                
+                                
+                    </Stack>
+                  
                     
                        {/* SUBMIT */}
                        <Grid mt="10px">

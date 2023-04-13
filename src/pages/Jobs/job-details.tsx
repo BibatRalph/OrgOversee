@@ -62,6 +62,8 @@ const jobDetails = () => {
                     photo: user.avatar,
                     email: user.email,
                     jobID: jobDetails._id,
+                    name: user.name,
+                    jobTitleTarget: jobDetails.jobTitle,
                     
                 },
             },
