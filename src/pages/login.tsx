@@ -89,7 +89,7 @@ export const Login: React.FC = () => {
           >
             <img src={OrgLOGO} alt="Logo" width="150px" />
             <Typography component="h1" variant="h5">
-            Looking for applicants?
+            Sign in
             </Typography>
 
             <Box component="form" noValidate sx={{ mt: 1 }}>
