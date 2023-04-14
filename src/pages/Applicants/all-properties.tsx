@@ -143,7 +143,7 @@ const allApplicants = () => {
                                     setFilters(
                                         [
                                             {
-                                                field: "propsType",
+                                                field: "stats",
                                                 operator: "eq",
                                                 value: e.target.value,
                                             },
@@ -154,14 +154,10 @@ const allApplicants = () => {
                             >
                                 <MenuItem value="">All</MenuItem>
                                 {[
-                                    "Apartment",
-                                    "Villa",
-                                    "Farmhouse",
-                                    "Condos",
-                                    "Townhouse",
-                                    "Duplex",
-                                    "Studio",
-                                    "Chalet",
+                                    "Open",
+                                    "Contacted",
+                                    "Evaluate",
+                                    "Complete",
                                 ].map((type) => (
                                     <MenuItem
                                         key={type}

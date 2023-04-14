@@ -363,15 +363,21 @@ const Form = ({
                             >
                               Status
                             </FormHelperText>
-                            <TextField
-                            fullWidth
+                            <Select
+                                variant="outlined"
+                                color="primary"
                             
-                            id="standard-basic"
-                            label="Ongoing"
-                            color="primary"
-                            disabled
-                            {...register("stats", { required: false })}
-                        />
+                                placeholder="Application Status"
+                                {...register("stats", {
+                                    required: false,
+                                })}
+                            >
+                                <MenuItem value="Open">Open</MenuItem>
+                                <MenuItem value="Contacted">Contacted</MenuItem>
+                                <MenuItem value="Evaluate">Evaluate</MenuItem>
+                                <MenuItem value="Complete">Complete</MenuItem>
+                           
+                            </Select>
                         
                         </FormControl>
                         <FormControl sx={{ flex: 1 }}>
