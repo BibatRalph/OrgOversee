@@ -136,12 +136,7 @@ const jobDetails = () => {
                                 textTransform="capitalize"
                             >
                                What's the job all about?
-                               <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                            >
+                               <Typography fontSize={16} color="#808191"mt={1} >
                               Job Description : {jobDetails.description}
                             </Typography>
                             </Typography>
@@ -164,38 +159,17 @@ const jobDetails = () => {
                                 
                             >
                                Job details?
-                               <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                                
-                            >
+                               <Typography fontSize={16} color="#808191"mt={1}>
                                Job Type : {jobDetails.jobType}
                             </Typography>
                     
-                              <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                            >
+                            <Typography fontSize={16} color="#808191"mt={1}>
                                Department : {jobDetails.department}
                             </Typography>
-                            <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                            >
+                            <Typography fontSize={16} color="#808191"mt={1}>
                                Job Location : {jobDetails.location}
                             </Typography>
-                            <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                            >
+                            <Typography fontSize={16} color="#808191"mt={1}>
                               Required Experience :{jobDetails.experience}
                             </Typography>
                             </Typography>
@@ -208,12 +182,7 @@ const jobDetails = () => {
                             >
                                Job offers?
                          
-                               <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11142D"
-                                textTransform="capitalize"
-                            >
+                               <Typography fontSize={16} color="#808191"mt={1}>
                                Monthly Salary : ${jobDetails.Salary}
                             </Typography>
                             </Typography>
