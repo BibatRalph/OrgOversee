@@ -13,10 +13,14 @@ import { PropertyCardProps } from "interfaces/property";
 
 const ApplicantCard = ({
     id,
-    title,
-    location,
-    price,
     photo,
+    name,
+    email,
+    gender,
+    location,
+    status,
+    result,
+    age,
 }: PropertyCardProps) => {
     return (
         <Card
@@ -24,7 +28,8 @@ const ApplicantCard = ({
             // CLICK
             to={`/Applicants/show/${id}`}
             sx={{
-                maxWidth: "330px",
+                minWidth: "215px",
+                maxWidth: "260px",
                 padding: "10px",
                 "&:hover": {
                     boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.1)",
@@ -48,37 +53,44 @@ const ApplicantCard = ({
                     flexDirection: "row",
                     justifyContent: "space-between",
                     gap: "10px",
-                    paddingX: "50px",
+                    
                 }}
             >
-                <Stack direction="column" gap={1}>
-                    <Typography fontSize={16} fontWeight={500} color="#11142d">
-                        {title}
+                
+                <Stack direction="column" gap={1} >
+                <Stack direction="row" gap={0.5} alignItems="flex-start">
+                <Typography fontSize={16} fontWeight={500} color="#11142d" >
+                            {name}
+                        </Typography>
+                        <Typography fontSize={12} fontWeight={600} color="primary">
+                        {age}
+                    </Typography>
+                    </Stack>
+                    
+                    <Typography fontSize={12} fontWeight={500} color="#11142d" >
+                        {email}
+                    </Typography>
+
+                    {/* OTHER INFO */}
+                    <Typography fontSize={12} fontWeight={500} color="#11142d" >
+                        {gender}
+                    </Typography>
+                    <Typography fontSize={12} fontWeight={500} color="#11142d" >
+                     {status}
+                     
+                    </Typography>
+                    <Typography fontSize={12} fontWeight={500} color="#11142d" >
+                     {result}
+                     
                     </Typography>
                     <Stack direction="row" gap={0.5} alignItems="flex-start">
-                        <Place
-                            sx={{
-                                fontSize: 18,
-                                color: "#11142d",
-                                marginTop: 0.5,
-                            }}
-                        />
                         <Typography fontSize={14} color="#808191">
                             {location}
                         </Typography>
                     </Stack>
+                    
                 </Stack>
-                <Box
-                    px={1.5}
-                    py={0.5}
-                    borderRadius={1}
-                    bgcolor="#dadefa"
-                    height="fit-content"
-                >
-                    <Typography fontSize={12} fontWeight={600} color="#475be8">
-                        ${price}
-                    </Typography>
-                </Box>
+                
             </CardContent>
         </Card>
     );

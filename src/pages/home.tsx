@@ -86,14 +86,18 @@ const Home = () => {
                     mt={2.5}
                     sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}
                 >
-                    {latestApplicant.map((property) => (
+                    {latestApplicant.map((props) => (
                         <ApplicantCard
-                            key={property._id}
-                            id={property._id}
-                            title={property.title}
-                            location={property.location}
-                            price={property.price}
-                            photo={property.photo}
+                        key={props._id}
+                        id={props._id}
+                        photo={props.photo}
+                        name={props.name}
+                        email={props.email}
+                        gender={props.gender}
+                        location={props.location}
+                        status={props.status}
+                        result={props.result}
+                        age={props.age}
                         />
                     ))}
                 </Box>

@@ -13,9 +13,8 @@ import { useMemo } from "react";
 import { ApplicantCard, CustomButton } from "components";
 //NEW UI
 import { Paper } from '@mui/material'
-import { CreateButton } from "@refinedev/mui";
 
-const AllProperties = () => {
+const allApplicants = () => {
     const navigate = useNavigate();
 
     const {
@@ -31,7 +30,7 @@ const AllProperties = () => {
     } = useTable();
 
     //GET data from refine
-    const allProperties = data?.data ?? [];
+    const allApplicants = data?.data ?? [];
 
 
     //Additional features
@@ -48,10 +47,10 @@ const AllProperties = () => {
 
         return {
             title:
-                logicalFilters.find((item) => item.field === "title")?.value ||
+                logicalFilters.find((item) => item.field === "name")?.value ||
                 "",
-            propertyType:
-                logicalFilters.find((item) => item.field === "propertyType")
+            propsType:
+                logicalFilters.find((item) => item.field === "stats")
                     ?.value || "",
         };
     }, [filters]);
@@ -82,7 +81,7 @@ const AllProperties = () => {
                             gap={2}
          >
             <Typography variant="h5" >
-                                    {!allProperties.length
+                                    {!allApplicants.length
                                         ? "There are no Applicants"
                                         : "All Applicants"}
             </Typography>   
@@ -97,7 +96,7 @@ const AllProperties = () => {
                                 onChange={(e) => {
                                     setFilters([
                                         {
-                                            field: "title",
+                                            field: "name",
                                             operator: "contains",
                                             value: e.currentTarget.value
                                                 ? e.currentTarget.value
@@ -118,18 +117,13 @@ const AllProperties = () => {
                             direction="row"
                             gap={2}
          >
-              <CreateButton
-                     variant="outlined"
-                    sx={{ marginBottom: "5px" }}
-                    >
-                Create Applicant
-                </CreateButton>
+            
             <CustomButton
                                 
                                 title={`Sort Age ${
                                     currentPrice === "asc" ? "↑" : "↓"
                                 }`}
-                                handleClick={() => toggleSort("price")}
+                                handleClick={() => toggleSort("age")}
                                 backgroundColor="initial"
                                 color="primary"
                                
@@ -144,12 +138,12 @@ const AllProperties = () => {
                                 size="small"
                                 inputProps={{ "aria-label": "Without label" }}
                                 defaultValue=""
-                                value={currentFilterValues.propertyType}
+                                value={currentFilterValues.propsType}
                                 onChange={(e) => {
                                     setFilters(
                                         [
                                             {
-                                                field: "propertyType",
+                                                field: "propsType",
                                                 operator: "eq",
                                                 value: e.target.value,
                                             },
@@ -182,14 +176,19 @@ const AllProperties = () => {
 {/* END OF TOP BAR */}
    {/* DATA CARDS */}
    <Grid mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
-   {allProperties?.map((property) => (
+   {allApplicants?.map((props) => (
                     <ApplicantCard
-                        key={property._id}
-                        id={property._id}
-                        title={property.title}
-                        location={property.location}
-                        price={property.price}
-                        photo={property.photo}
+                        key={props._id}
+                        id={props._id}
+                        photo={props.photo}
+                        name={props.name}
+                        email={props.email}
+                        gender={props.gender}
+                        location={props.location}
+                        status={props.status}
+                        result={props.result}
+                        age={props.age}
+                   
                      
                     />
                 ))}
@@ -205,7 +204,7 @@ const AllProperties = () => {
                             direction="row"
                             gap={2}
          >
-{allProperties.length > 0 && (
+{allApplicants.length > 0 && (
                 <Box display="flex" gap={2} mt={3} flexWrap="wrap">
                     <CustomButton
                     
@@ -263,4 +262,4 @@ const AllProperties = () => {
     );
 };
 
-export default AllProperties;
+export default allApplicants;

@@ -19,12 +19,14 @@ export interface ProfileProps {
 
 export interface PropertyProps {
     _id: string;
-    title: string;
-    description: string;
-    location: string;
-    price: string;
+    name: string;
+    email:string;
+    gender:string;
+    location:string;
+    status:string;
+    result:string;
+    age: string;
     photo: string;
-    creator: string;
 }
 
 export interface FormProps {

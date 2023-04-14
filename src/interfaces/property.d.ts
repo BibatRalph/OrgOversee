@@ -15,9 +15,13 @@ export interface FormValues {
 
 export interface PropertyCardProps {
     id?: BaseKey | undefined;
-    title: string;
-    location: string;
-    price: string;
+    name: string;
+    email:string;
+    gender:string;
+    location:string;
+    status:string;
+    result:string;
+    age: string;
     photo: string;
 }
 
