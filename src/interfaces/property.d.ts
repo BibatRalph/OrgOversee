@@ -19,7 +19,7 @@ export interface PropertyCardProps {
     email:string;
     gender:string;
     location:string;
-    status:string;
+    stats:string;
     result:string;
     age: string;
     photo: string;

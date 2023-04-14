@@ -18,7 +18,7 @@ const ApplicantCard = ({
     email,
     gender,
     location,
-    status,
+    stats,
     result,
     age,
 }: PropertyCardProps) => {
@@ -76,7 +76,7 @@ const ApplicantCard = ({
                         {gender}
                     </Typography>
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >
-                     {status}
+                     {stats}
                      
                     </Typography>
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >

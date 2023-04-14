@@ -207,7 +207,7 @@ sx={{
                         email={props.email}
                         gender={props.gender}
                         location={props.location}
-                        status={props.status}
+                        stats={props.stats}
                         result={props.result}
                         age={props.age}
                         />
