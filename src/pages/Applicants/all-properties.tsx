@@ -153,19 +153,10 @@ const allApplicants = () => {
                                 }}
                             >
                                 <MenuItem value="">All</MenuItem>
-                                {[
-                                    "Open",
-                                    "Contacted",
-                                    "Evaluate",
-                                    "Complete",
-                                ].map((type) => (
-                                    <MenuItem
-                                        key={type}
-                                        value={type.toLowerCase()}
-                                    >
-                                        {type}
-                                    </MenuItem>
-                                ))}
+                                <MenuItem value="0">Open</MenuItem>
+                                <MenuItem value="1">Contacted</MenuItem>
+                                <MenuItem value="2">Evaluated</MenuItem>
+                                <MenuItem value="3">Completed</MenuItem>
                             </Select>    
                             
             </Stack> 
