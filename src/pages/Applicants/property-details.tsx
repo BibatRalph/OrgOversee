@@ -9,6 +9,7 @@ import {
     Place,
     Star,
 } from "@mui/icons-material";
+import { DeleteButton} from "@refinedev/mui";
 import {useEffect } from "react";
 import { CustomButton } from "components";
 function checkImage(url: any) {
@@ -20,7 +21,6 @@ import * as React from 'react';
 import StepLabel from '@mui/material/StepLabel';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
-import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 
 const steps = ['Open', 'Contact', 'Evaluate', 'Complete'];
@@ -64,6 +64,7 @@ const PropertyDetails = () => {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
 
   const handleSkip = () => {
     if (!isStepOptional(activeStep)) {
@@ -237,6 +238,7 @@ const PropertyDetails = () => {
                                 textTransform="capitalize"
                             >
                                 Application in:{propertyDetails.jobTitleTarget}
+                                
                             </Typography>
                             {[1, 2, 3, 4, 5].map((item) => (
                                     <Star
@@ -244,6 +246,7 @@ const PropertyDetails = () => {
                                         sx={{ color: "#F2C94C" }}
                                     />
                                 ))}
+                                
                             </Box>
 
                             <Box>
@@ -282,6 +285,34 @@ const PropertyDetails = () => {
                                 {propertyDetails.description}
                             </Typography>
                          
+                        <Stack
+                            width="100%"
+                           
+                            direction="row"
+                            flexWrap="wrap"
+                            gap={2}
+                        >
+                                <CustomButton
+                                title={!isCurrentUser ? "Message" : "Edit"}
+                                backgroundColor=""
+                                color="info"
+                                fullWidth
+                                icon={
+                                    !isCurrentUser ? <ChatBubble /> : <Edit />
+                                }
+                                handleClick={() => {
+                                    if (isCurrentUser) {
+                                        navigate(
+                                            // EDIT
+                                            `/Applicants/edit/${propertyDetails._id}`,
+                                        );
+                                    }
+                                }}
+                            /> 
+                            
+                
+                       
+                        </Stack>
                             </Box>
       {/*Right Col */}
               <Box
@@ -306,6 +337,7 @@ const PropertyDetails = () => {
                     gap="20px"
                    
                 >
+                  
                     <Stack
                         width="100%"
                         p={2}
@@ -321,6 +353,7 @@ const PropertyDetails = () => {
                             alignItems="center"
                             textAlign="center"
                         >
+                       
                             <img
                                 src={
                                     checkImage(propertyDetails.photo)
@@ -354,8 +387,6 @@ const PropertyDetails = () => {
                                 </Typography>
                             </Box>
 
-                        
-
                             <Typography
                                 mt={1}
                                 fontSize={16}
@@ -365,48 +396,16 @@ const PropertyDetails = () => {
                                 {propertyDetails.creator.allProperties.length}{" "}
                                 Active application
                             </Typography>
+                  
                         </Stack>
-
-                        <Stack
-                            width="100%"
-                            mt="25px"
-                            direction="row"
-                            flexWrap="wrap"
-                            gap={2}
-                        >
-                                <CustomButton
-                                title={!isCurrentUser ? "Message" : "Edit"}
-                                backgroundColor=""
-                                color="info"
-                                fullWidth
-                                icon={
-                                    !isCurrentUser ? <ChatBubble /> : <Edit />
-                                }
-                                handleClick={() => {
-                                    if (isCurrentUser) {
-                                        navigate(
-                                            // EDIT
-                                            `/Applicants/edit/${propertyDetails._id}`,
-                                        );
-                                    }
-                                }}
-                            /> 
-                            
-                            <CustomButton
-                              
-                                title={!isCurrentUser ? "Call" : "Delete"}
-                                backgroundColor={
-                                    !isCurrentUser ? "" : ""
-                                }
-                                color="#d42e2e"
-                                fullWidth
-                                icon={!isCurrentUser ? <Phone /> : <Delete />}
-                                handleClick={() => {
-                                   //DO nothing
-                                }}
-                            
-                            />
+                        <Stack mt={1}>
+                        <DeleteButton hideText={false} recordItemId={id} onSuccess={() => {
+               navigate(
+                // DELETE
+                `/Applicants/`,  );      
+            }} />
                         </Stack>
+                      
                     </Stack>
                 </Stack>  
             </Box>

@@ -12,6 +12,7 @@ import {
     Star,
 } from "@mui/icons-material";
 import { CustomButton } from "components";
+import { DeleteButton } from "@refinedev/mui";
 
 
 //Check IMG
@@ -187,8 +188,17 @@ const jobDetails = () => {
                             </Typography>
 
                             </Stack>
-     
-                   
+     <Stack direction="row"
+  justifyContent="flex-end"
+  alignItems="flex-end"
+  spacing={2}>
+     <DeleteButton hideText={false} recordItemId={id} onSuccess={() => {
+               navigate(
+                // DELETE
+                `/Jobs/`,  );      
+            }} />
+     </Stack>
+                     
                 </Box>   
                 
          
@@ -208,6 +218,7 @@ const jobDetails = () => {
                             }}
                         />
                     </Box>
+                    
                   
                 <Box
                     
@@ -345,21 +356,7 @@ const jobDetails = () => {
                                     }
                                 }}
                             /> 
-                            
-                            <CustomButton
-                              
-                                title={!isCurrentUser ? "Call" : "Delete"}
-                                backgroundColor={
-                                    !isCurrentUser ? "" : ""
-                                }
-                                color="#d42e2e"
-                                fullWidth
-                                icon={!isCurrentUser ? <Phone /> : <Delete />}
-                                handleClick={() => {
-                                    if (isCurrentUser) handleApplyJob();
-                                }}
-                            
-                            />
+                     
                         </Stack>
                     </Stack>
 
