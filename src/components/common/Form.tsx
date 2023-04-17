@@ -361,12 +361,12 @@ const Form = ({
                                     color: "#11142d",
                                 }}
                             >
-                              Status
+                              Application Stage 
                             </FormHelperText>
-                            <Select
+                            <TextField
                                 variant="outlined"
                                 color="primary"
-                            
+                                disabled
                                 placeholder="Application Status"
                                 {...register("stats", {
                                     required: false,
@@ -377,8 +377,10 @@ const Form = ({
                                 <MenuItem value="evaluate">Evaluate</MenuItem>
                                 <MenuItem value="complete">Complete</MenuItem>
                            
-                            </Select>
-                        
+                            </TextField>
+                     <Typography fontWeight="1" color="#808191">
+                        NOTE: 1-Open, 2-Contacted, 3-Evaluate, 4-Complete
+                     </Typography>
                         </FormControl>
                         <FormControl sx={{ flex: 1 }}>
                         <FormHelperText

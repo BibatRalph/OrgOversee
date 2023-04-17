@@ -229,15 +229,16 @@ const PropertyDetails = () => {
                             >
                                 Application in:{propertyDetails.jobTitleTarget}
                             </Typography>
-                            </Box>
-                     
-                            <Box>
-                                {[1, 2, 3, 4, 5].map((item) => (
+                            {[1, 2, 3, 4, 5].map((item) => (
                                     <Star
                                         key={`star-${item}`}
                                         sx={{ color: "#F2C94C" }}
                                     />
                                 ))}
+                            </Box>
+
+                            <Box>
+                       
                                       <Typography fontSize={18} color="#11162D" mt="10px">
                                 Profile Information
                             </Typography>
