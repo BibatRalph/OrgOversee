@@ -76,7 +76,7 @@ const ApplicantCard = ({
                         {gender}
                     </Typography>
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >
-                     {stats}
+                     Stage: {stats + 1}
                      
                     </Typography>
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >

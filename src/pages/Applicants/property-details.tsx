@@ -3,7 +3,6 @@ import { useDelete,useUpdate, useGetIdentity, useShow } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
 import {
-  BorderAll,
     ChatBubble,
     Delete,
     Edit,
@@ -75,7 +74,6 @@ const PropertyDetails = () => {
         setActiveStep(newActiveStep);
       };
     
-     
     
       const handleStep = (step: number) => () => {
         setActiveStep(step);
@@ -94,10 +92,6 @@ const PropertyDetails = () => {
 
    
       };
-  
-    
-
-   
       //End 
       if (isLoading) {
         return <div>Loading...</div>;
@@ -162,15 +156,12 @@ const PropertyDetails = () => {
             <Typography fontSize={18} fontWeight={500}  color="#11162D"   textTransform="capitalize" >
          Application status: Stage {propertyDetails.stats + 1} {propertyDetails.result}
             </Typography>
-         
-            
+             
      
         </Stack>
-       
          
             {/* CONTENT */}
-            <Box
-           
+            <Box  
                 mt="20px"
                 display="flex"
                 flexDirection={{ xs: "column", lg: "row" }}
@@ -216,29 +207,20 @@ const PropertyDetails = () => {
               Stage {activeStep + 1}
             </Typography>
 
-          <Stack  border={1} direction="row">
+      
 
-         {/* FIRST COL "IMG BOX*/}
-         
-         <Box flex={1} border={1}
-                >
-                    {/* COL INFO */}
-                    <img
-                        src={propertyDetails.photo}
-                        alt="property_details-img"
-                        height={546}
-                        style={{ objectFit: "cover", borderRadius: "10px" }}
-                        className="property_details-img"
-                        
-                    />
+{/* CONTS */}
 
-                    <Box mt="15px" padding={3}  borderTop={1} >
+                    <Box sx={{ flex: '1 1 auto' }} mt="15px" padding={3}>
                         <Stack
-                            direction="row"
-                            justifyContent="space-between"
-                            flexWrap="wrap"
-                            alignItems="center"
+                         flexWrap="wrap"
+                         direction="row"
+                         justifyContent="space-evenly"
+                         alignItems="center"
+                         spacing={2}
                         >
+                            {/* FIRST COL */}
+                            <Box>
                             <Typography
                                 fontSize={18}
                                 fontWeight={500}
@@ -247,6 +229,8 @@ const PropertyDetails = () => {
                             >
                                 Application in:{propertyDetails.jobTitleTarget}
                             </Typography>
+                            </Box>
+                     
                             <Box>
                                 {[1, 2, 3, 4, 5].map((item) => (
                                     <Star
@@ -254,19 +238,7 @@ const PropertyDetails = () => {
                                         sx={{ color: "#F2C94C" }}
                                     />
                                 ))}
-                            </Box>
-                        </Stack>
-
-                        <Stack
-                            direction="row"
-                            flexWrap="wrap"
-                            justifyContent="space-between"
-                            alignItems="center"
-                            gap={2}
-                        >
-                            
-                            <Box>
-                            <Typography fontSize={18} color="#11162D" mt="10px">
+                                      <Typography fontSize={18} color="#11162D" mt="10px">
                                 Profile Information
                             </Typography>
                             <Typography fontSize={16} color="#808191"mt={1}>
@@ -279,39 +251,50 @@ const PropertyDetails = () => {
                                         Age:{propertyDetails.age}
                                     </Typography>
 
-                            </Box>
                             <Stack
-                                    mt={0.5}
-                                    direction="row"
-                                    alignItems="center"
-                                    gap={0.5}
+                               mt={2}
+                                direction="row"
+                                alignItems="center"
+                                gap={1}
+                            >
+                                <Place sx={{ color: "#808191" }} />
+                                <Typography
+                                  fontSize={16} color="#808191"
                                 >
-                                    <Place sx={{ color: "#808191" }} />
-                                    <Typography fontSize={16} color="#808191">
-                                        {propertyDetails.location}
-                                    </Typography>
-                                </Stack>                                                      
-                        </Stack>
+                                     {propertyDetails.location}
+                                </Typography>
+                            </Stack>
 
-                        <Stack mt="25px" direction="column" gap="10px">
-                            <Typography fontSize={18} color="#11162D">
+                                    <Typography mt={2}  fontSize={18} color="#11162D">
                                 Description
                             </Typography>
                             <Typography fontSize={16} color="#808191">
                                 {propertyDetails.description}
                             </Typography>
-                        </Stack>
-                    </Box>
-                </Box>
-                {/* END OF First COl */}
                          
-                <Box
+                            </Box>
+      {/*Right Col */}
+              <Box
+                    
+                    mt={3}
+                    width="100%"
+                    flex={1}
+                    maxWidth={326}
+                    display="flex"
+                    flexDirection="column"
+                    gap="20px"
+                >
+
+                                     
+
+                <Stack
+                    
                     width="100%"
                     flex={1}
                     display="flex"
                     flexDirection="column"
                     gap="20px"
-                    border={1}
+                   
                 >
                     <Stack
                         width="100%"
@@ -330,8 +313,8 @@ const PropertyDetails = () => {
                         >
                             <img
                                 src={
-                                    checkImage(propertyDetails.creator.avatar)
-                                        ? propertyDetails.creator.avatar
+                                    checkImage(propertyDetails.photo)
+                                        ? propertyDetails.photo
                                         : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                                 }
                                 alt="avatar"
@@ -357,25 +340,11 @@ const PropertyDetails = () => {
                                     fontWeight={400}
                                     color="#808191"
                                 >
-                                    Agent
+                                    Candidate
                                 </Typography>
                             </Box>
 
-                            <Stack
-                                mt="15px"
-                                direction="row"
-                                alignItems="center"
-                                gap={1}
-                            >
-                                <Place sx={{ color: "#808191" }} />
-                                <Typography
-                                    fontSize={14}
-                                    fontWeight={400}
-                                    color="#808191"
-                                >
-                                    North Carolina, USA
-                                </Typography>
-                            </Stack>
+                        
 
                             <Typography
                                 mt={1}
@@ -384,7 +353,7 @@ const PropertyDetails = () => {
                                 color="#11142D"
                             >
                                 {propertyDetails.creator.allProperties.length}{" "}
-                                Properties
+                                Active application
                             </Typography>
                         </Stack>
 
@@ -421,55 +390,51 @@ const PropertyDetails = () => {
                                 fullWidth
                                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                                 handleClick={() => {
-                                    if (isCurrentUser) handleDeleteProperty();
+                                   //NOTHING
                                 }}
                             />
                         </Stack>
                     </Stack>
 
-                    <Stack>
-                        <img
-                            src="https://serpmedia.org/scigen/images/googlemaps-nyc-standard.png?crc=3787557525"
-                            width="100%"
-                            height={306}
-                            style={{ borderRadius: 10, objectFit: "cover" }}
-                        />
-                    </Stack>
 
                     <Box>
                         <CustomButton
-                            title="Book Now"
+                            title="Proceed"
                             backgroundColor="#475BE8"
                             color="#FCFCFC"
                             fullWidth
+                            handleClick={() => {
+                                if (isCurrentUser) handleDeleteProperty();
+                             }}
+                   
                         />
                     </Box>
-                </Box>  
-
-{/* END OF CONTENTS */}
-                </Stack>            
-          
-              
-            
-            <Box  padding={3} sx={{ display: 'flex', flexDirection: 'row', pt: 2 } }>
-            
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext} sx={{ mr: 1 }}>
-                Next
-              </Button>
-              {activeStep !== steps.length &&
-                (completed[activeStep] ? (
-                  <Typography variant="caption" sx={{ display: 'inline-block' }}>
-                    Step {activeStep + 1} already completed
-                  </Typography>
-                ) : (
-                  <Button onClick={handleComplete}>
-                    {completedSteps() === totalSteps() - 1
-                      ? 'Finish'
-                      : 'Complete Step'}
-                  </Button>
-                ))}
+                </Stack>  
             </Box>
+        </Stack>             
+     </Box>     
+{/* END OF CONTENTS */}
+     
+<Box  padding={3} sx={{ display: 'flex', flexDirection: 'row', pt: 2 } }>
+            
+            <Box sx={{ flex: '1 1 auto' }} />
+            <Button onClick={handleNext} sx={{ mr: 1 }}>
+              Next
+            </Button>
+            {activeStep !== steps.length &&
+              (completed[activeStep] ? (
+                <Typography variant="caption" sx={{ display: 'inline-block' }}>
+                  Step {activeStep + 1} already completed
+                </Typography>
+              ) : (
+                <Button onClick={handleComplete}>
+                  {completedSteps() === totalSteps() - 1
+                    ? 'Finish'
+                    : 'Complete Step'}
+                </Button>
+              ))}
+          </Box>     
+        
           </React.Fragment>
         )}
       </div>

@@ -148,7 +148,6 @@ const jobDetails = () => {
            direction="row"
            justifyContent="space-around"
              alignItems="stretch"
-           spacing={75}
            
 >
 <Typography
@@ -158,7 +157,7 @@ const jobDetails = () => {
                                 textTransform="capitalize"
                                 
                             >
-                               Job details?
+                               Job details:
                                <Typography fontSize={16} color="#808191"mt={1}>
                                Job Type : {jobDetails.jobType}
                             </Typography>
@@ -180,7 +179,7 @@ const jobDetails = () => {
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                               Job offers?
+                               Job offers:
                          
                                <Typography fontSize={16} color="#808191"mt={1}>
                                Monthly Salary : ${jobDetails.Salary}
