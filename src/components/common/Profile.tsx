@@ -117,8 +117,7 @@ sx={{
                                             fontSize={14}
                                             color="#11142D"
                                         >
-                                            4517 Washington Ave. Manchaster,
-                                            Kentucky 39495
+                                           Metro Manila, Philippines
                                         </Typography>
                                     </Box>
                                 </Stack>

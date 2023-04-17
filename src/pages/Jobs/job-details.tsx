@@ -306,7 +306,7 @@ const jobDetails = () => {
                                     fontWeight={400}
                                     color="#808191"
                                 >
-                                    North Carolina, USA
+                                    My Location
                                 </Typography>
                             </Stack>
 
