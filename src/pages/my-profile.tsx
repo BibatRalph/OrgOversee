@@ -11,14 +11,13 @@ const MyProfile = () => {
     });
 
     const myProfile = data?.data ?? [];
-    console.log(myProfile);
     if (isLoading) return <div>loading...</div>;
     if (isError) return <div>error...</div>;
 
     return (
         <Profile
             type="My"
-            name={myProfile.name}
+            Name={myProfile.name}
             email={myProfile.email}
             avatar={myProfile.avatar}
             properties={myProfile.allProperties}

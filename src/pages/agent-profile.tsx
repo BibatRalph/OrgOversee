@@ -10,17 +10,14 @@ const AgentProfile = () => {
         resource: "users",
         id: id as string,
     });
-
-
     const myProfile = data?.data ?? [];
-
     if (isLoading) return <div>loading...</div>;
     if (isError) return <div>error...</div>;
 
     return (
         <Profile
             type="Talent"
-            name={myProfile.name}
+            Name={myProfile.name}
             email={myProfile.email}
             avatar={myProfile.avatar}
             properties={myProfile.allProperties}

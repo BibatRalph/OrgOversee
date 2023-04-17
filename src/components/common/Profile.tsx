@@ -10,7 +10,7 @@ function checkImage(url: any) {
     return img.width !== 0 && img.height !== 0;
 }
 
-const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
+const Profile = ({ type, Name, avatar, email, properties }: ProfileProps) => (
     <>
     <Paper
 sx={{
@@ -90,7 +90,7 @@ sx={{
                                     fontWeight={600}
                                     color="#11142D"
                                 >
-                                    {name}
+                                    {Name}
                                 </Typography>
                                 <Typography fontSize={16} color="#808191">
                                 Talent acquisition specialist

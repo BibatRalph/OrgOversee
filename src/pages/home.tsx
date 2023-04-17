@@ -95,7 +95,7 @@ const Home = () => {
                         email={props.email}
                         gender={props.gender}
                         location={props.location}
-                        stats={props.status}
+                        stats={props.stats}
                         result={props.result}
                         age={props.age}
                         />
