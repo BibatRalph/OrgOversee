@@ -352,36 +352,7 @@ const Form = ({
                             {...register("jobTitleTarget", { required: false })}
                         />
                     <Stack direction="row" gap={4}>
-                                <FormControl sx={{ flex: 1 }}>
-                            <FormHelperText
-                                sx={{
-                                    fontWeight: 500,
-                                    margin: "10px 0",
-                                    fontSize: 16,
-                                    color: "#11142d",
-                                }}
-                            >
-                              Application Stage 
-                            </FormHelperText>
-                            <TextField
-                                variant="outlined"
-                                color="primary"
-                                disabled
-                                placeholder="Application Status"
-                                {...register("stats", {
-                                    required: false,
-                                })}
-                            >
-                                <MenuItem value="open">Open</MenuItem>
-                                <MenuItem value="contacted">Contacted</MenuItem>
-                                <MenuItem value="evaluate">Evaluate</MenuItem>
-                                <MenuItem value="complete">Complete</MenuItem>
-                           
-                            </TextField>
-                     <Typography fontWeight="1" color="#808191">
-                        NOTE: 1-Open, 2-Contacted, 3-Evaluate, 4-Complete
-                     </Typography>
-                        </FormControl>
+                          
                         <FormControl sx={{ flex: 1 }}>
                         <FormHelperText
                                 sx={{

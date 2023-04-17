@@ -45,10 +45,8 @@ const PropertyDetails = () => {
       const [activeStep, setActiveStep] = React.useState(0);
       const [skipped, setSkipped] = React.useState(new Set<number>());
 
-
-    
       useEffect(() => {
-        setActiveStep(currentStage); // This will always use latest value of count
+        setActiveStep(currentStage + 1); // This will always use latest value of count
     }, [currentStage]);
 
   const isStepOptional = (step: number) => {
@@ -60,14 +58,7 @@ const PropertyDetails = () => {
   };
 
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
-    setActiveStep(activeStep + 1);
-    setSkipped(newSkipped);
+    if (isCurrentUser) handleStageChange();
   };
 
   const handleBack = () => {
@@ -104,7 +95,7 @@ const PropertyDetails = () => {
     // check if user is the current user
     const isCurrentUser = user.email === propertyDetails.creator.email;
 
-    const handleDeleteProperty = () => {
+    const handleStageChange = () => {
         const response = confirm(
             "Are you sure you want to Update this Applicant?",
         );
@@ -121,7 +112,14 @@ const PropertyDetails = () => {
                 },
                 {
                     onSuccess: () => {
-                        //Nothing
+                      let newSkipped = skipped;
+                      if (isStepSkipped(activeStep)) {
+                        newSkipped = new Set(newSkipped.values());
+                        newSkipped.delete(activeStep);
+                      }
+                  
+                      setActiveStep(activeStep + 1);
+                      setSkipped(newSkipped);
                     },
                 },
             );
@@ -376,10 +374,10 @@ const PropertyDetails = () => {
                             flexWrap="wrap"
                             gap={2}
                         >
-                            <CustomButton
+                                <CustomButton
                                 title={!isCurrentUser ? "Message" : "Edit"}
-                                backgroundColor="#475BE8"
-                                color="#FCFCFC"
+                                backgroundColor=""
+                                color="info"
                                 fullWidth
                                 icon={
                                     !isCurrentUser ? <ChatBubble /> : <Edit />
@@ -392,35 +390,24 @@ const PropertyDetails = () => {
                                         );
                                     }
                                 }}
-                            />
+                            /> 
+                            
                             <CustomButton
+                              
                                 title={!isCurrentUser ? "Call" : "Delete"}
                                 backgroundColor={
-                                    !isCurrentUser ? "#2ED480" : "#d42e2e"
+                                    !isCurrentUser ? "" : ""
                                 }
-                                color="#FCFCFC"
+                                color="#d42e2e"
                                 fullWidth
                                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                                 handleClick={() => {
-                                   //NOTHING
+                                   //DO nothing
                                 }}
+                            
                             />
                         </Stack>
                     </Stack>
-
-
-                    <Box>
-                        <CustomButton
-                            title="Proceed"
-                            backgroundColor="#475BE8"
-                            color="#FCFCFC"
-                            fullWidth
-                            handleClick={() => {
-                                if (isCurrentUser) handleDeleteProperty();
-                             }}
-                   
-                        />
-                    </Box>
                 </Stack>  
             </Box>
         </Stack>             
