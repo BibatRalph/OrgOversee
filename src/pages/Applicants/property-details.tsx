@@ -9,6 +9,7 @@ import {
     Place,
     Star,
 } from "@mui/icons-material";
+import {useEffect } from "react";
 import { CustomButton } from "components";
 function checkImage(url: any) {
     const img = new Image();
@@ -39,9 +40,16 @@ const PropertyDetails = () => {
      const { data, isLoading, isError } = queryResult;
  
      const propertyDetails = data?.data ?? {};
+     const currentStage = propertyDetails.stats;
 
-      const [activeStep, setActiveStep] = React.useState(propertyDetails.stats);
+      const [activeStep, setActiveStep] = React.useState(0);
       const [skipped, setSkipped] = React.useState(new Set<number>());
+
+
+    
+      useEffect(() => {
+        setActiveStep(currentStage); // This will always use latest value of count
+    }, [currentStage]);
 
   const isStepOptional = (step: number) => {
     return step === 1;
