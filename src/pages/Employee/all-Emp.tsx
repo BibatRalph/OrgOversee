@@ -30,8 +30,7 @@ const allEmp = () => {
     } = useTable();
 
     //GET data from refine
-    const allApplicants = data?.data ?? [];
-    console.log(allApplicants)
+    const allEMP = data?.data ?? [];
 
     //Additional features
     const currentPrice = sorter.find((item) => item.field === "age")?.order;
@@ -81,9 +80,9 @@ const allEmp = () => {
                             gap={2}
          >
             <Typography variant="h5" >
-                                    {!allApplicants.length
-                                        ? "There are no Applicants"
-                                        : "All Applicants"}
+                                    {!allEMP.length
+                                        ? "There are no Employees"
+                                        : "Employees"}
             </Typography>   
       
          
@@ -163,7 +162,7 @@ const allEmp = () => {
 {/* END OF TOP BAR */}
    {/* DATA CARDS */}
    <Grid mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
-   {allApplicants?.map((props) => (
+   {allEMP?.map((props) => (
                     <ApplicantCard
                         key={props._id}
                         id={props._id}
@@ -191,7 +190,7 @@ const allEmp = () => {
                             direction="row"
                             gap={2}
          >
-{allApplicants.length > 0 && (
+{allEMP.length > 0 && (
                 <Box display="flex" gap={2} mt={3} flexWrap="wrap">
                     <CustomButton
                     

@@ -1,15 +1,13 @@
 import { Typography, Box, Stack, Paper, Grid } from "@mui/material";
-import { useDelete,useUpdate, useGetIdentity, useShow } from "@refinedev/core";
+import { useUpdate, useGetIdentity, useShow } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import {
     ChatBubble,
-    Delete,
     Edit,
-    Phone,
     Place,
     Star,
 } from "@mui/icons-material";
-import { CloneButton, CreateButton, DeleteButton, EditButton} from "@refinedev/mui";
+import { DeleteButton } from "@refinedev/mui";
 import {useEffect } from "react";
 import { CustomButton } from "components";
 function checkImage(url: any) {
