@@ -24,7 +24,7 @@ const EmpCard = ({
         <Card
             component={Link}
             // CLICK
-            to={`/Applicants/show/${id}`}
+            to={`/Employee/show/${id}`}
             sx={{
                 minWidth: "215px",
                 maxWidth: "260px",

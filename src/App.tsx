@@ -29,7 +29,7 @@ import {
     PropertyDetails,AllProperties,CreateProperty,EditProperty,
     AgentProfile,
     editJobs,createJobs,allJobs,jobDetails,
-    createEmp,allEmp
+    createEmp,allEmp,editEmp,EmpDetails
 } from "pages";
 
 //ICONS
@@ -41,6 +41,7 @@ import {
     AccountCircleOutlined,
     PeopleAltOutlined,
 } from "@mui/icons-material";
+
 
 
 const axiosInstance = axios.create();
@@ -164,6 +165,8 @@ function App() {
                             name: "Employee",
                             list: allEmp,
                             create: createEmp,
+                            show: EmpDetails,
+                            edit: editEmp,
                             icon: <PeopleAltOutlined />,
                         },
                         {
