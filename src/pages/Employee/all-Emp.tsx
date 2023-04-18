@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
-import { ApplicantCard, CustomButton } from "components";
+import { EmpCard, CustomButton } from "components";
 //NEW UI
 import { Paper } from '@mui/material'
 
@@ -48,9 +48,6 @@ const allEmp = () => {
             title:
                 logicalFilters.find((item) => item.field === "name")?.value ||
                 "",
-            propsType:
-                logicalFilters.find((item) => item.field === "stats")
-                    ?.value || "",
         };
     }, [filters]);
 
@@ -89,7 +86,7 @@ const allEmp = () => {
                 <TextField
                                 label="Search" variant="standard"
                                 color="primary"
-                                placeholder="Name of the Applicant"
+                                placeholder="Name of the Employee"
                                 size="small"
                                 value={currentFilterValues.title}
                                 onChange={(e) => {
@@ -128,42 +125,13 @@ const allEmp = () => {
                                
                             />
                             
-                        
-                            <Select
-                                variant="outlined"
-                                color="primary"
-                                displayEmpty
-                                required
-                                size="small"
-                                inputProps={{ "aria-label": "Without label" }}
-                                defaultValue=""
-                                value={currentFilterValues.propsType}
-                                onChange={(e) => {
-                                    setFilters(
-                                        [
-                                            {
-                                                field: "stats",
-                                                operator: "eq",
-                                                value: e.target.value,
-                                            },
-                                        ],
-                                        "replace",
-                                    );
-                                }}
-                            >
-                                <MenuItem value="">All</MenuItem>
-                                <MenuItem value="0">Open</MenuItem>
-                                <MenuItem value="1">Contacted</MenuItem>
-                                <MenuItem value="2">Evaluated</MenuItem>
-                                <MenuItem value="3">Completed</MenuItem>
-                            </Select>    
                             
             </Stack> 
 {/* END OF TOP BAR */}
    {/* DATA CARDS */}
    <Grid mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
    {allEMP?.map((props) => (
-                    <ApplicantCard
+                    <EmpCard
                         key={props._id}
                         id={props._id}
                         photo={props.photo}
@@ -171,8 +139,6 @@ const allEmp = () => {
                         email={props.email}
                         gender={props.gender}
                         location={props.location}
-                        stats={props.stats}
-                        result={props.result}
                         age={props.age}
                    
                      

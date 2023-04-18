@@ -24,6 +24,15 @@ export interface PropertyCardProps {
     age: string;
     photo: string;
 }
+export interface EMPCardProps {
+    id?: BaseKey | undefined;
+    name: string;
+    email:string;
+    gender:string;
+    location:string;
+    age: string;
+    photo: string;
+}
 
 export interface JobCardProps {
     id?: BaseKey | undefined;
