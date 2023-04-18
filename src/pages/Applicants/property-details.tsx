@@ -201,7 +201,7 @@ const PropertyDetails = () => {
             {/* If step complete render this */}
 
             <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
+            All stages completed - applicant ready to onboard
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
@@ -214,7 +214,7 @@ const PropertyDetails = () => {
             {/* IF steps not complete show this */}
 
             <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
-              Stage {activeStep + 1}
+             To Stage {activeStep + 1}
             </Typography>
 
       
@@ -428,7 +428,7 @@ const PropertyDetails = () => {
                 Skip
               </Button>
             )}
-            <Button onClick={handleNext}>
+            <Button onClick={handleStageChange}>
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
           </Box>
