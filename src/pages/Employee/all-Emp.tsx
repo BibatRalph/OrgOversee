@@ -12,7 +12,7 @@ import { CustomButton } from "components";
 import { useMemo } from "react";
 import { useNavigate } from 'react-router-dom';
 import JobCard from "components/common/JobCard";
-const allJobs = () => {
+const allEmp = () => {
     const navitage = useNavigate();
 
     const {
@@ -258,4 +258,4 @@ sx={{
   )
 }
 
-export default allJobs
+export default allEmp

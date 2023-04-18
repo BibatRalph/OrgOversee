@@ -29,7 +29,7 @@ import {
     PropertyDetails,AllProperties,CreateProperty,EditProperty,
     AgentProfile,
     editJobs,createJobs,allJobs,jobDetails,
-
+    createEmp,allEmp
 } from "pages";
 
 //ICONS
@@ -162,7 +162,8 @@ function App() {
                         {
 
                             name: "Employee",
-                            list: Home,
+                            list: allEmp,
+                            create: createEmp,
                             icon: <PeopleAltOutlined />,
                         },
                         {

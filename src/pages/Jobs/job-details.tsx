@@ -1,15 +1,12 @@
 import { Typography, Box, Stack,Paper,
   Grid,
  } from "@mui/material";
-import { useDelete, useGetIdentity, useShow,useCreate } from "@refinedev/core";
+import { useGetIdentity, useShow ,useCreate } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import {
     ChatBubble,
-    Delete,
     Edit,
-    Phone,
     Place,
-    Star,
 } from "@mui/icons-material";
 import { CustomButton } from "components";
 import { DeleteButton } from "@refinedev/mui";

@@ -9,7 +9,7 @@ import {
     Place,
     Star,
 } from "@mui/icons-material";
-import { DeleteButton} from "@refinedev/mui";
+import { CreateButton, DeleteButton} from "@refinedev/mui";
 import {useEffect } from "react";
 import { CustomButton } from "components";
 function checkImage(url: any) {
@@ -205,8 +205,12 @@ const PropertyDetails = () => {
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleReset}>Reset</Button>
+         {/* ONBOARD */}
+            <CreateButton
+            resource="Employee"/>  
+          
           </Box>
+           <Button onClick={handleReset}>Reset</Button>
         </React.Fragment>
       ) : (
         <React.Fragment>

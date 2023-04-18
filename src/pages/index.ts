@@ -13,7 +13,9 @@ import jobDetails from "./Jobs/job-details";
 import allJobs from "./Jobs/all-jobs";
 import createJobs from "./Jobs/create-jobs";
 import editJobs from "./Jobs/edit-jobs";
-
+//Emp
+import allEmp from "./Employee/all-Emp";
+import createEmp from "./Employee/create-Emp";
 export {
     AgentProfile,
     Agents,
@@ -22,4 +24,5 @@ export {
     Login,
     MyProfile,
     editJobs,createJobs,allJobs,jobDetails,
+    allEmp,createEmp
 };

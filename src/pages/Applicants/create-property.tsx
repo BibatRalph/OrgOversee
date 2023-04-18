@@ -15,11 +15,6 @@ const CreateProperty = () => {
         handleSubmit,
     } = useForm();
 
-    // const { queryResult } = useShow();
-    // const { data, isLoading, isError } = queryResult;
-    // const propertyDetails = data?.data ?? {};
-    // console.log(propertyDetails)
-
     const handleImageChange = (file: File) => {
         const reader = (readFile: File) =>
             new Promise<string>((resolve, reject) => {
