@@ -1,36 +1,55 @@
-import { useGetIdentity } from "@refinedev/core";
+import { useState } from "react";
+import { useGetIdentity,useShow } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
 import { FieldValues } from "react-hook-form";
-import FormJob from "components/common/FormJob";
+import Form from "components/common/Form";
 
 const createEmp = () => {
-  //GET all user info
-  const { data: user } = useGetIdentity({
-    v3LegacyAuthProviderCompatible: true,
-});
-  const {
-    refineCore: { onFinish, formLoading },
-    register,
-    handleSubmit,
-} = useForm();
+    const { data: user } = useGetIdentity({
+        v3LegacyAuthProviderCompatible: true,
+    });
+    const [propertyImage, setPropertyImage] = useState({ name: "", url: "" });
+    const {
+        refineCore: { onFinish, formLoading },
+        register,
+        handleSubmit,
+    } = useForm();
 
-const onFinishHandler = async (data: FieldValues) => {
-  await onFinish({
-      ...data,
-      email: user.email,
-  });
+    const handleImageChange = (file: File) => {
+        const reader = (readFile: File) =>
+            new Promise<string>((resolve, reject) => {
+                const fileReader = new FileReader();
+                fileReader.onload = () => resolve(fileReader.result as string);
+                fileReader.readAsDataURL(readFile);
+            });
+
+        reader(file).then((result: string) =>
+            setPropertyImage({ name: file?.name, url: result }),
+        );
+    };
+
+    const onFinishHandler = async (data: FieldValues) => {
+        if (!propertyImage.name) return alert("Please select an image");
+
+        await onFinish({
+            ...data,
+            photo: propertyImage.url,
+            email: user.email,
+        });
+    };
+
+    return (
+        <Form
+            type="Create"
+            register={register}
+            onFinish={onFinish}
+            formLoading={formLoading}
+            handleSubmit={handleSubmit}
+            handleImageChange={handleImageChange}
+            onFinishHandler={onFinishHandler}
+            propertyImage={propertyImage}
+            
+        />
+    );
 };
-
-  return (
- <FormJob 
- type="Create"
- register={register}
- onFinish={onFinish}
- formLoading={formLoading}
- handleSubmit={handleSubmit}
- onFinishHandler={onFinishHandler}
- ></FormJob>
-  )
-}
-
-export default createEmp
+export default createEmp;

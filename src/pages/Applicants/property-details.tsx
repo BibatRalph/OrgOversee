@@ -9,7 +9,7 @@ import {
     Place,
     Star,
 } from "@mui/icons-material";
-import { CreateButton, DeleteButton} from "@refinedev/mui";
+import { CloneButton, CreateButton, DeleteButton, EditButton} from "@refinedev/mui";
 import {useEffect } from "react";
 import { CustomButton } from "components";
 function checkImage(url: any) {
@@ -82,6 +82,12 @@ const PropertyDetails = () => {
 
   const handleReset = () => {
     setActiveStep(0);
+  };
+  const OnBoardHandle = () => {
+    navigate(
+      // ONBOARD
+      `/Employee/create/${propertyDetails._id}`,
+  );
   };
 
       //End 
@@ -205,9 +211,10 @@ const PropertyDetails = () => {
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
+
          {/* ONBOARD */}
-            <CreateButton
-            resource="Employee"/>  
+         <Button onClick={OnBoardHandle}>Onboard</Button>
+    
           
           </Box>
            <Button onClick={handleReset}>Reset</Button>

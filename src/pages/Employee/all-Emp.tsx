@@ -1,42 +1,45 @@
 import { useTable } from "@refinedev/core";
-import { CreateButton } from "@refinedev/mui";
 import {
-    Grid,
-    Typography,
     Box,
     Stack,
+    Typography,
+    TextField,
+    Select,
     MenuItem,
-    Paper, Select, TextField 
+    Grid
 } from "@mui/material";
-import { CustomButton } from "components";
+import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
-import { useNavigate } from 'react-router-dom';
-import JobCard from "components/common/JobCard";
+import { ApplicantCard, CustomButton } from "components";
+//NEW UI
+import { Paper } from '@mui/material'
+
 const allEmp = () => {
-    const navitage = useNavigate();
+    const navigate = useNavigate();
 
     const {
-      tableQueryResult: { data, isLoading, isError },
-      current,
-      setCurrent,
-      setPageSize,
-      pageCount,
-      sorter,
-      setSorter,
-      filters,
-      setFilters,
-  } = useTable();
+        tableQueryResult: { data, isLoading, isError },
+        current,
+        setCurrent,
+        setPageSize,
+        pageCount,
+        sorter,
+        setSorter,
+        filters,
+        setFilters,
+    } = useTable();
 
-  //If i dont have data, turn it into empty array so no error.
-  const allData = data?.data ?? [];
-  //SORT
-   const currentPrice = sorter.find((item) => item.field === "Salary")?.order;
+    //GET data from refine
+    const allApplicants = data?.data ?? [];
+    console.log(allApplicants)
+
+    //Additional features
+    const currentPrice = sorter.find((item) => item.field === "age")?.order;
 
     const toggleSort = (field: string) => {
         setSorter([{ field, order: currentPrice === "asc" ? "desc" : "asc" }]);
     };
 
-    //SEARCH and Filter
     const currentFilterValues = useMemo(() => {
         const logicalFilters = filters.flatMap((item) =>
             "field" in item ? item : [],
@@ -44,29 +47,30 @@ const allEmp = () => {
 
         return {
             title:
-                logicalFilters.find((item) => item.field === "jobTitle")?.value || "",
-                jobType:
-                logicalFilters.find((item) => item.field === "jobType")?.value || "",
+                logicalFilters.find((item) => item.field === "name")?.value ||
+                "",
+            propsType:
+                logicalFilters.find((item) => item.field === "stats")
+                    ?.value || "",
         };
     }, [filters]);
 
+    if (isLoading) return <Typography>Loading...</Typography>;
+    if (isError) return <Typography>Error...</Typography>;
 
-  //Front End State handling auto done by Refine
-  if (isLoading) return <Typography>Loading...</Typography>;
-  if (isError) return <Typography>Error...</Typography>;
-
-  return (
-    <>
-    <Paper
-sx={{
-  paddingX: { xs: 3, md: 2 },
-  paddingY: { xs: 2, md: 3 },
-  my: 0.5,
-}}
+    return (
+        <>
+          <Paper
+    sx={{
+        paddingX: { xs: 3, md: 2 },
+        paddingY: { xs: 2, md: 3 },
+        my: 0.5,
+    }}
 > 
 
 <Grid item xs={16} md={12}  >
-   {/* TOP BAR */}
+
+{/* TOP BAR */}
          <Stack
                             display="flex"
                             justifyContent="space-between"
@@ -75,22 +79,24 @@ sx={{
                             padding={2}
                             direction="row"
                             gap={2}
-                        >
-                     
-<Typography variant="h5">
-  Listed Jobs
-</Typography>
-{/* SEARCH BAR */}
-<TextField
+         >
+            <Typography variant="h5" >
+                                    {!allApplicants.length
+                                        ? "There are no Applicants"
+                                        : "All Applicants"}
+            </Typography>   
+      
+         
+                <TextField
                                 label="Search" variant="standard"
                                 color="primary"
-                                placeholder="Job Title"
+                                placeholder="Name of the Applicant"
                                 size="small"
                                 value={currentFilterValues.title}
                                 onChange={(e) => {
                                     setFilters([
                                         {
-                                            field: "jobTitle",
+                                            field: "name",
                                             operator: "contains",
                                             value: e.currentTarget.value
                                                 ? e.currentTarget.value
@@ -99,10 +105,10 @@ sx={{
                                     ]);
                                 }}
                             />
-          </Stack>
-      
-   {/* 2nd TOP BAR*/}
-   <Stack
+                         
+        </Stack>
+          {/* 2nd TOP BAR*/}
+        <Stack
                             display="flex"
                             justifyContent="flex-end"
                             alignItems="baseline"
@@ -110,26 +116,21 @@ sx={{
                             padding={2}
                             direction="row"
                             gap={2}
-                        >
-                               <CreateButton
-                                variant="outlined"
-                                sx={{ marginBottom: "5px" }}
-                            >
-                               Create Job
-                            </CreateButton>
-
-                             <CustomButton
+         >
+            
+            <CustomButton
                                 
-                                title={`Sort Salary ${
+                                title={`Sort Age ${
                                     currentPrice === "asc" ? "↑" : "↓"
                                 }`}
-                                handleClick={() => toggleSort("Salary")}
+                                handleClick={() => toggleSort("age")}
                                 backgroundColor="initial"
                                 color="primary"
                                
                             />
-
-                                {/* <Select
+                            
+                        
+                            <Select
                                 variant="outlined"
                                 color="primary"
                                 displayEmpty
@@ -137,12 +138,12 @@ sx={{
                                 size="small"
                                 inputProps={{ "aria-label": "Without label" }}
                                 defaultValue=""
-                                value={currentFilterValues.jobType}
+                                value={currentFilterValues.propsType}
                                 onChange={(e) => {
                                     setFilters(
                                         [
                                             {
-                                                field: "jobType",
+                                                field: "stats",
                                                 operator: "eq",
                                                 value: e.target.value,
                                             },
@@ -152,44 +153,35 @@ sx={{
                                 }}
                             >
                                 <MenuItem value="">All</MenuItem>
-                                {[
-                                    
-                                    "Full-time employment",
-                                    "Part-time employment",
-                                    
-                                ].map((type) => (
-                                    <MenuItem
-                                        key={type}
-                                        value={type.toLowerCase()}
-                                    >
-                                        {type}
-                                    </MenuItem>
-                                ))}
-                            </Select>     */}
-                        
-
-   </Stack>
-       {/* END OF TOP BAR */}
-
-    {/* CARDS */}
+                                <MenuItem value="0">Open</MenuItem>
+                                <MenuItem value="1">Contacted</MenuItem>
+                                <MenuItem value="2">Evaluated</MenuItem>
+                                <MenuItem value="3">Completed</MenuItem>
+                            </Select>    
+                            
+            </Stack> 
+{/* END OF TOP BAR */}
+   {/* DATA CARDS */}
    <Grid mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 2 } }>
-                       
-                                        {allData?.map((Jobs) => (
-                    <JobCard
-                        key={Jobs._id}
-                        id={Jobs._id}
-                        jobTitle={Jobs.jobTitle}
-                        jobType={Jobs.jobType}
-                        experience={Jobs.experience}
-                        Salary={Jobs.Salary}
-                        location={Jobs.location}
+   {allApplicants?.map((props) => (
+                    <ApplicantCard
+                        key={props._id}
+                        id={props._id}
+                        photo={props.photo}
+                        name={props.name}
+                        email={props.email}
+                        gender={props.gender}
+                        location={props.location}
+                        stats={props.stats}
+                        result={props.result}
+                        age={props.age}
+                   
                      
                     />
                 ))}
-                                
-                  
-                        </Grid>
-                    {/* PAGANATION */}
+                
+           </Grid>
+           {/* PAGANATION */}
            <Stack
                             display="flex"
                             justifyContent="center"
@@ -199,7 +191,7 @@ sx={{
                             direction="row"
                             gap={2}
          >
-{allData.length > 0 && (
+{allApplicants.length > 0 && (
                 <Box display="flex" gap={2} mt={3} flexWrap="wrap">
                     <CustomButton
                     
@@ -253,9 +245,8 @@ sx={{
             
           
         </Paper>
-    </>
-   
-  )
-}
+        </>
+    );
+};
 
-export default allEmp
+export default allEmp;
