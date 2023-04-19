@@ -55,10 +55,6 @@ const PropertyDetails = () => {
     return skipped.has(step);
   };
 
-  const handleNext = () => {
-    if (isCurrentUser) handleStageChange();
-  };
-
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
@@ -82,10 +78,33 @@ const PropertyDetails = () => {
     setActiveStep(0);
   };
   const OnBoardHandle = () => {
-    navigate(
-      // ONBOARD
-      `/Applicants/edit/${propertyDetails._id}`,
-  );
+      mutate(
+          {
+              resource: "Applicants",
+              id: id as string,
+              values: {
+                result: "Completed"
+            }, 
+          },
+          {
+              onSuccess: () => {
+                let newSkipped = skipped;
+                if (isStepSkipped(activeStep)) {
+                  newSkipped = new Set(newSkipped.values());
+                  newSkipped.delete(activeStep);
+                }
+            
+                setActiveStep(activeStep + 1);
+                setSkipped(newSkipped);
+                navigate(
+                  // ONBOARD
+            
+                  `/Applicants/edit/${propertyDetails._id}`,
+              );
+              },
+              
+          },
+      );
   };
 
       //End 
@@ -237,13 +256,23 @@ const PropertyDetails = () => {
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
 
-         {/* ONBOARD */}
-    
-    
+             <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
+             *Develelopment and demonstration purposes
+             </Typography>
          <Button onClick={handleReset}>Reset</Button>
+
           </Box>
-   
+ 
+         <Stack   direction="column"
+  justifyContent="center"
+  alignItems="center"
+  spacing={2}>
            <Button onClick={OnBoardHandle}>Onboard</Button>
+           <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
+             *Mark as complete and proceed to onboarding
+             </Typography>
+
+           </Stack>
         </React.Fragment>
       ) : (
         <React.Fragment>
