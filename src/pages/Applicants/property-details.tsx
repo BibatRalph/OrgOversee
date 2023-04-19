@@ -296,7 +296,7 @@ const PropertyDetails = () => {
                          
                         <Stack
                             width="100%"
-                           
+                            mt={3}
                             direction="row"
                             flexWrap="wrap"
                             gap={2}

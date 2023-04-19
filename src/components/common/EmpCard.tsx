@@ -54,7 +54,6 @@ const EmpCard = ({
                     
                 }}
             >
-                
                 <Stack direction="column" gap={1} >
                 <Stack direction="row" gap={0.5} alignItems="flex-start">
                 <Typography fontSize={16} fontWeight={500} color="#11142d" >
