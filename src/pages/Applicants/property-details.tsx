@@ -156,8 +156,9 @@ const PropertyDetails = () => {
          {propertyDetails.name}
             </Typography>
           
-            <Typography fontSize={18} fontWeight={500}  color="#11162D"   textTransform="capitalize" >
-         Application status: Stage {propertyDetails.stats + 1} {propertyDetails.result}
+        
+            <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
+                  Application status: Stage {propertyDetails.stats + 1} {propertyDetails.result}
             </Typography>
              
      
@@ -239,25 +240,15 @@ const PropertyDetails = () => {
                          spacing={2}
                         >
                             {/* FIRST COL */}
-                            <Box>
-                            <Typography
-                                fontSize={18}
-                                fontWeight={500}
-                                color="#11162D"
-                                textTransform="capitalize"
-                            >
+                            <Stack>
+                            
+                                   <Typography  variant="h5">
                                 Application in:{propertyDetails.jobTitleTarget}
-                                
-                            </Typography>
-                            {[1, 2, 3, 4, 5].map((item) => (
-                                    <Star
-                                        key={`star-${item}`}
-                                        sx={{ color: "#F2C94C" }}
-                                    />
-                                ))}
-                                
-                            </Box>
-
+                                   </Typography>
+                         
+                                                 
+                            </Stack>
+                       
                             <Box>
                        
                                       <Typography fontSize={18} color="#11162D" mt="10px">
@@ -290,38 +281,11 @@ const PropertyDetails = () => {
                                     <Typography mt={2}  fontSize={18} color="#11162D">
                                 Description
                             </Typography>
-                            <Typography fontSize={16} color="#808191">
+                            <Typography fontSize={16} color="#808191" mt={2}>
                                 {propertyDetails.description}
                             </Typography>
                          
-                        <Stack
-                            width="100%"
-                            mt={3}
-                            direction="row"
-                            flexWrap="wrap"
-                            gap={2}
-                        >
-                                <CustomButton
-                                title={!isCurrentUser ? "Message" : "Edit"}
-                                backgroundColor=""
-                                color="info"
-                                fullWidth
-                                icon={
-                                    !isCurrentUser ? <ChatBubble /> : <Edit />
-                                }
-                                handleClick={() => {
-                                    if (isCurrentUser) {
-                                        navigate(
-                                            // EDIT
-                                            `/Applicants/edit/${propertyDetails._id}`,
-                                        );
-                                    }
-                                }}
-                            /> 
-                            
-                
-                       
-                        </Stack>
+                      
                             </Box>
       {/*Right Col */}
               <Box
@@ -414,7 +378,34 @@ const PropertyDetails = () => {
                 `/Applicants/`,  );      
             }} />
                         </Stack>
-                      
+     <Stack
+                            width="100%"
+                     
+                            direction="row"
+                            flexWrap="wrap"
+                            gap={2}
+                        >
+                                <CustomButton
+                                title={!isCurrentUser ? "MESSAGE" : "MODIFY"}
+                                backgroundColor=""
+                                color="info"
+                                fullWidth
+                                icon={
+                                    !isCurrentUser ? <ChatBubble /> : <Edit />
+                                }
+                                handleClick={() => {
+                                    if (isCurrentUser) {
+                                        navigate(
+                                            // EDIT
+                                            `/Applicants/edit/${propertyDetails._id}`,
+                                        );
+                                    }
+                                }}
+                            /> 
+                            
+                
+                       
+                            </Stack>
                     </Stack>
                 </Stack>  
             </Box>

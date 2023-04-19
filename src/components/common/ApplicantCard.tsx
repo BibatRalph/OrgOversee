@@ -23,20 +23,10 @@ const ApplicantCard = ({
     age,
 }: PropertyCardProps) => {
 
-    const navigate = useNavigate();
-    const OnBoardHandle = () => {
-        navigate(
-            // ONBOARD
-            `/Employee/create/${id}`,
-        );
-      };
-    const DetailsHandle = () => {
-        navigate(
-            `/Applicants/show/${id}`);    
-         };
-
     return (
         <Card
+        component={Link}
+        to={`/Applicants/show/${id}`}
             sx={{
                 minWidth: "215px",
                 maxWidth: "260px",
@@ -45,7 +35,7 @@ const ApplicantCard = ({
                     boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.1)",
                     transform: "scale3d(1.05, 1.05, 3)"
                 },
-                cursor: "default",
+                cursor: "Pointer",
             }}
             elevation={1}
         >
@@ -101,16 +91,6 @@ const ApplicantCard = ({
                 
                 </Stack>
             </CardContent>
-            <Stack
-  direction="row"
-  justifyContent="space-evenly"
-  alignItems="center"
-  spacing={2}
->
-            <Button size="small" variant="outlined" color="primary" onClick={DetailsHandle}>Details</Button>
-            <Button size="small" variant="outlined" color="primary" onClick={OnBoardHandle}>Onboard</Button>
-           
-       </Stack> 
         </Card>
         
     );
