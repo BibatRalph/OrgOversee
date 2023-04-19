@@ -4,6 +4,7 @@ import { useForm } from "@refinedev/react-hook-form";
 import { FieldValues } from "react-hook-form";
 import Form from "components/common/Form";
 
+
 const EditProperty = () => {
     const { data: user } = useGetIdentity({
         v3LegacyAuthProviderCompatible: true,
@@ -29,7 +30,7 @@ const EditProperty = () => {
     };
 
     const onFinishHandler = async (data: FieldValues) => {
-       
+        if (!propertyImage.name) return alert("Please upload a property image");
 
         await onFinish({
             ...data,

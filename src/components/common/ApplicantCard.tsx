@@ -107,8 +107,8 @@ const ApplicantCard = ({
   alignItems="center"
   spacing={2}
 >
-            <Button size="small" variant="contained" color="info" onClick={DetailsHandle}>Details</Button>
-            <Button size="small" variant="contained" color="info" onClick={OnBoardHandle}>Onboard</Button>
+            <Button size="small" variant="outlined" color="primary" onClick={DetailsHandle}>Details</Button>
+            <Button size="small" variant="outlined" color="primary" onClick={OnBoardHandle}>Onboard</Button>
            
        </Stack> 
         </Card>
