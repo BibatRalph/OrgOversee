@@ -188,6 +188,7 @@ const PropertyDetails = () => {
                         justifyContent="space-between"
                       width="100%"  padding={3}
                       >
+            <Box >         
          <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps: { completed?: boolean } = {};
@@ -223,6 +224,7 @@ const PropertyDetails = () => {
                                 }}
                             /> 
       </Stepper>
+      </Box>   
       
       {activeStep === steps.length ? (
         <React.Fragment>
@@ -230,7 +232,7 @@ const PropertyDetails = () => {
             {/* If step complete render this */}
 
             <Typography sx={{ mt: 2, mb: 1 }}>
-            All stages completed - applicant ready to onboard
+            All stages completed - Applicant ready to onboard
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
@@ -247,16 +249,9 @@ const PropertyDetails = () => {
         <React.Fragment>
 
             {/* IF steps not complete show this */}
-
-            <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
-             To Stage {activeStep + 1}
-            </Typography>
-
-      
-
               {/* CONTents */}
 
-                    <Box sx={{ flex: '1 1 auto' }} mt="15px" padding={3}>
+                    <Box sx={{ flex: '1 1 auto' }} mt="15px" padding={3}  border="1px solid #E4E4E4" borderRadius={2}>
                         <Stack
                          flexWrap="wrap"
                          direction="row"
