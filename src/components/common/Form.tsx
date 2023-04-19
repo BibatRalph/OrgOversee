@@ -9,12 +9,15 @@ import {
     MenuItem,
     Grid,
     Avatar,
-    Paper
+    Paper,
+    Button
 } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { FormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
+import { useCreate, useShow } from "@refinedev/core";
+import { useNavigate } from "react-router-dom";
 
 const Form = ({
     type,
@@ -25,6 +28,43 @@ const Form = ({
     onFinishHandler,
     propertyImage,
 }: FormProps) => {
+
+    const navigate = useNavigate();
+    const { queryResult } = useShow();
+    const { mutate } = useCreate();
+
+    const { data } = queryResult;
+
+    const AppInfo = data?.data ?? {};
+
+    const handleOnboard = () =>  {
+        const response = confirm(
+            "Are you sure you want to Apply for this Job?",
+        );
+        if (response) {
+            mutate(
+                {
+                    resource: "Employee",
+                   
+                    values: {
+                        // REQ
+                        photo: AppInfo.photo,
+                        email: AppInfo.email,
+                        jobID: AppInfo.jobID,
+                        name: AppInfo.name,
+                        jobTitleTarget: AppInfo.jobTitleTarget,
+                        
+                    },
+                },
+                {
+                    onSuccess: () => {
+                        navigate("/Applicants");
+                    },
+                },
+            );
+        }
+    };
+
     return (
         <>
     <Paper
@@ -381,18 +421,21 @@ const Form = ({
                   
                     
                        {/* SUBMIT */}
-                       <Grid mt="10px">
+                       <Stack mt="10px"  direction="row"
+  justifyContent="center"
+  alignItems="center"
+  spacing={2}>
                              <CustomButton
                         type="submit"
-                        title={formLoading ? "Submitting..." : "SUBMIT"}
+                        title={formLoading ? "Submitting..." : "UPDATE"}
                         backgroundColor="#475be8"
-                        color="#fcfcfc"
-                   
-                    />
-                             </Grid>
-                
+                        color="#fcfcfc"/>
+                           <Button size="large" color="info" variant="outlined" onClick={handleOnboard}> 
+                           Onboard </Button>
+                             </Stack>
+                           
                 </form>
-                      
+         
                 {/* FIRST COL */}
                 </Stack>    
                 

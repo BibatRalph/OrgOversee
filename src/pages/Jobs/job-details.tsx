@@ -33,8 +33,6 @@ const jobDetails = () => {
 
   const jobDetails = data?.data ?? {};
 
-  console.log(jobDetails);
-
   if (isLoading) {
       return <div>Loading...</div>;
   }
