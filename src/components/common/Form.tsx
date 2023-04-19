@@ -37,33 +37,41 @@ const Form = ({
 
     const AppInfo = data?.data ?? {};
 
+    const currentStage = AppInfo.stats;
+
     const handleOnboard = () =>  {
-        const response = confirm(
-            "Are you sure you want to Apply for this Job?",
-        );
-        if (response) {
-            mutate(
-                {
-                    resource: "Employee",
-                   
-                    values: {
-                        // REQ
-                        photo: AppInfo.photo,
-                        email: AppInfo.email,
-                        jobID: AppInfo.jobID,
-                        name: AppInfo.name,
-                        jobTitleTarget: AppInfo.jobTitleTarget,
-                        
-                    },
-                },
-                {
-                    onSuccess: () => {
-                        navigate("/Applicants");
-                    },
-                },
+// CHECK IF APPLICANT STAGE IS COMPLETED
+        if (currentStage === 3 ) {
+            const response = confirm(
+                "Are you sure you want to Apply for this Job?",
             );
-        }
-    };
+            if (response) {
+                mutate(
+                    {
+                        resource: "Employee",
+                       
+                        values: {
+                            // REQ
+                            photo: AppInfo.photo,
+                            email: AppInfo.email,
+                            jobID: AppInfo.jobID,
+                            name: AppInfo.name,
+                            jobTitleTarget: AppInfo.jobTitleTarget,
+                            
+                        },
+                    },
+                    {
+                        onSuccess: () => {
+                            navigate("/Applicants");
+                        },
+                    },
+                );
+            }
+        } else {
+            alert("Onboarding failed, Please complete the onboarding stage first in the applicant details for this application.")
+        };
+    }
+    
 
     return (
         <>
@@ -430,6 +438,7 @@ const Form = ({
                         title={formLoading ? "Submitting..." : "UPDATE"}
                         backgroundColor="#475be8"
                         color="#fcfcfc"/>
+
                            <Button size="large" color="info" variant="outlined" onClick={handleOnboard}> 
                            Onboard </Button>
                              </Stack>

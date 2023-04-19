@@ -171,6 +171,41 @@ const PropertyDetails = () => {
                 flexDirection={{ xs: "column", lg: "row" }}
                 gap={4}
             >
+                 <Stack mt={1}>
+                        <DeleteButton hideText={false} recordItemId={id} onSuccess={() => {
+               navigate(
+                // DELETE
+                `/Applicants/`,  );      
+            }} />
+                        </Stack>
+     <Stack
+                            width="100%"
+                     
+                            direction="row"
+                            flexWrap="wrap"
+                            gap={2}
+                        >
+                                <CustomButton
+                                title={!isCurrentUser ? "MESSAGE" : "MODIFY"}
+                                backgroundColor=""
+                                color="info"
+                                fullWidth
+                                icon={
+                                    !isCurrentUser ? <ChatBubble /> : <Edit />
+                                }
+                                handleClick={() => {
+                                    if (isCurrentUser) {
+                                        navigate(
+                                            // EDIT
+                                            `/Applicants/edit/${propertyDetails._id}`,
+                                        );
+                                    }
+                                }}
+                            /> 
+                            
+                
+                       
+                            </Stack>
   
                                 {/* STEPS */}
                       <Stack  
@@ -371,41 +406,7 @@ const PropertyDetails = () => {
                             </Typography>
                   
                         </Stack>
-                        <Stack mt={1}>
-                        <DeleteButton hideText={false} recordItemId={id} onSuccess={() => {
-               navigate(
-                // DELETE
-                `/Applicants/`,  );      
-            }} />
-                        </Stack>
-     <Stack
-                            width="100%"
                      
-                            direction="row"
-                            flexWrap="wrap"
-                            gap={2}
-                        >
-                                <CustomButton
-                                title={!isCurrentUser ? "MESSAGE" : "MODIFY"}
-                                backgroundColor=""
-                                color="info"
-                                fullWidth
-                                icon={
-                                    !isCurrentUser ? <ChatBubble /> : <Edit />
-                                }
-                                handleClick={() => {
-                                    if (isCurrentUser) {
-                                        navigate(
-                                            // EDIT
-                                            `/Applicants/edit/${propertyDetails._id}`,
-                                        );
-                                    }
-                                }}
-                            /> 
-                            
-                
-                       
-                            </Stack>
                     </Stack>
                 </Stack>  
             </Box>
