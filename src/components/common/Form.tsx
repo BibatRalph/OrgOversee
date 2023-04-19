@@ -276,6 +276,18 @@ const Form = ({
                     </Stack>
 
                     <Stack direction="row" gap={4}>
+                    <FormControl>
+                            <TextField
+                                fullWidth
+                                
+                                id="standard-basic"
+                                color="primary"
+                                type="number"
+                                label="Age"
+                                variant="standard"
+                                {...register("age", { required: false })}
+                            />
+                        </FormControl>
                         <FormControl sx={{ flex: 1 }}>
                         <TextField
                                 fullWidth
@@ -289,18 +301,7 @@ const Form = ({
                          
                         </FormControl>
                         
-                        <FormControl>
-                            <TextField
-                                fullWidth
-                                
-                                id="standard-basic"
-                                color="primary"
-                                type="number"
-                                label="Age"
-                                variant="standard"
-                                {...register("age", { required: false })}
-                            />
-                        </FormControl>
+                  
                     </Stack>
 
                     <FormControl>

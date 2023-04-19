@@ -1,15 +1,15 @@
-import { Place } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import {
     Typography,
-    Box,
     Card,
     CardMedia,
     CardContent,
     Stack,
+    Button,
 } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 import { PropertyCardProps } from "interfaces/property";
+import { DeleteButton, EditButton } from "@refinedev/mui";
 
 const ApplicantCard = ({
     id,
@@ -22,11 +22,21 @@ const ApplicantCard = ({
     result,
     age,
 }: PropertyCardProps) => {
+
+    const navigate = useNavigate();
+    const OnBoardHandle = () => {
+        navigate(
+            // ONBOARD
+            `/Employee/create/${id}`,
+        );
+      };
+    const DetailsHandle = () => {
+        navigate(
+            `/Applicants/show/${id}`);    
+         };
+
     return (
         <Card
-            component={Link}
-            // CLICK
-            to={`/Applicants/show/${id}`}
             sx={{
                 minWidth: "215px",
                 maxWidth: "260px",
@@ -35,7 +45,7 @@ const ApplicantCard = ({
                     boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.1)",
                     transform: "scale3d(1.05, 1.05, 3)"
                 },
-                cursor: "pointer",
+                cursor: "default",
             }}
             elevation={1}
         >
@@ -63,36 +73,46 @@ const ApplicantCard = ({
                             {name}
                         </Typography>
                         <Typography fontSize={12} fontWeight={600} color="primary">
-                        {age}
+                       {age}
                     </Typography>
                     </Stack>
                     
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >
-                        {email}
+                       Email:{email}
                     </Typography>
 
                     {/* OTHER INFO */}
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >
-                        {gender}
+                       Gender:{gender}
                     </Typography>
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >
-                     Stage: {stats + 1}
+                     Stage:{stats + 1}
                      
                     </Typography>
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >
-                     {result}
+                     Process:{result}
                      
                     </Typography>
                     <Stack direction="row" gap={0.5} alignItems="flex-start">
                         <Typography fontSize={14} color="#808191">
-                            {location}
+                          Location:{location}
                         </Typography>
                     </Stack>
-                    
-                </Stack>
                 
+                </Stack>
             </CardContent>
+            <Stack
+  direction="row"
+  justifyContent="space-evenly"
+  alignItems="center"
+  spacing={2}
+>
+            <Button size="small" variant="contained" color="info" onClick={DetailsHandle}>Details</Button>
+            <Button size="small" variant="contained" color="info" onClick={OnBoardHandle}>Onboard</Button>
+           
+       </Stack> 
         </Card>
+        
     );
 };
 
