@@ -307,7 +307,7 @@ const EmpDetails = () => {
                                     if (isCurrentUser) {
                                         navigate(
                                             // EDIT
-                                            `/Applicants/edit/${empDetails._id}`,
+                                            `/Employee/edit/${empDetails._id}`,
                                         );
                                     }
                                 }}
@@ -404,7 +404,7 @@ const EmpDetails = () => {
                         <DeleteButton hideText={false} recordItemId={id} onSuccess={() => {
                navigate(
                 // DELETE
-                `/Applicants/`,  );      
+                `/Employee/`,  );      
             }} />
                         </Stack>
                       
