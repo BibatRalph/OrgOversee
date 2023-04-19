@@ -43,7 +43,7 @@ const Form = ({
 // CHECK IF APPLICANT STAGE IS COMPLETED
         if (currentStage === 3 ) {
             const response = confirm(
-                "Are you sure you want to Apply for this Job?",
+                "Onboarding this applicant for this job?",
             );
             if (response) {
                 mutate(
@@ -62,6 +62,7 @@ const Form = ({
                     },
                     {
                         onSuccess: () => {
+                            
                             navigate("/Applicants");
                         },
                     },
@@ -95,7 +96,7 @@ const Form = ({
                         >
                      
 <Typography variant="h5">
-  Applicant Details
+  Update Applicant Details
 </Typography>
 
 </Stack> 

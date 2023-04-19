@@ -84,7 +84,7 @@ const PropertyDetails = () => {
   const OnBoardHandle = () => {
     navigate(
       // ONBOARD
-      `/Employee/create/${propertyDetails._id}`,
+      `/Applicants/edit/${propertyDetails._id}`,
   );
   };
 
@@ -160,7 +160,18 @@ const PropertyDetails = () => {
             <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
                   Application status: Stage {propertyDetails.stats + 1} {propertyDetails.result}
             </Typography>
-             
+            <Stack
+                            direction="row"
+                            justifyContent="flex-end"
+                            alignItems="flex-start"
+                        >
+                             
+                               <DeleteButton size="small" hideText={true} recordItemId={id} onSuccess={() => {
+               navigate(
+                // DELETE
+                `/Applicants/`,  );      
+            }} />         
+    </Stack>
      
         </Stack>
          
@@ -171,47 +182,10 @@ const PropertyDetails = () => {
                 flexDirection={{ xs: "column", lg: "row" }}
                 gap={4}
             >
-                 <Stack mt={1}>
-                        <DeleteButton hideText={false} recordItemId={id} onSuccess={() => {
-               navigate(
-                // DELETE
-                `/Applicants/`,  );      
-            }} />
-                        </Stack>
-     <Stack
-                            width="100%"
-                     
-                            direction="row"
-                            flexWrap="wrap"
-                            gap={2}
-                        >
-                                <CustomButton
-                                title={!isCurrentUser ? "MESSAGE" : "MODIFY"}
-                                backgroundColor=""
-                                color="info"
-                                fullWidth
-                                icon={
-                                    !isCurrentUser ? <ChatBubble /> : <Edit />
-                                }
-                                handleClick={() => {
-                                    if (isCurrentUser) {
-                                        navigate(
-                                            // EDIT
-                                            `/Applicants/edit/${propertyDetails._id}`,
-                                        );
-                                    }
-                                }}
-                            /> 
-                            
-                
-                       
-                            </Stack>
-  
                                 {/* STEPS */}
                       <Stack  
                         direction="column"
                         justifyContent="space-between"
-                      
                       width="100%"  padding={3}
                       >
          <Stepper activeStep={activeStep}>
@@ -234,7 +208,22 @@ const PropertyDetails = () => {
             </Step>
           );
         })}
+             <CustomButton
+                                title="UPDATE"
+                                backgroundColor=""
+                                color="info"
+                                   icon={<Edit />}
+                                handleClick={() => {
+                                   
+                                        navigate(
+                                            // EDIT
+                                            `/Applicants/edit/${propertyDetails._id}`,
+                                        );
+                                   
+                                }}
+                            /> 
       </Stepper>
+      
       {activeStep === steps.length ? (
         <React.Fragment>
 
@@ -247,11 +236,12 @@ const PropertyDetails = () => {
             <Box sx={{ flex: '1 1 auto' }} />
 
          {/* ONBOARD */}
-         <Button onClick={OnBoardHandle}>Onboard</Button>
     
-          
+    
+         <Button onClick={handleReset}>Reset</Button>
           </Box>
-           <Button onClick={handleReset}>Reset</Button>
+   
+           <Button onClick={OnBoardHandle}>Onboard</Button>
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -435,6 +425,9 @@ const PropertyDetails = () => {
           </Box>
         </React.Fragment>
       )}
+       
+                     
+                    
       </Stack>
  
             </Box>

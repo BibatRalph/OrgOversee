@@ -21,7 +21,6 @@ const CustomButton = ({
             type={type === "submit" ? "submit" : "button"}
             
             sx={{
-                size: "small",
                 flex: fullWidth ? 1 : "unset",
                 padding: "10px 15px",
                 width: fullWidth ? "100%" : "fit-content",
