@@ -74,11 +74,11 @@ const EmpDetails = () => {
   const handleReset = () => {
     setActiveStep(0);
   };
-  const OnBoardHandle = () => {
-  //   navigate(
-  //     // ONBOARD
-  //     `/Employee/create/${empDetails._id}`,
-  // );
+  const OffBoardHandle = () => {
+    navigate(
+      // ONBOARD
+      `/Employee/create/${empDetails._id}`,
+  );
   };
 
       //End 
@@ -149,10 +149,10 @@ const EmpDetails = () => {
          {empDetails.name}
             </Typography>
           
-            <Typography fontSize={18} fontWeight={500}  color="#11162D"   textTransform="capitalize" >
-         Employment Status:{empDetails.result}
+            <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
+           Job ID:{empDetails.jobID}
             </Typography>
-             
+      
      
         </Stack>
          
@@ -191,6 +191,20 @@ const EmpDetails = () => {
             </Step>
           );
         })}
+           <CustomButton
+                                title="UPDATE"
+                                backgroundColor=""
+                                color="info"
+                                   icon={<Edit />}
+                                handleClick={() => {
+                                   
+                                        navigate(
+                                            // EDIT
+                                            `/Employee/edit/${empDetails._id}`,
+                                        );
+                                   
+                                }}
+                            /> 
       </Stepper>
       {activeStep === steps.length ? (
         <React.Fragment>
@@ -200,15 +214,41 @@ const EmpDetails = () => {
             <Typography sx={{ mt: 2, mb: 1 }}>
             All stages completed - Employee ready to offboard
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+         {/* OFFBOARD */}
+         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
 
-         {/* ONBOARD */}
-         <Button onClick={OnBoardHandle}>Offboard</Button>
-    
-          
+             <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
+             *Develelopment and demonstration purposes
+             </Typography>
+         <Button onClick={handleReset}>Reset</Button>
+
           </Box>
-           <Button onClick={handleReset}>Reset</Button>
+          <Stack   direction="column"
+  justifyContent="center"
+  alignItems="center"
+  spacing={2}>
+                        <Stack
+                            direction="row"
+                            justifyContent="flex-end"
+                            alignItems="flex-start"
+                        >
+            <DeleteButton size="small" hideText={false} recordItemId={id} 
+                 confirmTitle="Are you sure to Offboard this employee?"
+                 confirmOkText="Offboard"
+                 confirmCancelText="Cancel"
+            onSuccess={() => {
+               navigate(
+                // DELETE
+                `/Employee/`,  );      
+            }} />         
+            </Stack>
+           <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
+             *This will delete the Employee from the list
+             </Typography>
+
+           </Stack>
+    
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -216,8 +256,8 @@ const EmpDetails = () => {
             {/* IF steps not complete show this */}
               {/* CONTents */}
 
-                    <Box sx={{ flex: '1 1 auto' }} mt="15px" padding={3}>
-                        <Stack
+              <Box sx={{ flex: '1 1 auto' }} mt="15px" padding={3}  border="1px solid #E4E4E4" borderRadius={2}>
+                      <Stack
                          flexWrap="wrap"
                          direction="row"
                          justifyContent="space-evenly"
@@ -233,19 +273,16 @@ const EmpDetails = () => {
                                 Job Title:{empDetails.jobTitleTarget}
                             </Typography>
                             <Typography fontSize={16} color="#808191"mt={1}>
-                                Deperatment:
+                                Deperatment:{empDetails.jobDepartmentTarget}
                             </Typography>
                             <Typography fontSize={16} color="#808191"mt={1}>
-                                Job Type:
-                            </Typography>
-                            <Typography fontSize={16} color="#808191"mt={1}>
-                                Job Location:
+                                Job Location:{empDetails.jobLocationTarget}
                             </Typography>    
                             <Typography fontSize={18} color="#11162D" mt="10px">
                                 Onboarding Manager
                             </Typography>         
                             <Typography fontSize={16} color="#808191"mt={1}>
-                               Name
+                               Name:{empDetails.creator.name}
                             </Typography>    
                             </Box>
                             <Box>
@@ -284,34 +321,7 @@ const EmpDetails = () => {
                                 {empDetails.description}
                             </Typography>
                          
-                        <Stack
-                            width="100%"
-                            mt={3}
-                            direction="row"
-                            flexWrap="wrap"
-                            gap={2}
-                        >
-                                <CustomButton
-                                title={!isCurrentUser ? "Message" : "Edit"}
-                                backgroundColor=""
-                                color="info"
-                                fullWidth
-                                icon={
-                                    !isCurrentUser ? <ChatBubble /> : <Edit />
-                                }
-                                handleClick={() => {
-                                    if (isCurrentUser) {
-                                        navigate(
-                                            // EDIT
-                                            `/Employee/edit/${empDetails._id}`,
-                                        );
-                                    }
-                                }}
-                            /> 
-                            
-                
-                       
-                        </Stack>
+          
                             </Box>
       {/*Right Col */}
               <Box
@@ -392,18 +402,10 @@ const EmpDetails = () => {
                                 fontWeight={600}
                                 color="#11142D"
                             >
-                                Employment Status
+                                Employee
                             </Typography>
                   
-                        </Stack>
-                        <Stack mt={1}>
-                        <DeleteButton hideText={false} recordItemId={id} onSuccess={() => {
-               navigate(
-                // DELETE
-                `/Employee/`,  );      
-            }} />
-                        </Stack>
-                      
+                        </Stack>         
                     </Stack>
                 </Stack>  
             </Box>
