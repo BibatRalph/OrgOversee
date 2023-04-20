@@ -140,8 +140,7 @@ const allEmp = () => {
                         gender={props.gender}
                         location={props.location}
                         age={props.age}
-                   
-                     
+                        jobtitle={props.jobTitleTarget}
                     />
                 ))}
                 

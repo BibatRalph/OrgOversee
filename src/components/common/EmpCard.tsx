@@ -19,6 +19,7 @@ const EmpCard = ({
     gender,
     location,
     age,
+    jobtitle
 }: EMPCardProps) => {
     return (
         <Card
@@ -65,19 +66,11 @@ const EmpCard = ({
                     </Stack>
                     
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >
-                        {email}
+                        Job:    {jobtitle}
                     </Typography>
-
-                    {/* OTHER INFO */}
                     <Typography fontSize={12} fontWeight={500} color="#11142d" >
-                        {gender}
+                        Email:{email}
                     </Typography>
-                    <Stack direction="row" gap={0.5} alignItems="flex-start">
-                        <Typography fontSize={14} color="#808191">
-                            {location}
-                        </Typography>
-                    </Stack>
-                    
                 </Stack>
                 
             </CardContent>

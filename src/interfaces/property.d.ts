@@ -32,6 +32,7 @@ export interface EMPCardProps {
     location:string;
     age: string;
     photo: string;
+    jobtitle: string;
 }
 
 export interface JobCardProps {
