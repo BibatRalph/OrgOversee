@@ -74,13 +74,6 @@ const EmpDetails = () => {
   const handleReset = () => {
     setActiveStep(0);
   };
-  const OffBoardHandle = () => {
-    navigate(
-      // ONBOARD
-      `/Employee/create/${empDetails._id}`,
-  );
-  };
-
       //End 
       if (isLoading) {
         return <div>Loading...</div>;
@@ -314,10 +307,10 @@ const EmpDetails = () => {
                                 </Typography>
                             </Stack>
 
-                                    <Typography mt={2}  fontSize={18} color="#11162D">
+                                  <Typography mt={2}  fontSize={18} color="#11162D">
                                 Description
                             </Typography>
-                            <Typography fontSize={16} color="#808191">
+                            <Typography fontSize={16} color="#808191" mt={2}>
                                 {empDetails.description}
                             </Typography>
                          
@@ -423,6 +416,9 @@ const EmpDetails = () => {
               Back
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
+            <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
+                  *Here to initiate offboarding
+            </Typography>
             {isStepOptional(activeStep) && (
               <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                 Skip

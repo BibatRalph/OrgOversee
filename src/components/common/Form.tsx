@@ -88,17 +88,20 @@ const Form = ({
 <Grid item xs={16} md={12}>
     {/* TOP BAR */}
 <Stack
-                            display="flex"
-                            justifyContent="center"
-                            alignItems="baseline"
-                            flexWrap="wrap"
-                            padding={2}
-                            direction="row"
-                            gap={2}
+                              display="flex"
+                              justifyContent="center"
+                              flexWrap="wrap"
+                              padding={2}
+                              direction="column"
+                              alignItems="center"
+                              gap={1}
                         >
                      
 <Typography variant="h5">
-  Update Applicant Details
+Update Applicant Details
+</Typography>
+<Typography fontSize={16} color="#808191">
+*Please update profile image before onboarding
 </Typography>
 
 </Stack> 
@@ -438,13 +441,22 @@ const Form = ({
   spacing={2}>
                              <CustomButton
                         type="submit"
-                        title={formLoading ? "Submitting..." : "UPDATE"}
+                        title={formLoading ? "UPDATING..." : "UPDATE"}
                         backgroundColor="#475be8"
                         color="#fcfcfc"/>
 
                            <Button size="large" color="info" variant="outlined" onClick={handleOnboard}> 
                            Onboard </Button>
                              </Stack>
+                             <Stack
+                               justifyContent="center"
+                               alignItems="center"
+                             >
+                             <Typography fontSize={16} color="#808191">
+*Onboarding is only available if applicant complete all the stages
+</Typography>
+                             </Stack>
+                    
                            
                 </form>
          

@@ -95,17 +95,20 @@ const FormJob = ({
 <Grid item xs={16} md={12}>
     {/* TOP BAR */}
 <Stack
-                            display="flex"
-                            justifyContent="center"
-                            alignItems="baseline"
-                            flexWrap="wrap"
-                            padding={2}
-                            direction="row"
-                            gap={2}
+                             display="flex"
+                             justifyContent="center"
+                             flexWrap="wrap"
+                             padding={2}
+                             direction="column"
+                             alignItems="center"
+                             gap={1}
                         >
                      
 <Typography variant="h5">
   What's the job you're hiring for?
+</Typography>
+<Typography fontSize={16} color="#808191">
+ *Provide necessary Job details
 </Typography>
 
 </Stack> 
@@ -348,7 +351,10 @@ Full-time employment</MenuItem>
                
                    
                        {/* SUBMIT */}
-                       <Grid mt="10px">
+                       <Stack
+                          justifyContent="center"
+                          alignItems="center" 
+                       mt="10px">
                              <CustomButton
                         type="submit"
                         title={formLoading ? "Submitting..." : "Submit"}
@@ -356,7 +362,7 @@ Full-time employment</MenuItem>
                         color="#fcfcfc"
                    
                     />
-                             </Grid>
+                             </Stack>
                 
                 </form>
                       

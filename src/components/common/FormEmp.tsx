@@ -24,7 +24,7 @@ const FormEmp = ({
 
         //FETCH DATA from applicant to creating employee
         const { queryResult } = useShow();
-        const { data, isLoading, isError } = queryResult;
+        const { data } = queryResult;
         const Info = data?.data ?? {};
        console.log(Info);
 
@@ -42,15 +42,18 @@ const FormEmp = ({
 <Stack
                             display="flex"
                             justifyContent="center"
-                            alignItems="baseline"
                             flexWrap="wrap"
                             padding={2}
-                            direction="row"
-                            gap={2}
+                            direction="column"
+                            alignItems="center"
+                            gap={1}
                         >
                      
 <Typography variant="h5">
-  Onboarding {Info.name} 
+   Employee: {Info.name} 
+</Typography>
+<Typography fontSize={16} color="#808191">
+ *Updating Employee Details
 </Typography>
 </Stack> 
 
@@ -196,6 +199,18 @@ const FormEmp = ({
                     </Stack>
 
                     <Stack direction="row" gap={4}>
+                    <FormControl>
+                            <TextField
+                                fullWidth
+                                
+                                id="standard-basic"
+                                color="primary"
+                                type="number"
+                                label="Age"
+                                variant="standard"
+                                {...register("age", { required: false })}
+                            />
+                        </FormControl>
                         <FormControl sx={{ flex: 1 }}>
                         <TextField
                                 fullWidth
@@ -209,18 +224,7 @@ const FormEmp = ({
                          
                         </FormControl>
                         
-                        <FormControl>
-                            <TextField
-                                fullWidth
-                                
-                                id="standard-basic"
-                                color="primary"
-                                type="number"
-                                label="Age"
-                                variant="standard"
-                                {...register("age", { required: false })}
-                            />
-                        </FormControl>
+                  
                     </Stack>
 
                     <FormControl>
@@ -275,15 +279,18 @@ const FormEmp = ({
                   
                     
                        {/* SUBMIT */}
-                       <Grid mt="10px">
+                       <Stack
+                        justifyContent="center"
+                        alignItems="center"
+                         mt="10px">
                              <CustomButton
                         type="submit"
-                        title={formLoading ? "Submitting..." : "SUBMIT"}
+                        title={formLoading ? "UPDATING..." : "UPDATE"}
                         backgroundColor="#475be8"
                         color="#fcfcfc"
                    
                     />
-                             </Grid>
+                             </Stack>
                 
                 </form>
                       
