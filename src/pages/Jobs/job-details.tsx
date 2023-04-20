@@ -187,7 +187,11 @@ const jobDetails = () => {
   justifyContent="flex-end"
   alignItems="flex-end"
   spacing={2}>
-     <DeleteButton hideText={false} recordItemId={id} onSuccess={() => {
+     <DeleteButton 
+                 confirmTitle="Close this Job posting?"
+                 confirmOkText="Yes"
+                 confirmCancelText="Cancel"
+     hideText={false} recordItemId={id} onSuccess={() => {
                navigate(
                 // DELETE
                 `/Jobs/`,  );      

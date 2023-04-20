@@ -185,7 +185,11 @@ const PropertyDetails = () => {
                             alignItems="flex-start"
                         >
                              
-                               <DeleteButton size="small" hideText={true} recordItemId={id} onSuccess={() => {
+                               <DeleteButton 
+                                           confirmTitle="Delete this application?"
+                                           confirmOkText="Delete"
+                                           confirmCancelText="Cancel"
+                               size="small" hideText={true} recordItemId={id} onSuccess={() => {
                navigate(
                 // DELETE
                 `/Applicants/`,  );      
