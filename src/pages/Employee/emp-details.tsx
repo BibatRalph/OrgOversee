@@ -41,9 +41,9 @@ const EmpDetails = () => {
       const [activeStep, setActiveStep] = React.useState(0);
       const [skipped, setSkipped] = React.useState(new Set<number>());
 
-    //   useEffect(() => {
-    //     setActiveStep(currentStage + 1); // This will always use latest value of count
-    // }, [currentStage]);
+      useEffect(() => {
+        setActiveStep(currentStage + 1); // This will always use latest value of count
+    }, [currentStage]);
 
   const isStepOptional = (step: number) => {
     return step === 1;
@@ -51,10 +51,6 @@ const EmpDetails = () => {
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
-  };
-
-  const handleNext = () => {
-    if (isCurrentUser) handleStageChange();
   };
 
   const handleBack = () => {
@@ -99,12 +95,12 @@ const EmpDetails = () => {
 
     const handleStageChange = () => {
         const response = confirm(
-            "Are you sure you want to Update this Applicant?",
+            "Are you sure you want to Update this Employee?",
         );
         if (response) {
             mutate(
                 {
-                    resource: "Applicants",
+                    resource: "Employee",
                     id: id as string,
                     values: {
                       stats: activeStep
