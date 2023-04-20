@@ -83,11 +83,11 @@ const ApplicantCard = ({
                      Process:{result}
                      
                     </Typography>
-                    <Stack direction="row" gap={0.5} alignItems="flex-start">
-                        <Typography fontSize={14} color="#808191">
+             
+                    <Typography fontSize={12} fontWeight={500}  color="#11142d">
                           Location:{location}
                         </Typography>
-                    </Stack>
+                  
                 
                 </Stack>
             </CardContent>
