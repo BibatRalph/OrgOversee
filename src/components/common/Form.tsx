@@ -57,6 +57,8 @@ const Form = ({
                             jobID: AppInfo.jobID,
                             name: AppInfo.name,
                             jobTitleTarget: AppInfo.jobTitleTarget,
+                            jobDepartmentTarget : AppInfo.jobDepartmentTarget, // job dep
+                            jobLocationTarget : AppInfo.jobLocationTarget // job loc
                             
                         },
                     },

@@ -40,6 +40,8 @@ const PropertyDetails = () => {
      const propertyDetails = data?.data ?? {};
      const currentStage = propertyDetails.stats;
 
+     console.log(propertyDetails.jobtarget);
+
       const [activeStep, setActiveStep] = React.useState(0);
       const [skipped, setSkipped] = React.useState(new Set<number>());
 
