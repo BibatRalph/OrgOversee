@@ -44,7 +44,7 @@ const Agents = () => {
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "20px",
-                backgroundColor: "#fcfcfc",
+               
             }}
         >
             {allAgents.map((agent) => (
@@ -62,11 +62,6 @@ const Agents = () => {
     </Grid>
     </Paper>
     </>
-        
-      
-
-    
-    
     );
 };
 

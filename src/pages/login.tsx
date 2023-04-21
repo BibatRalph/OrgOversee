@@ -1,12 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useLogin } from "@refinedev/core";
 import {  Box } from "@mui/material";
-
 import { OrgSL, OrgLOGO, IluCover,CenterCover,AbsCover2,AbsCover1} from "assets";
-
 import { CredentialResponse } from "../interfaces/google";
-
-
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -26,7 +22,6 @@ export const Login: React.FC = () => {
 
     const GoogleButton = (): JSX.Element => {
         const divRef = useRef<HTMLDivElement>(null);
-
         useEffect(() => {
             if (
                 typeof window === "undefined" ||
@@ -55,7 +50,6 @@ export const Login: React.FC = () => {
                 console.log(error);
             }
         }, []); // you can also add your client id as dependency here
-
         return <div ref={divRef} />;
     };
 

@@ -1,4 +1,3 @@
-
 import {
     Refine,
     LegacyAuthProvider as AuthProvider,
@@ -10,9 +9,6 @@ import {
     ErrorComponent,
 } from "@refinedev/mui";
 import { CssBaseline, GlobalStyles } from "@mui/material";
-
-
-
 import dataProvider from "@refinedev/simple-rest";
 import routerProvider from "@refinedev/react-router-v6/legacy";
 import axios, { AxiosRequestConfig } from "axios";
@@ -29,7 +25,8 @@ import {
     PropertyDetails,AllProperties,CreateProperty,EditProperty,
     AgentProfile,
     editJobs,createJobs,allJobs,jobDetails,
-    createEmp,allEmp,editEmp,EmpDetails
+    createEmp,allEmp,editEmp,EmpDetails,
+    PendingOff
 } from "pages";
 
 //ICONS
@@ -41,6 +38,8 @@ import {
     AccountCircleOutlined,
     PeopleAltOutlined,
 } from "@mui/icons-material";
+import AlarmAddIcon from '@mui/icons-material/AlarmAdd';
+import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 
 
 
@@ -153,6 +152,7 @@ function App() {
                             // Applicants
                             // ex properties
                             name: "Applicants",
+                            options: { label: "Recruitment"},
                             list: AllProperties,
                             show: PropertyDetails,
                             create: CreateProperty,
@@ -170,6 +170,13 @@ function App() {
                             icon: <PeopleAltOutlined />,
                         },
                         {
+
+                            name: "My-profile",
+                            options: { label: "My-Profile " },
+                            list: MyProfile,
+                            icon: <AccountCircleOutlined />,
+                        },
+                        {
                             //Talents
                             //ex Agents
                             name: "Talents",
@@ -177,17 +184,19 @@ function App() {
                             show: AgentProfile,
                              icon: <BadgeOutlinedIcon />,
                         },
-                        {
-
-                            name: "My-profile",
-                            options: { label: "My Profile " },
-                            list: MyProfile,
-                            icon: <AccountCircleOutlined />,
-                        },
+                    
                         {
                             name: "Timeoff",
+                            options: { label: "Time-Off" },
+                            list: PendingOff,
+                            icon: <AlarmAddIcon />,
+                    
+                          },
+                          {
+                            name: "ApproveTimeoff",
+                            options: { label: "Approved-Off"},
                             list: Home,
-                            icon: <HighlightOffOutlinedIcon />,
+                            icon: <AlarmOnIcon />,
                     
                           },
                           
