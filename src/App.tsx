@@ -188,13 +188,14 @@ function App() {
                             name: "Timeoff",
                             options: { label: "Time-Off" },
                             list: PendingOff,
+                            create: CreateOff,
                             icon: <AlarmAddIcon />,
-                    
                           },
                           {
                             name: "ApproveTimeoff",
                             options: { label: "Approved-Off"},
                             list: ApproveOff,
+
                             icon: <AlarmOnIcon />,
                     
                           },

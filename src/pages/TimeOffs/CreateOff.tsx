@@ -1,6 +1,15 @@
+import * as React from 'react';
 import { Box, Stack, Paper, Grid ,Typography } from "@mui/material";
+import { DatePicker, LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+
+import { Dayjs } from 'dayjs';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 
 const CreateOff = () => {
+
+  const [value, setValue] = React.useState<Dayjs | null>(null);
+  console.log(value);
   return (
     <>
     <Paper
@@ -24,7 +33,7 @@ sx={{
                         >
                      
 <Typography variant="h5">
-Pending Time-Off
+Create Time-Off
 </Typography>
 </Stack>
 {/* CONTENT */}
@@ -36,7 +45,16 @@ Pending Time-Off
             gap: "20px",
         }}
     >
-      
+      <Stack>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+  
+<StaticDatePicker  value={value} onChange={(newValue) => setValue(newValue)} orientation="landscape" />
+
+</LocalizationProvider>
+
+      </Stack>
+  
+    
       
     </Box>
 </Grid>
