@@ -175,13 +175,13 @@ const OffCard = ({
             {/* handleApprove */}
 
             <CustomButton
-                                title={offStats = "Approve" ? "Complete" : "APPROVE"}
+                                title={offStats === "Approved" ? "Complete" : "APPROVE"}
                                 backgroundColor=""
                                 color="info"
                                 fullWidth
                                 handleClick={() => {
-                                    if (offStats = "Approve") {
-                                        alert("TEST GOOD")
+                                    if (offStats === "Approved") {
+                                        alert("Request Already Approved")
                                     }
                                     else
                                     {
