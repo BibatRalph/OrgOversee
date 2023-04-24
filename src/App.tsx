@@ -26,14 +26,13 @@ import {
     AgentProfile,
     editJobs,createJobs,allJobs,jobDetails,
     createEmp,allEmp,editEmp,EmpDetails,
-    PendingOff
+    PendingOff,ApproveOff,CreateOff,PendingOffDetails,
 } from "pages";
 
 //ICONS
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 import {
     AccountCircleOutlined,
     PeopleAltOutlined,
@@ -195,7 +194,7 @@ function App() {
                           {
                             name: "ApproveTimeoff",
                             options: { label: "Approved-Off"},
-                            list: Home,
+                            list: ApproveOff,
                             icon: <AlarmOnIcon />,
                     
                           },

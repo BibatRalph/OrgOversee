@@ -20,6 +20,10 @@ import editEmp from "./Employee/edit-emp";
 import EmpDetails from "./Employee/emp-details";
 //OFF
 import PendingOff from "./TimeOffs/PendingOff";
+import ApproveOff from "./TimeOffs/ApproveOff";
+import CreateOff from "./TimeOffs/CreateOff";
+import PendingOffDetails from "./TimeOffs/PendingOffDetails";
+// import Off from "./TimeOffs";
 export {
     AgentProfile,
     Agents,
@@ -29,5 +33,5 @@ export {
     MyProfile,
     editJobs,createJobs,allJobs,jobDetails,
     allEmp,createEmp,editEmp,EmpDetails,
-    PendingOff
+    PendingOff,ApproveOff,CreateOff,PendingOffDetails,
 };
