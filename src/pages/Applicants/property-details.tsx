@@ -179,11 +179,26 @@ const PropertyDetails = () => {
             <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
                   Application status: Stage {propertyDetails.stats + 1} {propertyDetails.result}
             </Typography>
+            
             <Stack
                             direction="row"
                             justifyContent="flex-end"
                             alignItems="flex-start"
                         >
+                              <CustomButton
+                                title="UPDATE"
+                                backgroundColor=""
+                                color="info"
+                                   icon={<Edit />}
+                                handleClick={() => {
+                                   
+                                        navigate(
+                                            // EDIT
+                                            `/Applicants/edit/${propertyDetails._id}`,
+                                        );
+                                   
+                                }}
+                            /> 
                              
                                <DeleteButton 
                                            confirmTitle="Delete this application?"
@@ -194,6 +209,7 @@ const PropertyDetails = () => {
                 // DELETE
                 `/Applicants/`,  );      
             }} />         
+            
     </Stack>
      
         </Stack>
@@ -209,9 +225,9 @@ const PropertyDetails = () => {
                       <Stack  
                         direction="column"
                         justifyContent="space-between"
-                      width="100%"  padding={3}
+                      width="100%"  
                       >
-            <Box >         
+             
          <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps: { completed?: boolean } = {};
@@ -232,22 +248,10 @@ const PropertyDetails = () => {
             </Step>
           );
         })}
-             <CustomButton
-                                title="UPDATE"
-                                backgroundColor=""
-                                color="info"
-                                   icon={<Edit />}
-                                handleClick={() => {
-                                   
-                                        navigate(
-                                            // EDIT
-                                            `/Applicants/edit/${propertyDetails._id}`,
-                                        );
-                                   
-                                }}
-                            /> 
+           
       </Stepper>
-      </Box>   
+      
+      
       
       {activeStep === steps.length ? (
         <React.Fragment>
@@ -453,6 +457,8 @@ const PropertyDetails = () => {
           </Box>
         </React.Fragment>
       )}
+  
+
        
                      
                     

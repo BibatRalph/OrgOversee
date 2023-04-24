@@ -21,7 +21,7 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import Button from '@mui/material/Button';
 
-const steps = ['Onboarded', 'Initiate Exit', 'Documentation Process', ' Exit Interview', 'Recover Assets','Post-exit Formalities'];
+const steps = ['Onboarded','Documentation Process', ' Exit Interview', ];
 
 const EmpDetails = () => {
      //MAIN
@@ -45,9 +45,7 @@ const EmpDetails = () => {
         setActiveStep(currentStage + 1); // This will always use latest value of count
     }, [currentStage]);
 
-  const isStepOptional = (step: number) => {
-    return step === 1;
-  };
+
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
@@ -58,11 +56,7 @@ const EmpDetails = () => {
   };
 
   const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
+
     setActiveStep(activeStep + 1);
     setSkipped((prevSkipped) => {
       const newSkipped = new Set(prevSkipped.values());
@@ -145,46 +139,7 @@ const EmpDetails = () => {
             <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
            Job ID:{empDetails.jobID}
             </Typography>
-      
-     
-        </Stack>
-         
-            {/* CONTENT */}
-            <Box  
-                mt="20px"
-                display="flex"
-                flexDirection={{ xs: "column", lg: "row" }}
-                gap={4}
-            >
-  
-                                {/* STEPS */}
-                      <Stack  
-                        direction="column"
-                        justifyContent="space-between"
-                      
-                      width="100%"  padding={3}
-                      >
-         <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps: { completed?: boolean } = {};
-          const labelProps: {
-            optional?: React.ReactNode;
-          } = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-           <CustomButton
+            <CustomButton
                                 title="UPDATE"
                                 backgroundColor=""
                                 color="info"
@@ -198,6 +153,42 @@ const EmpDetails = () => {
                                    
                                 }}
                             /> 
+      
+     
+        </Stack>
+         
+            {/* CONTENT */}
+            <Box  
+                mt="20px"
+                display="flex"
+                flexDirection={{ xs: "column", lg: "row" }}
+                gap={4}
+                
+            >
+  
+                                {/* STEPS */}
+                      <Stack  
+                        direction="column"
+                        justifyContent="space-between"
+                      width="100%" 
+                      >
+         <Stepper activeStep={activeStep}>
+        {steps.map((label, index) => {
+          const stepProps: { completed?: boolean } = {};
+          const labelProps: {
+            optional?: React.ReactNode;
+          } = {};
+       
+          if (isStepSkipped(index)) {
+            stepProps.completed = false;
+          }
+          return (
+            <Step key={label} {...stepProps}>
+              <StepLabel {...labelProps}>{label}</StepLabel>
+            </Step>
+          );
+        })}
+       
       </Stepper>
       {activeStep === steps.length ? (
         <React.Fragment>
@@ -249,7 +240,7 @@ const EmpDetails = () => {
             {/* IF steps not complete show this */}
               {/* CONTents */}
 
-              <Box sx={{ flex: '1 1 auto' }} mt="15px" padding={3}  border="1px solid #E4E4E4" borderRadius={2}>
+              <Box sx={{ flex: '1 1 auto' }} mt="15px" padding={3}>
                       <Stack
                          flexWrap="wrap"
                          direction="row"
@@ -419,11 +410,6 @@ const EmpDetails = () => {
             <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
                   *Here to initiate offboarding
             </Typography>
-            {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )}
             <Button onClick={handleStageChange}>
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
