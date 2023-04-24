@@ -39,6 +39,7 @@ const { queryResult } = useShow();
                     email: user.email, //  email
                     id: user._id, //  id 
                     name: user.name, //  name
+                    avatar: user.avatar
                 },
             },
             {

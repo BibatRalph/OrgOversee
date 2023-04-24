@@ -1,7 +1,33 @@
-import { Box, Stack, Paper, Grid ,Typography } from "@mui/material";
+import { Box, Stack, Paper, Grid ,Typography, Select, MenuItem } from "@mui/material";
 import { CreateButton } from "@refinedev/mui";
+import { useList, useTable } from "@refinedev/core";
+import OffCard from "components/agent/OffCard";
+import { useMemo } from "react";
 
 const PendingOff = () => {
+
+  const {
+    tableQueryResult: { data, isLoading, isError },
+    filters,
+    setFilters,
+} = useTable();
+
+    const allOffPending = data?.data ?? [];
+
+  const currentFilterValues = useMemo(() => {
+    const logicalFilters = filters.flatMap((item) =>
+        "field" in item ? item : [],
+    );
+
+    return {
+        propsType:
+            logicalFilters.find((item) => item.field === "offStats")
+                ?.value || "Pending",
+    };
+}, [filters]);
+
+if (isLoading) return <div>loading...</div>;
+if (isError) return <div>error...</div>;
   return (
     <>
     <Paper
@@ -28,6 +54,31 @@ sx={{
 Pending Time-Off
 </Typography>
 <CreateButton></CreateButton>
+<Select
+                                variant="outlined"
+                                color="primary"
+                                displayEmpty
+                                required
+                                size="small"
+                                inputProps={{ "aria-label": "Without label" }}
+                                defaultValue="1"
+                                value={currentFilterValues.propsType}
+                                onChange={(e) => {
+                                    setFilters(
+                                        [
+                                            {
+                                                field: "offStats",
+                                                operator: "eq",
+                                                value: e.target.value,
+                                            },
+                                        ],
+                                        "replace",
+                                    );
+                                }}
+                            >
+                                <MenuItem value="Pending">Pending</MenuItem>
+                                <MenuItem value="Approved">Approved</MenuItem>
+                            </Select>    
 </Stack>
 {/* CONTENT */}
 <Box
@@ -38,6 +89,17 @@ Pending Time-Off
             gap: "20px",
         }}
     >
+        {allOffPending.map((props) => (
+                <OffCard
+                    key={props._id}
+                    id={props._id}
+                    name={props.name}
+                    date={props.date}
+                    email={props.email}
+                    avatar={props.avatar}
+                    offStats={props.offStats}
+                />
+            ))}
       
       
     </Box>

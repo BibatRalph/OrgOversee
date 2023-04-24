@@ -8,6 +8,14 @@ export interface AgentCardProp {
     noOfApps: number;
     noOfJobs: number;
 }
+export interface OffCardProp {
+    id?: BaseKey | undefined;
+    name: string;
+    date: string;
+    email: string;
+    avatar: string;
+    offStats: string;
+}
 
 export interface InfoBarProps {
     icon: ReactNode;
