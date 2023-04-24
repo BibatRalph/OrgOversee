@@ -111,8 +111,9 @@ sx={{
                             direction="row"
                             gap={2}
                         >
+                            
                                <CreateButton
-                                variant="outlined"
+                
                                 sx={{ marginBottom: "5px" }}
                             >
                                Create Job
@@ -128,45 +129,6 @@ sx={{
                                 color="primary"
                                
                             />
-
-                                {/* <Select
-                                variant="outlined"
-                                color="primary"
-                                displayEmpty
-                                required
-                                size="small"
-                                inputProps={{ "aria-label": "Without label" }}
-                                defaultValue=""
-                                value={currentFilterValues.jobType}
-                                onChange={(e) => {
-                                    setFilters(
-                                        [
-                                            {
-                                                field: "jobType",
-                                                operator: "eq",
-                                                value: e.target.value,
-                                            },
-                                        ],
-                                        "replace",
-                                    );
-                                }}
-                            >
-                                <MenuItem value="">All</MenuItem>
-                                {[
-                                    
-                                    "Full-time employment",
-                                    "Part-time employment",
-                                    
-                                ].map((type) => (
-                                    <MenuItem
-                                        key={type}
-                                        value={type.toLowerCase()}
-                                    >
-                                        {type}
-                                    </MenuItem>
-                                ))}
-                            </Select>     */}
-                        
 
    </Stack>
        {/* END OF TOP BAR */}

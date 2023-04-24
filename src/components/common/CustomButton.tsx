@@ -12,7 +12,6 @@ const CustomButton = ({
     handleClick,
     disabled,
     
-    
 }: CustomButtonProps) => {
     return (
         <Button

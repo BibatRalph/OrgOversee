@@ -1,4 +1,5 @@
 import { Box, Stack, Paper, Grid ,Typography } from "@mui/material";
+import { CreateButton } from "@refinedev/mui";
 
 const PendingOff = () => {
   return (
@@ -26,6 +27,7 @@ sx={{
 <Typography variant="h5">
 Pending Time-Off
 </Typography>
+<CreateButton></CreateButton>
 </Stack>
 {/* CONTENT */}
 <Box

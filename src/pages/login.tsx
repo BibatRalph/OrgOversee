@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLogin } from "@refinedev/core";
-import {  Box } from "@mui/material";
+import {  Box, Stack } from "@mui/material";
 import { OrgSL, OrgLOGO, IluCover,CenterCover,AbsCover2,AbsCover1} from "assets";
 import { CredentialResponse } from "../interfaces/google";
 import * as React from 'react';
@@ -42,8 +42,8 @@ export const Login: React.FC = () => {
                     },
                 });
                 window.google.accounts.id.renderButton(divRef.current, {
-                    theme: "filled_blue",
-                    size: "medium",
+                    theme: "outline",
+                    size: "large",
                     type: "standard",
                 });
             } catch (error) {
@@ -86,7 +86,7 @@ export const Login: React.FC = () => {
             Sign in
             </Typography>
 
-            <Box component="form" noValidate sx={{ mt: 1 }}>
+            {/* <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -138,12 +138,21 @@ export const Login: React.FC = () => {
                   </Link>
                 </Grid>
               </Grid>
-            </Box>
+            </Box> */}
 
-               {/* MAIN LOGIN */}                 
-               <GoogleButton />  
+                  {/* MAIN LOGIN */}         
+                  <Box mt={5}>
+                  <GoogleButton />  
+                    </Box>        
+          
                 {/* END LOGIN */}
           </Box>
+         
+      
+       
+
+     
+        
         </Grid>
         
       </Grid>

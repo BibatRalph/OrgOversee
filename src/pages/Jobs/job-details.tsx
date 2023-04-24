@@ -10,7 +10,7 @@ import {
 } from "@mui/icons-material";
 import { CustomButton } from "components";
 import { DeleteButton } from "@refinedev/mui";
-
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
 //Check IMG
 function checkImage(url: any) {
@@ -208,8 +208,8 @@ const jobDetails = () => {
                     <Box mt={3}>
                         <CustomButton
                             disabled={!isCurrentUser ? false : true }
-                            title={!isCurrentUser ? "Apply" : "You own this job cannot apply" }
-                            backgroundColor={!isCurrentUser ? "#475BE8" : "#FCFCFC" }
+                            title={!isCurrentUser ? "Apply" : "You created this, Job cannot apply" }
+                            backgroundColor={!isCurrentUser ? "#67be23" : "#FCFCFC" }
                             color="#FCFCFC"
                             fullWidth
                             handleClick={() => {
@@ -339,12 +339,12 @@ const jobDetails = () => {
                         >
                               
                             <CustomButton
-                                title={!isCurrentUser ? "Message" : "Edit"}
+                                title={!isCurrentUser ? "PROFILE" : "EDIT"}
                                 backgroundColor=""
                                 color="info"
                                 fullWidth
                                 icon={
-                                    !isCurrentUser ? <ChatBubble /> : <Edit />
+                                    !isCurrentUser ? <PersonSearchIcon /> : <Edit />
                                 }
                                 handleClick={() => {
                                     if (isCurrentUser) {
@@ -353,7 +353,13 @@ const jobDetails = () => {
                                             `/Jobs/edit/${jobDetails._id}`,
                                         );
                                     }
-                                }}
+                                    else
+                                    {
+                                        navigate(
+                                            // EDIT
+                                            `/Talents/show/${jobDetails.creator._id}`,
+                                        );
+                                    }}} 
                             /> 
                      
                         </Stack>

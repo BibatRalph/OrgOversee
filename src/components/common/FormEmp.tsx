@@ -286,7 +286,7 @@ const FormEmp = ({
                              <CustomButton
                         type="submit"
                         title={formLoading ? "UPDATING..." : "UPDATE"}
-                        backgroundColor="#475be8"
+                        backgroundColor="#67be23"
                         color="#fcfcfc"
                    
                     />

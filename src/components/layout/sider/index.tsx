@@ -197,11 +197,11 @@ export const Sider: typeof DefaultSider = ({ render }) => {
                                 "&.Mui-selected": {
                                     "&:hover": {
                                         backgroundColor: isSelected
-                                            ? "#1e36e8"
+                                            ? "#52981c"
                                             : "transparent",
                                     },
                                     backgroundColor: isSelected
-                                        ? "#475be8"
+                                        ? "#67be23"
                                         : "transparent",
                                 },
                                 justifyContent: "center",
@@ -436,13 +436,13 @@ export const Sider: typeof DefaultSider = ({ render }) => {
                     </Box>
                     <Button
                         sx={{
-                            background: "#475BE8",
+                            background: "#67be23",
                             color: "primary.contrastText",
                             textAlign: "center",
                             borderRadius: 0,
                             borderTop: "1px solid #ffffff1a",
                             "&:hover": {
-                                background: "#1e36e8",
+                                background: "#52981c",
                             },
                         }}
                         fullWidth

@@ -442,10 +442,10 @@ Update Applicant Details
                              <CustomButton
                         type="submit"
                         title={formLoading ? "UPDATING..." : "UPDATE"}
-                        backgroundColor="#475be8"
+                        backgroundColor="#67be23"
                         color="#fcfcfc"/>
 
-                           <Button size="large" color="info" variant="outlined" onClick={handleOnboard}> 
+                           <Button size="large" color="primary" variant="outlined" onClick={handleOnboard}> 
                            Onboard </Button>
                              </Stack>
                              <Stack
