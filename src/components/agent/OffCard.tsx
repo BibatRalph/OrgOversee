@@ -1,8 +1,10 @@
 import { EmailOutlined, Place} from "@mui/icons-material";
-import { useGetIdentity } from "@refinedev/core";
-import { Box, Stack, Typography } from "@mui/material";
+import { useGetIdentity, useUpdate } from "@refinedev/core";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { InfoBarProps, OffCardProp } from "interfaces/agent";
+import { DeleteButton } from "@refinedev/mui";
+import CustomButton from "components/common/CustomButton";
 
 function checkImage(url: any) {
     const img = new Image();
@@ -24,6 +26,8 @@ const InfoBar = ({ icon, name }: InfoBarProps) => (
     </Stack>
 );
 
+
+
 const OffCard = ({
     id,
     name,
@@ -32,6 +36,32 @@ const OffCard = ({
     date,
     offStats,
 }: OffCardProp) => {
+
+    const { mutate } = useUpdate();
+
+    const handleApprove = () => {
+        const response = confirm(
+            "Are you sure you want to Update this Applicant?",
+        );
+        if (response) {
+            mutate(
+                {
+                    resource: "Timeoff",
+                    id: id as string,
+                    values: {
+                      offStats: "Approved"
+                  },
+                 
+                  
+                },
+                {
+                    onSuccess: () => {
+                        // NOTHING
+                    },
+                },
+            );
+        }
+    };
 
     function date_TO_String(date_Object: Date): string {
         // get the year, month, date, hours, and minutes seprately and append to the string.
@@ -65,8 +95,6 @@ const OffCard = ({
 
   return (
     <Box
-    component={Link}
-    to={generateLink()}
     width="100%"
     sx={{
         display: "flex",
@@ -75,9 +103,10 @@ const OffCard = ({
         padding: "20px",
         "&:hover": {
             boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.2)",
+            transform: "scale3d(1.01, 1.01, 1)"
             
         },
-        cursor: "pointer",
+        cursor: "default",
     }}
 >      <Stack
   direction="row"
@@ -92,6 +121,7 @@ const OffCard = ({
             
 
     <img
+  
         src={
             checkImage(avatar)
                 ? avatar
@@ -114,13 +144,19 @@ const OffCard = ({
             flexWrap="wrap"
             alignItems="center"
         >
-            <Typography fontSize={22} fontWeight={600} color="#11142d">
+            <Typography fontSize={22} fontWeight={600} color="#11142d"      
+            component={Link} to={generateLink()}>
                 {name}
             </Typography>
-            
             <Typography fontSize={14} color="#808191">
-            Request for Time-Off : {date_String}
+            ID : {id}
             </Typography>
+      
+           <Typography fontSize={14} color="#808191">
+            Status : {offStats}
+            </Typography>
+            
+          
         </Stack>
         <Stack
             direction="row"
@@ -133,17 +169,37 @@ const OffCard = ({
                 icon={<EmailOutlined sx={{ color: "#808191" }} />}
                 name={email}
             />
-            <Typography fontSize={14} color="#808191">
-            ID : {id}
+      <Typography fontSize={14} color="#808191">
+            Request for Time-Off : {date_String}
             </Typography>
-      
-           <Typography fontSize={14} color="#808191">
-            Status : {offStats}
-            </Typography>
-           
+            {/* handleApprove */}
+
+            <CustomButton
+                                title={offStats = "Approve" ? "Complete" : "APPROVE"}
+                                backgroundColor=""
+                                color="info"
+                                fullWidth
+                                handleClick={() => {
+                                    if (offStats = "Approve") {
+                                        alert("TEST GOOD")
+                                    }
+                                    else
+                                    {
+                                        handleApprove()
+                                    }
+                                }} 
+                            /> 
+
+            <DeleteButton    confirmTitle="Reject this request?"
+                 confirmOkText="Yes"
+                 confirmCancelText="Cancel"
+                 size="small" recordItemId={id} />
         </Stack>
+        
     </Stack>
+    
 </Box>
+
   )
 }
 

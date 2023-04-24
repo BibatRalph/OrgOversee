@@ -55,6 +55,7 @@ const AgentCard = ({
                 padding: "20px",
                 "&:hover": {
                     boxShadow: "0 22px 45px 2px rgba(176, 176, 176, 0.2)",
+                    transform: "scale3d(1.01, 1.01, 1)"
                     
                 },
                 cursor: "pointer",

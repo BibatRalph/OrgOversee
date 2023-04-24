@@ -1,8 +1,9 @@
 import { Box, Stack, Paper, Grid ,Typography, Select, MenuItem } from "@mui/material";
 import { CreateButton } from "@refinedev/mui";
-import { useList, useTable } from "@refinedev/core";
+import {  useTable } from "@refinedev/core";
 import OffCard from "components/agent/OffCard";
 import { useMemo } from "react";
+
 
 const PendingOff = () => {
 
@@ -13,7 +14,7 @@ const PendingOff = () => {
 } = useTable();
 
     const allOffPending = data?.data ?? [];
-
+ 
   const currentFilterValues = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
         "field" in item ? item : [],
@@ -100,9 +101,19 @@ Pending Time-Off
                     offStats={props.offStats}
                 />
             ))}
-      
+         
+        
       
     </Box>
+    <Stack
+    mt={3}  
+    direction="row"
+            justifyContent="flex-end"
+            alignItems="flex-end">
+            <Typography fontSize={14} color="#808191">
+            *Click Employee name to navigate to profile
+            </Typography>
+              </Stack>
 </Grid>
 </Paper>
 </>
@@ -110,3 +121,4 @@ Pending Time-Off
 }
 
 export default PendingOff
+
