@@ -152,6 +152,7 @@ const PropertyDetails = () => {
   
 
     return (
+   
         < >
         
         <Paper
@@ -437,23 +438,33 @@ const PropertyDetails = () => {
 {/* END OF CONTENTS */}
      
 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              Back
-            </Button>
+    
             <Box sx={{ flex: '1 1 auto' }} />
+        
+                <CustomButton
+            disabled={activeStep === 0}
+            title="Back"
+            backgroundColor=""
+            color=""
+            handleClick={handleBack}
+            ></CustomButton>
+
             {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
+                           <CustomButton
+                           title="Skip"
+                           backgroundColor=""
+                           color=""
+                           handleClick={handleSkip}
+                           ></CustomButton>
             )}
-            <Button onClick={handleStageChange}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button>
+ 
+
+            <CustomButton
+            title={activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+            backgroundColor=""
+            color=""
+            handleClick={handleStageChange}
+            ></CustomButton>
           </Box>
         </React.Fragment>
       )}
@@ -468,6 +479,7 @@ const PropertyDetails = () => {
             </Grid>
             </Paper>
         </>
+        
     );
 };
 
