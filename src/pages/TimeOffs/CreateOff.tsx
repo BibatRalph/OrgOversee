@@ -26,7 +26,7 @@ const { queryResult } = useShow();
 
   const handleCreateOff = () => {
     const response = confirm(
-        "Are you sure you want to Apply for this Time-Off?",
+        "Are you sure you want to set this date for Time-Off?",
     );
     if (response) {
         mutate(
@@ -91,7 +91,14 @@ Create Time-Off
       >
 <Stack >
 <LocalizationProvider dateAdapter={AdapterDayjs}> 
-<StaticDatePicker  value={value} onChange={(newValue) => setValue(newValue)} orientation="landscape" />
+<StaticDatePicker
+       value={value} onChange={(newValue) => setValue(newValue)} orientation="landscape"
+        slotProps={{
+          actionBar: {
+            actions: ['today'],
+          },
+        }}
+      />
 </LocalizationProvider>  
   </Stack>         
                         <Stack

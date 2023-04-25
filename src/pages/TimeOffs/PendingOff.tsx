@@ -29,6 +29,7 @@ const PendingOff = () => {
     };
 }, [filters]);
 
+
 if (isLoading) return <div>loading...</div>;
 if (isError) return <div>error...</div>;
   return (
@@ -54,7 +55,7 @@ sx={{
                         >
                      
 <Typography variant="h5">
-Pending Time-Off
+Pending and Approved Time-Offs
 </Typography>
 <CreateButton></CreateButton>
 <Select

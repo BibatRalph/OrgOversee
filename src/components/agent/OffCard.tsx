@@ -1,6 +1,6 @@
 import { EmailOutlined, Place} from "@mui/icons-material";
 import { useGetIdentity, useUpdate } from "@refinedev/core";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { InfoBarProps, OffCardProp } from "interfaces/agent";
 import { DeleteButton } from "@refinedev/mui";
@@ -76,7 +76,6 @@ const OffCard = ({
       let new_date: Date = new Date(date);
       // calling the date_TO_String function
       let date_string = date_TO_String(new_date);
-      console.log("The date string is " + date_string);
     //=Custom date
      
     let OffDate: Date = new Date(date);

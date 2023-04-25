@@ -1,4 +1,8 @@
 import { Box, Stack, Paper, Grid ,Typography } from "@mui/material";
+import * as React from 'react';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 const ApproveOff = () => {
   return (
@@ -24,7 +28,7 @@ sx={{
                         >
                      
 <Typography variant="h5">
-Approve Time-Off
+Calendar
 </Typography>
 </Stack>
 {/* CONTENT */}
@@ -36,7 +40,12 @@ Approve Time-Off
             gap: "20px",
         }}
     >
-      
+         <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DateCalendar 
+      readOnly
+      // value={}
+      />
+    </LocalizationProvider>
       
     </Box>
 </Grid>

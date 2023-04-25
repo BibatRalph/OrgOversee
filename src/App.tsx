@@ -192,8 +192,8 @@ function App() {
                             icon: <AlarmAddIcon />,
                           },
                           {
-                            name: "ApproveTimeoff",
-                            options: { label: "Approved-Off"},
+                            name: "Calendar",
+                            options: { label: "Calendar"},
                             list: ApproveOff,
 
                             icon: <AlarmOnIcon />,
