@@ -113,7 +113,7 @@ sx={{
                         >
                             
                                <CreateButton
-                
+                                accessControl={{ enabled: true, hideIfUnauthorized: true }}
                                 sx={{ marginBottom: "5px" }}
                             >
                                Create Job
