@@ -92,6 +92,7 @@ Create Time-Off
 <Stack >
 <LocalizationProvider dateAdapter={AdapterDayjs}> 
 <StaticDatePicker
+        disablePast
        value={value} onChange={(newValue) => setValue(newValue)} orientation="landscape"
         slotProps={{
           actionBar: {

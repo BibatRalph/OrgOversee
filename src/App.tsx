@@ -26,7 +26,7 @@ import {
     AgentProfile,
     editJobs,createJobs,allJobs,jobDetails,
     createEmp,allEmp,editEmp,EmpDetails,
-    PendingOff,ApproveOff,CreateOff,PendingOffDetails,
+    PendingOff,CreateOff,
 } from "pages";
 
 //ICONS
@@ -38,7 +38,6 @@ import {
     PeopleAltOutlined,
 } from "@mui/icons-material";
 import AlarmAddIcon from '@mui/icons-material/AlarmAdd';
-import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 
 
 
@@ -190,14 +189,6 @@ function App() {
                             list: PendingOff,
                             create: CreateOff,
                             icon: <AlarmAddIcon />,
-                          },
-                          {
-                            name: "Calendar",
-                            options: { label: "Calendar"},
-                            list: ApproveOff,
-
-                            icon: <AlarmOnIcon />,
-                    
                           },
                           
                     ]}
