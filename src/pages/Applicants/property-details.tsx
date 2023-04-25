@@ -117,7 +117,8 @@ const PropertyDetails = () => {
     }
 
     // check if user is the current user
-    const isCurrentUser = user.email === propertyDetails.creator.email;
+    const isCurrentUser = user._id === propertyDetails.jobOwner._id;
+
 
     const handleStageChange = () => {
         const response = confirm(

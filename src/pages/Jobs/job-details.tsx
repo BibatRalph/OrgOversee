@@ -42,6 +42,9 @@ const jobDetails = () => {
   }
 
   const isCurrentUser = user.email === jobDetails.creator.email;
+
+  
+  
 // CREATE APPLICANTS
   const handleApplyJob = () => {
     const response = confirm(
@@ -60,7 +63,8 @@ const jobDetails = () => {
                     name: user.name, // applicant name
                     jobTitleTarget: jobDetails.jobTitle, // job title
                     jobDepartmentTarget : jobDetails.department, // job dep
-                    jobLocationTarget : jobDetails.location // job loc
+                    jobLocationTarget : jobDetails.location, // job loc
+                    jobOwner: jobDetails.creator // jobOwner
                 },
             },
             {
