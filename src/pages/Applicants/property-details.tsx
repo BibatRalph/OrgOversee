@@ -117,8 +117,16 @@ const PropertyDetails = () => {
     }
 
     // check if user is the current user
-    const isCurrentUser = user._id === propertyDetails.jobOwner._id;
+    const isCurrentUser = user.userid === propertyDetails.jobOwner;
 
+
+    // console.log(user.userid)
+    // console.log(propertyDetails.jobOwner)
+   
+    // if(isCurrentUser)
+    // {
+    //   console.log("test")
+    // }
 
     const handleStageChange = () => {
         const response = confirm(
@@ -181,38 +189,43 @@ const PropertyDetails = () => {
             <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
                   Application status: Stage {propertyDetails.stats + 1} {propertyDetails.result}
             </Typography>
-            
-            <Stack
-                            direction="row"
-                            justifyContent="flex-end"
-                            alignItems="flex-start"
-                        >
-                              <CustomButton
-                                title="UPDATE"
-                                backgroundColor=""
-                                color="info"
-                                   icon={<Edit />}
-                                handleClick={() => {
-                                   
-                                        navigate(
-                                            // EDIT
-                                            `/Applicants/edit/${propertyDetails._id}`,
-                                        );
-                                   
-                                }}
-                            /> 
-                             
-                               <DeleteButton 
-                                           confirmTitle="Delete this application?"
-                                           confirmOkText="Delete"
-                                           confirmCancelText="Cancel"
-                               size="small" hideText={true} recordItemId={id} onSuccess={() => {
-               navigate(
-                // DELETE
-                `/Applicants/`,  );      
-            }} />         
-            
-    </Stack>
+            {isCurrentUser? 
+  <Stack
+  direction="row"
+  justifyContent="flex-end"
+  alignItems="flex-start"
+>
+    <CustomButton
+      title="UPDATE"
+      backgroundColor=""
+      color="info"
+         icon={<Edit />}
+      handleClick={() => {
+         
+              navigate(
+                  // EDIT
+                  `/Applicants/edit/${propertyDetails._id}`,
+              );
+         
+      }}
+  /> 
+   
+     <DeleteButton 
+                 confirmTitle="Delete this application?"
+                 confirmOkText="Delete"
+                 confirmCancelText="Cancel"
+     size="small" hideText={true} recordItemId={id} onSuccess={() => {
+navigate(
+// DELETE
+`/Applicants/`,  );      
+}} />         
+
+</Stack>
+            :
+
+<Stack></Stack>
+            }
+          
      
         </Stack>
          
@@ -263,8 +276,12 @@ const PropertyDetails = () => {
             <Typography sx={{ mt: 2, mb: 1 }}>
             All stages completed - Applicant ready to onboard
           </Typography>
+
+{/* buttons */}
+{isCurrentUser ? <Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
+
 
              <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
              *Develelopment and demonstration purposes
@@ -283,6 +300,8 @@ const PropertyDetails = () => {
              </Typography>
 
            </Stack>
+          </Box>
+          : <Stack></Stack> }
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -439,9 +458,14 @@ const PropertyDetails = () => {
 {/* END OF CONTENTS */}
      
 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-    
-            <Box sx={{ flex: '1 1 auto' }} />
+
+<Box sx={{ flex: '1 1 auto' }}/>   
         
+     
+{isCurrentUser ? <Box sx={{ flex: '1 1 auto' }}>
+
+ 
+
                 <CustomButton
             disabled={activeStep === 0}
             title="Back"
@@ -466,10 +490,19 @@ const PropertyDetails = () => {
             color=""
             handleClick={handleStageChange}
             ></CustomButton>
+            
+           
+
           </Box>
+
+          : <Box sx={{ flex: '1 1 auto' }}>
+          </Box>
+          }
+          </Box>
+          
         </React.Fragment>
       )}
-  
+
 
        
                      
