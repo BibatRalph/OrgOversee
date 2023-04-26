@@ -445,17 +445,28 @@ Update Applicant Details
                         backgroundColor="#67be23"
                         color="#fcfcfc"/>
 
-                           <Button size="large" color="primary" variant="outlined" onClick={handleOnboard}> 
-                           Onboard </Button>
+                         <CustomButton
+                         disabled={currentStage === 3 ? false : true }
+                        title="ONBOARD"
+                        backgroundColor={currentStage === 3 ? "#67be23" : "#eeeeee" }
+                        color="#fcfcfc"
+                        handleClick={handleOnboard}
+                        />
+
                              </Stack>
+                             {currentStage === 3 ? 
+                            <Stack></Stack>
+                             : 
                              <Stack
-                               justifyContent="center"
-                               alignItems="center"
-                             >
-                             <Typography fontSize={16} color="#808191">
+                             justifyContent="center"
+                             alignItems="center"
+                           >
+                           <Typography fontSize={16} color="#808191">
 *Onboarding is only available if applicant complete all the stages
 </Typography>
-                             </Stack>
+                           </Stack>
+                             }
+                        
                     
                            
                 </form>

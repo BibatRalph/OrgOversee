@@ -193,7 +193,7 @@ const PropertyDetails = () => {
   <Stack
   direction="row"
   justifyContent="flex-end"
-  alignItems="flex-start"
+  alignItems="center"
 >
     <CustomButton
       title="UPDATE"
@@ -214,7 +214,7 @@ const PropertyDetails = () => {
                  confirmTitle="Delete this application?"
                  confirmOkText="Delete"
                  confirmCancelText="Cancel"
-     size="small" hideText={true} recordItemId={id} onSuccess={() => {
+     size="medium" hideText={false} recordItemId={id} onSuccess={() => {
 navigate(
 // DELETE
 `/Applicants/`,  );      
@@ -457,22 +457,23 @@ navigate(
      </Box>     
 {/* END OF CONTENTS */}
      
-<Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-
-<Box sx={{ flex: '1 1 auto' }}/>   
-        
-     
-{isCurrentUser ? <Box sx={{ flex: '1 1 auto' }}>
 
  
 
-                <CustomButton
-            disabled={activeStep === 0}
-            title="Back"
-            backgroundColor=""
-            color=""
-            handleClick={handleBack}
-            ></CustomButton>
+{isCurrentUser ? 
+  <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+
+            <Button
+              color="inherit"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{ mr: 1 }}
+            >
+              Back
+            </Button>
+
+            <Box sx={{ flex: '1 1 auto' }}>
+          </Box>
 
             {isStepOptional(activeStep) && (
                            <CustomButton
@@ -482,23 +483,15 @@ navigate(
                            handleClick={handleSkip}
                            ></CustomButton>
             )}
- 
-
-            <CustomButton
-            title={activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            backgroundColor=""
-            color=""
-            handleClick={handleStageChange}
-            ></CustomButton>
-            
-           
-
-          </Box>
-
+            <Button onClick={handleStageChange}>
+              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+            </Button>
+            </Box>
+         
           : <Box sx={{ flex: '1 1 auto' }}>
           </Box>
           }
-          </Box>
+      
           
         </React.Fragment>
       )}
