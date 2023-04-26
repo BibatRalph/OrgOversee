@@ -10,8 +10,6 @@ import TotalRevenue from "./charts/TotalRevenue";
 // agent
 import AgentCard from "./agent/AgentCard";
 
-// home
-import TopAgent from "./home/TopAgent";
 // Emp
 import EmpCard from "./common/EmpCard";
 
@@ -22,6 +20,5 @@ export {
     PieChart,
     TotalRevenue,
     AgentCard,
-    TopAgent,
     EmpCard,
 };

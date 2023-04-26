@@ -26,7 +26,7 @@ const TotalRevenue = () => {
 
             <ReactApexChart
                 series={TotalRevenueSeries}
-                type="bar"
+                type="area"
                 height={310}
                 options={TotalRevenueOptions}
             />
