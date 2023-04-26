@@ -7,6 +7,8 @@ export interface AgentCardProp {
     avatar: string;
     noOfApps: number;
     noOfJobs: number;
+    noOfEmp: number;
+    noOfOff: number;
 }
 export interface OffCardProp {
     id?: BaseKey | undefined;

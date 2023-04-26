@@ -6,7 +6,7 @@ import { AgentCard } from "components";
 const Agents = () => {
     const { data, isLoading, isError } = useList({ resource: "users" });
 
-    const allAgents = data?.data ?? [];
+    const allData = data?.data ?? [];
 
     if (isLoading) return <div>loading...</div>;
     if (isError) return <div>error...</div>;
@@ -47,15 +47,17 @@ const Agents = () => {
                
             }}
         >
-            {allAgents.map((agent) => (
+            {allData.map((props) => (
                 <AgentCard
-                    key={agent._id}
-                    id={agent._id}
-                    name={agent.name}
-                    email={agent.email}
-                    avatar={agent.avatar}
-                    noOfApps={agent.allProperties.length}
-                    noOfJobs={agent.allJobs.length}
+                    key={props._id}
+                    id={props._id}
+                    name={props.name}
+                    email={props.email}
+                    avatar={props.avatar}
+                    noOfApps={props.allProperties.length}
+                    noOfJobs={props.allJobs.length}
+                    noOfEmp={props.allEmp.length}
+                    noOfOff={props.allOff.length}
                 />
             ))}
         </Box>

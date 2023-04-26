@@ -176,7 +176,6 @@ function App() {
                         },
                         {
                             //Talents
-                            //ex Agents
                             name: "Talents",
                             list: Agents,
                             show: AgentProfile,

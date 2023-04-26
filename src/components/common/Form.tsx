@@ -16,7 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { FormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
-import { useCreate, useShow } from "@refinedev/core";
+import { useCreate, useGetIdentity, useShow } from "@refinedev/core";
 import { useNavigate } from "react-router-dom";
 
 const Form = ({
@@ -28,7 +28,10 @@ const Form = ({
     onFinishHandler,
     propertyImage,
 }: FormProps) => {
-
+// get User
+    const { data: user } = useGetIdentity({
+        v3LegacyAuthProviderCompatible: true,
+    });
     const navigate = useNavigate();
     const { queryResult } = useShow();
     const { mutate } = useCreate();
@@ -55,6 +58,7 @@ const Form = ({
                             // REQ
                             photo: AppInfo.photo,
                             email: AppInfo.email,
+                            Employer: user.email,
                             jobID: AppInfo.jobID,
                             name: AppInfo.name,
                             jobTitleTarget: AppInfo.jobTitleTarget,

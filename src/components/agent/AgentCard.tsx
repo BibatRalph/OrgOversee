@@ -1,10 +1,11 @@
-import { EmailOutlined, Place} from "@mui/icons-material";
+import { EmailOutlined, PeopleAltOutlined, Place} from "@mui/icons-material";
 import { useGetIdentity } from "@refinedev/core";
 import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { AgentCardProp, InfoBarProps } from "interfaces/agent";
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import AlarmAddIcon from '@mui/icons-material/AlarmAdd';
 function checkImage(url: any) {
     const img = new Image();
     img.src = url;
@@ -32,6 +33,8 @@ const AgentCard = ({
     avatar,
     noOfApps,
     noOfJobs,
+    noOfEmp,
+    noOfOff
 }: AgentCardProp) => {
     const { data: currentUser } = useGetIdentity({
         v3LegacyAuthProviderCompatible: true,
@@ -96,16 +99,13 @@ const AgentCard = ({
                     flexWrap="wrap"
                     justifyContent="space-between"
                     alignItems="center"
-                    gap={2}
+                   
                 >
                     <InfoBar
                         icon={<EmailOutlined sx={{ color: "#808191" }} />}
                         name={email}
                     />
-                    <InfoBar
-                        icon={<Place sx={{ color: "#808191" }} />}
-                        name="Philippines"
-                    />
+              
                     <InfoBar
                         icon={<PersonAddAltOutlinedIcon sx={{ color: "#808191" }} />}
                         name={`${noOfApps} Application Created`}
@@ -113,6 +113,18 @@ const AgentCard = ({
                      <InfoBar
                         icon={<WorkOutlineOutlinedIcon sx={{ color: "#808191" }} />}
                         name={`${noOfJobs} Jobs Posted`}
+                    />
+                      <InfoBar
+                        icon={<WorkOutlineOutlinedIcon sx={{ color: "#808191" }} />}
+                        name={`${noOfEmp} Employees Onboarded`}
+                    />
+                      <InfoBar
+                        icon={<AlarmAddIcon sx={{ color: "#808191" }} />}
+                        name={`${noOfOff} Pending Time-Off`}
+                    />
+                          <InfoBar
+                        icon={<Place sx={{ color: "#808191" }} />}
+                        name="Philippines"
                     />
                 </Stack>
             </Stack>

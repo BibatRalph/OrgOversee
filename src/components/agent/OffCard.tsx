@@ -194,7 +194,7 @@ const OffCard = ({
 
             <DeleteButton    
                    disabled={isCurrentUser?true:false}
-            confirmTitle="Reject this request?"
+            confirmTitle="Delete this request?"
                  confirmOkText="Yes"
                  confirmCancelText="Cancel"
                  size="small" recordItemId={id} />
