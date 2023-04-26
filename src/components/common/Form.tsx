@@ -37,6 +37,7 @@ const Form = ({
 
     const AppInfo = data?.data ?? {};
 
+
     const currentStage = AppInfo.stats;
 
     const handleOnboard = () =>  {
@@ -58,7 +59,8 @@ const Form = ({
                             name: AppInfo.name,
                             jobTitleTarget: AppInfo.jobTitleTarget,
                             jobDepartmentTarget : AppInfo.jobDepartmentTarget, // job dep
-                            jobLocationTarget : AppInfo.jobLocationTarget // job loc
+                            jobLocationTarget : AppInfo.jobLocationTarget, // job loc
+                            jobOwner : AppInfo.jobOwner
                             
                         },
                     },

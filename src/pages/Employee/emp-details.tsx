@@ -45,24 +45,12 @@ const EmpDetails = () => {
         setActiveStep(currentStage + 1); // This will always use latest value of count
     }, [currentStage]);
 
-
-
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
-  };
-
-  const handleSkip = () => {
-
-    setActiveStep(activeStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
   };
 
   const handleReset = () => {
@@ -78,7 +66,8 @@ const EmpDetails = () => {
     }
 
     // check if user is the current user
-    const isCurrentUser = user.email === empDetails.creator.email;
+    const isCurrentUser = user.userid === empDetails.jobOwner;
+
 
     const handleStageChange = () => {
         const response = confirm(
@@ -139,6 +128,8 @@ const EmpDetails = () => {
             <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
            Job ID:{empDetails.jobID}
             </Typography>
+
+            {isCurrentUser? 
             <CustomButton
                                 title="UPDATE"
                                 backgroundColor=""
@@ -152,7 +143,7 @@ const EmpDetails = () => {
                                         );
                                    
                                 }}
-                            /> 
+                            /> : <Box></Box> }
       
      
         </Stack>
@@ -198,40 +189,54 @@ const EmpDetails = () => {
             <Typography sx={{ mt: 2, mb: 1 }}>
             All stages completed - Employee ready to offboard
           </Typography>
+
          {/* OFFBOARD */}
-         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Box sx={{ flex: '1 1 auto' }} />
+         {isCurrentUser ? 
+  <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+  <Box sx={{ flex: '1 1 auto' }} />
 
+   <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
+   *Develelopment and demonstration purposes
+   </Typography>
+<Button onClick={handleReset}>Reset</Button>
+
+
+
+</Box>
+         : 
+<Box></Box>
+         }
+    {isCurrentUser?
+    <Stack   direction="column"
+    justifyContent="center"
+    alignItems="center"
+    spacing={2}>
+                          <Stack
+                              direction="row"
+                              justifyContent="flex-end"
+                              alignItems="flex-start"
+                          >
+              <DeleteButton size="small" hideText={false} recordItemId={id} 
+                   confirmTitle="Are you sure to Offboard this employee?"
+                   confirmOkText="Offboard"
+                   confirmCancelText="Cancel"
+              onSuccess={() => {
+                 navigate(
+                  // DELETE
+                  `/Employee/`,  );      
+              }} />         
+              </Stack>
              <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
-             *Develelopment and demonstration purposes
-             </Typography>
-         <Button onClick={handleReset}>Reset</Button>
+               *This will delete the Employee from the list
+               </Typography>
+  
+             </Stack>
+    :
+    <Stack>
 
-          </Box>
-          <Stack   direction="column"
-  justifyContent="center"
-  alignItems="center"
-  spacing={2}>
-                        <Stack
-                            direction="row"
-                            justifyContent="flex-end"
-                            alignItems="flex-start"
-                        >
-            <DeleteButton size="small" hideText={false} recordItemId={id} 
-                 confirmTitle="Are you sure to Offboard this employee?"
-                 confirmOkText="Offboard"
-                 confirmCancelText="Cancel"
-            onSuccess={() => {
-               navigate(
-                // DELETE
-                `/Employee/`,  );      
-            }} />         
-            </Stack>
-           <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
-             *This will delete the Employee from the list
-             </Typography>
-
-           </Stack>
+    </Stack>
+    }   
+          
     
         </React.Fragment>
       ) : (
@@ -262,12 +267,7 @@ const EmpDetails = () => {
                             <Typography fontSize={16} color="#808191"mt={1}>
                                 Job Location:{empDetails.jobLocationTarget}
                             </Typography>    
-                            <Typography fontSize={18} color="#11162D" mt="10px">
-                                Onboarding Manager
-                            </Typography>         
-                            <Typography fontSize={16} color="#808191"mt={1}>
-                               Name:{empDetails.creator.name}
-                            </Typography>    
+                           
                             </Box>
                             <Box>
                        
@@ -396,8 +396,9 @@ const EmpDetails = () => {
         </Stack>             
      </Box>     
 {/* END OF CONTENTS */}
-     
-<Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+     {isCurrentUser
+     ?
+        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button
               color="inherit"
               disabled={activeStep === 0}
@@ -414,6 +415,10 @@ const EmpDetails = () => {
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
           </Box>
+     :
+<Box></Box>
+     }
+
         </React.Fragment>
       )}
       </Stack>
