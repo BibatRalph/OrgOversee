@@ -115,7 +115,7 @@ const AgentCard = ({
                         name={`${noOfJobs} Jobs Posted`}
                     />
                       <InfoBar
-                        icon={<WorkOutlineOutlinedIcon sx={{ color: "#808191" }} />}
+                        icon={<PeopleAltOutlined sx={{ color: "#808191" }} />}
                         name={`${noOfEmp} Employees Onboarded`}
                     />
                       <InfoBar
