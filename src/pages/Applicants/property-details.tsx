@@ -120,13 +120,6 @@ const PropertyDetails = () => {
     const isCurrentUser = user.userid === propertyDetails.jobOwner;
 
 
-    // console.log(user.userid)
-    // console.log(propertyDetails.jobOwner)
-   
-    // if(isCurrentUser)
-    // {
-    //   console.log("test")
-    // }
 
     const handleStageChange = () => {
         const response = confirm(
