@@ -187,10 +187,12 @@ const jobDetails = () => {
                             </Typography>
 
                             </Stack>
+ {isCurrentUser?
      <Stack direction="row"
   justifyContent="flex-end"
   alignItems="flex-end"
   spacing={2}>
+
      <DeleteButton 
                  confirmTitle="Close this Job posting?"
                  confirmOkText="Yes"
@@ -201,6 +203,11 @@ const jobDetails = () => {
                 `/Jobs/`,  );      
             }} />
      </Stack>
+     :
+     <Stack>
+        
+     </Stack> 
+     }
                      
                 </Box>   
                 
