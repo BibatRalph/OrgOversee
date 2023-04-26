@@ -21,6 +21,9 @@ const AgentProfile = () => {
             email={myProfile.email}
             avatar={myProfile.avatar}
             properties={myProfile.allProperties}
+            jobs={myProfile.allJobs}
+            emp={myProfile.allEmp}
+            off={myProfile.allOff}
         />
     );
 };

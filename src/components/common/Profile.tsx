@@ -1,8 +1,11 @@
 import { Email, Phone, Place } from "@mui/icons-material";
 import { Box, Stack, Typography,Grid,Paper} from "@mui/material";
 
-import { ProfileProps, PropertyProps } from "interfaces/common";
+import { EmpProps, JobProps, OffProps, ProfileProps, PropertyProps } from "interfaces/common";
 import ApplicantCard from "./ApplicantCard";
+import JobCard from "./JobCard";
+import EmpCard from "./EmpCard";
+import OffCard from "components/agent/OffCard";
 
 function checkImage(url: any) {
     const img = new Image();
@@ -10,7 +13,7 @@ function checkImage(url: any) {
     return img.width !== 0 && img.height !== 0;
 }
 
-const Profile = ({ type, Name, avatar, email, properties }: ProfileProps) => (
+const Profile = ({ type, Name, avatar, email, properties,jobs,emp,off }: ProfileProps) => (
     <>
     <Paper
 sx={{
@@ -46,10 +49,14 @@ sx={{
                 }}
             >
                 <img
-                    src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+                    src={
+                        checkImage(avatar)
+                            ? avatar
+                            : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
+                    }
                     width={340}
                     height={320}
-                    alt="Cover"
+                    alt="Picture"
                     className="my_profile-bg"
                 />
                 <Box
@@ -65,17 +72,7 @@ sx={{
                         flexDirection={{ xs: "column", md: "row" }}
                         gap="20px"
                     >
-                        <img
-                            src={
-                                checkImage(avatar)
-                                    ? avatar
-                                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
-                            }
-                            width={78}
-                            height={78}
-                            alt="user_profile"
-                            className="my_profile_user-img"
-                        />
+                     
 
                         <Box
                             flex={1}
@@ -210,6 +207,95 @@ sx={{
                         result={props.result}
                         age={props.age}
                         />
+                    ))}
+                </Box>
+            </Box>
+        )}
+        {/* All jobs */}
+             {jobs.length > 0 && (
+            <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
+                <Typography fontSize={18} fontWeight={600} color="#11142D">
+                    {type} Jobs
+                </Typography>
+
+                <Box
+                    mt={2.5}
+                    sx={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 2.5,
+                    }}
+                >
+                    {jobs?.map((props: JobProps) => (
+                        <JobCard
+                            key={props._id}
+                            id={props._id}
+                            jobTitle={props.jobTitle}
+                            experience={props.experience}
+                            Salary={props.Salary}
+                            location={props.location} 
+                            jobType={props.jobType}                       
+                             />
+                    ))}
+                </Box>
+            </Box>
+        )}
+         {/* All EMP */}
+         {emp.length > 0 && (
+            <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
+                <Typography fontSize={18} fontWeight={600} color="#11142D">
+                    {type} Employees
+                </Typography>
+
+                <Box
+                    mt={2.5}
+                    sx={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 2.5,
+                    }}
+                >
+                    {emp?.map((props: EmpProps) => (
+                        <EmpCard 
+                        key={props._id}
+                        id={props._id}
+                        name={props.name} 
+                        email={props.email} 
+                        gender={props.gender} 
+                        location={props.location} 
+                        age={props.age} 
+                        photo={props.photo} 
+                        jobtitle={props.jobtitle}                           
+                                             
+                             />
+                    ))}
+                </Box>
+            </Box>
+        )}
+            {/* All Off */}
+            {off.length > 0 && (
+            <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
+                <Typography fontSize={18} fontWeight={600} color="#11142D">
+                    {type} Time-Off
+                </Typography>
+
+                <Box
+                    mt={2.5}
+                    sx={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 2.5,
+                    }}
+                >
+                    {off?.map((props: OffProps) => (
+                        <OffCard 
+                        name={props.name} 
+                        date={props.date} 
+                        email={props.email} 
+                        avatar={props.avatar} 
+                        offStats={props.offStats}                                            
+                                             
+                             />
                     ))}
                 </Box>
             </Box>

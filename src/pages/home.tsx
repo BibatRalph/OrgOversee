@@ -15,7 +15,7 @@ const Home = () => {
                 pageSize: 4,
             },
         },
-    });
+    }); 
 
     const latestApplicant = data?.data ?? [];
 

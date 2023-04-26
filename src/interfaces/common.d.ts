@@ -15,6 +15,9 @@ export interface ProfileProps {
     avatar: string;
     email: string;
     properties: Array | undefined;
+    jobs: Array | undefined;
+    emp: Array | undefined;
+    off: Array | undefined;
 }
 
 export interface PropertyProps {
@@ -28,6 +31,35 @@ export interface PropertyProps {
     age: string;
     photo: string;
 }
+export interface JobProps {
+    _id: string;
+    jobTitle: string;
+    jobType: string;
+    experience: string;
+    Salary: string;
+    location: string;
+}
+export interface EmpProps {
+    _id: string;
+    name:string;
+    email:string;
+    gender:string;
+    location:string;
+    age:string;
+    photo:string;
+    jobtitle:string;
+}
+export interface OffProps {
+    _id: string;
+    name:string;
+    email:string;
+    date:string;
+    offStats:string;
+    avatar:string;
+
+}
+
+
 
 export interface FormProps {
     type: string;
