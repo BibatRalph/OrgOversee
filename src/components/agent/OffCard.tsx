@@ -87,6 +87,8 @@ const OffCard = ({
         v3LegacyAuthProviderCompatible: true,
     });
 
+    const isCurrentUser = currentUser.email === email;
+
     const generateLink = () => {
         if (currentUser.email === email) return "/my-profile";
         return `/Talents/show/${id}`;
@@ -174,7 +176,8 @@ const OffCard = ({
             {/* handleApprove */}
 
             <CustomButton
-                                title={offStats === "Approved" ? "Complete" : "APPROVE"}
+                                disabled={isCurrentUser?true:false}
+                                title={offStats === "Approved" ? "Completed" : "APPROVE"}
                                 backgroundColor=""
                                 color="info"
                                 fullWidth
@@ -189,7 +192,9 @@ const OffCard = ({
                                 }} 
                             /> 
 
-            <DeleteButton    confirmTitle="Reject this request?"
+            <DeleteButton    
+                   disabled={isCurrentUser?true:false}
+            confirmTitle="Reject this request?"
                  confirmOkText="Yes"
                  confirmCancelText="Cancel"
                  size="small" recordItemId={id} />
