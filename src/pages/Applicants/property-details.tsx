@@ -177,11 +177,6 @@ const PropertyDetails = () => {
          <Typography variant="h5">
          {propertyDetails.name}
             </Typography>
-          
-        
-            <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
-                  Application status: Stage {propertyDetails.stats + 1} {propertyDetails.result}
-            </Typography>
             {isCurrentUser? 
   <Stack
   direction="row"
@@ -218,6 +213,11 @@ navigate(
 
 <Stack></Stack>
             }
+        
+            <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
+                  Application status: Stage {propertyDetails.stats + 1} {propertyDetails.result}
+            </Typography>
+         
           
      
         </Stack>

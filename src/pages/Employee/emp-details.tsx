@@ -124,10 +124,6 @@ const EmpDetails = () => {
          <Typography variant="h5">
          {empDetails.name}
             </Typography>
-          
-            <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
-           Job ID:{empDetails.jobID}
-            </Typography>
 
             {isCurrentUser? 
             <CustomButton
@@ -144,6 +140,12 @@ const EmpDetails = () => {
                                    
                                 }}
                             /> : <Box></Box> }
+          
+            <Typography fontSize={16} color="#808191" textTransform="capitalize" > 
+           Job ID:{empDetails.jobID}
+            </Typography>
+
+          
       
      
         </Stack>
@@ -213,10 +215,10 @@ const EmpDetails = () => {
     spacing={2}>
                           <Stack
                               direction="row"
-                              justifyContent="flex-end"
-                              alignItems="flex-start"
+                              justifyContent="center"
+                              alignItems="center"
                           >
-              <DeleteButton size="small" hideText={false} recordItemId={id} 
+              <DeleteButton size="medium" hideText={false} recordItemId={id} 
                    confirmTitle="Are you sure to Offboard this employee?"
                    confirmOkText="Offboard"
                    confirmCancelText="Cancel"
