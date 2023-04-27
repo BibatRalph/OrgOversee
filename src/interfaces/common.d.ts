@@ -17,7 +17,6 @@ export interface ProfileProps {
     properties: Array | undefined;
     jobs: Array | undefined;
     emp: Array | undefined;
-    off: Array | undefined;
 }
 
 export interface PropertyProps {

@@ -23,7 +23,6 @@ const MyProfile = () => {
             properties={myProfile.allProperties}
             jobs={myProfile.allJobs}
             emp={myProfile.allEmp}
-            off={myProfile.allOff}
         />
     );
 };

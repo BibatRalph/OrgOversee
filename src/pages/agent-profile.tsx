@@ -23,7 +23,6 @@ const AgentProfile = () => {
             properties={myProfile.allProperties}
             jobs={myProfile.allJobs}
             emp={myProfile.allEmp}
-            off={myProfile.allOff}
         />
     );
 };

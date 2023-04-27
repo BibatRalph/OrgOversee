@@ -1,11 +1,10 @@
 import { Email, Phone, Place } from "@mui/icons-material";
 import { Box, Stack, Typography,Grid,Paper} from "@mui/material";
 
-import { EmpProps, JobProps, OffProps, ProfileProps, PropertyProps } from "interfaces/common";
+import { EmpProps, JobProps, ProfileProps, PropertyProps } from "interfaces/common";
 import ApplicantCard from "./ApplicantCard";
 import JobCard from "./JobCard";
 import EmpCard from "./EmpCard";
-import OffCard from "components/agent/OffCard";
 
 function checkImage(url: any) {
     const img = new Image();
@@ -13,7 +12,7 @@ function checkImage(url: any) {
     return img.width !== 0 && img.height !== 0;
 }
 
-const Profile = ({ type, Name, avatar, email, properties,jobs,emp,off }: ProfileProps) => (
+const Profile = ({ type, Name, avatar, email, properties,jobs,emp}: ProfileProps) => (
     <>
     <Paper
 sx={{
@@ -272,34 +271,10 @@ sx={{
                 </Box>
             </Box>
         )}
-            {/* All Off */}
-            {off.length > 0 && (
-            <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
-                <Typography fontSize={18} fontWeight={600} color="#11142D">
-                    {type} Time-Off
-                </Typography>
-
-                <Box
-                    mt={2.5}
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 2.5,
-                    }}
-                >
-                    {off?.map((props: OffProps) => (
-                        <OffCard 
-                        name={props.name} 
-                        date={props.date} 
-                        email={props.email} 
-                        avatar={props.avatar} 
-                        offStats={props.offStats}                                            
-                                             
-                             />
-                    ))}
-                </Box>
-            </Box>
-        )}
+            
+                   
+               
+          
     </Box>
 
 </Grid>
