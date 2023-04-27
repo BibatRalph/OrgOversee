@@ -8,7 +8,6 @@ export interface AgentCardProp {
     noOfApps: number;
     noOfJobs: number;
     noOfEmp: number;
-    noOfOff: number;
 }
 export interface OffCardProp {
     id?: BaseKey | undefined;

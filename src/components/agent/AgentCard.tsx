@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { AgentCardProp, InfoBarProps } from "interfaces/agent";
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
-import AlarmAddIcon from '@mui/icons-material/AlarmAdd';
 function checkImage(url: any) {
     const img = new Image();
     img.src = url;
@@ -34,7 +33,6 @@ const AgentCard = ({
     noOfApps,
     noOfJobs,
     noOfEmp,
-    noOfOff
 }: AgentCardProp) => {
     const { data: currentUser } = useGetIdentity({
         v3LegacyAuthProviderCompatible: true,
@@ -105,6 +103,10 @@ const AgentCard = ({
                         icon={<EmailOutlined sx={{ color: "#808191" }} />}
                         name={email}
                     />
+                          <InfoBar
+                        icon={<Place sx={{ color: "#808191" }} />}
+                        name="Philippines"
+                    />
               
                     <InfoBar
                         icon={<PersonAddAltOutlinedIcon sx={{ color: "#808191" }} />}
@@ -118,14 +120,7 @@ const AgentCard = ({
                         icon={<PeopleAltOutlined sx={{ color: "#808191" }} />}
                         name={`${noOfEmp} Employees Onboarded`}
                     />
-                      <InfoBar
-                        icon={<AlarmAddIcon sx={{ color: "#808191" }} />}
-                        name={`${noOfOff} Pending Time-Off`}
-                    />
-                          <InfoBar
-                        icon={<Place sx={{ color: "#808191" }} />}
-                        name="Philippines"
-                    />
+                  
                 </Stack>
             </Stack>
         </Box>

@@ -57,7 +57,6 @@ const Agents = () => {
                     noOfApps={props.allProperties.length}
                     noOfJobs={props.allJobs.length}
                     noOfEmp={props.allEmp.length}
-                    noOfOff={props.allOff.length}
                 />
             ))}
         </Box>
