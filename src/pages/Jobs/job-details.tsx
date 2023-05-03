@@ -57,7 +57,6 @@ const jobDetails = () => {
                
                 values: {
                     // REQ
-                    photo: user.avatar, // applicant photo
                     email: user.email, // applicant email
                     jobID: jobDetails._id, // job id 
                     name: user.name, // applicant name
@@ -319,16 +318,6 @@ const jobDetails = () => {
                                     My Location
                                 </Typography>
                             </Stack>
-
-                            <Typography
-                                mt={1}
-                                fontSize={16}
-                                fontWeight={600}
-                                color="#11142D"
-                            >
-                                {jobDetails.creator.allProperties.length}{" "}
-                                Pending Applicant
-                            </Typography>
                             <Typography
                                 mt={1}
                                 fontSize={16}
@@ -336,7 +325,6 @@ const jobDetails = () => {
                                 color="#11142D"
                             >
                                 {jobDetails.creator.allJobs.length}{" "}
-                           
                                 Job Posts
                             </Typography>
                             

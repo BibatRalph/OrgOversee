@@ -14,7 +14,6 @@ import { useNavigate } from 'react-router-dom';
 import JobCard from "components/common/JobCard";
 const allJobs = () => {
     const navitage = useNavigate();
-
     const {
       tableQueryResult: { data, isLoading, isError },
       current,

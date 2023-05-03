@@ -2,10 +2,8 @@ import { Typography, Box, Stack, Paper, Grid } from "@mui/material";
 import { useUpdate, useGetIdentity, useShow } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-    ChatBubble,
     Edit,
     Place,
-    Star,
 } from "@mui/icons-material";
 import { DeleteButton } from "@refinedev/mui";
 import {useEffect } from "react";
@@ -31,6 +29,9 @@ const PropertyDetails = () => {
      const { data: user } = useGetIdentity({
          v3LegacyAuthProviderCompatible: true,
      });
+
+     console.log(user)
+
      const { queryResult } = useShow();
      const { mutate } = useUpdate();
      const { id } = useParams();
@@ -117,9 +118,9 @@ const PropertyDetails = () => {
     }
 
     // check if user is the current user
-    const isCurrentUser = user.userid === propertyDetails.jobOwner;
+    const isCurrentUser = user._id === propertyDetails.jobOwner;
 
-
+console.log(user.userid)
 
     const handleStageChange = () => {
         const response = confirm(
