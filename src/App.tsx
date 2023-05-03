@@ -1,7 +1,6 @@
 import {
     Refine,
     LegacyAuthProvider as AuthProvider,
-    useList,
 } from "@refinedev/core";
 import {
     notificationProvider,
@@ -15,8 +14,6 @@ import routerProvider from "@refinedev/react-router-v6/legacy";
 import axios, { AxiosRequestConfig } from "axios";
 import { Title, Sider, Layout, Header } from "components/layout";
 import { ColorModeContextProvider } from "contexts";
-import { CredentialResponse } from "interfaces/google";
-import { parseJwt } from "utils/parse-jwt";
 import { AuthPage } from "@refinedev/mui";
 import {
     Login,
@@ -81,7 +78,7 @@ useEffect(() => {
 
                 const pass = data.find((item: { password: any; }) => item.password === password);
                 const user = data.find((item: { email: any; }) => item.email === email);
-                
+
                 if (user && pass) {
 
                  
@@ -91,7 +88,6 @@ useEffect(() => {
                         Authorization: `Bearer ${user.token}`,
                     };
                         return Promise.resolve();
-                // localStorage.setItem("token", `${email}`);
                     
                 }
               
@@ -99,6 +95,11 @@ useEffect(() => {
               return Promise.reject();
             },
             register: async ({ email, password, name }) => {
+                const user = data.find((item: { email: any; }) => item.email === email);
+                if (user) {
+                    alert("User already exist, Try another email")
+                    return Promise.reject();
+                }
                 const response = await fetch(
                     "http://localhost:8080/api/v1/users",
                     {
