@@ -76,11 +76,15 @@ useEffect(() => {
 
 //AUTH PROVIDE METHODS
     const authProvider: AuthProvider = {
-        login: async ({ email, password, remember }) => {
-       
+        login: async ({ email, password }) => {
             if (data != null) {
+
+                const pass = data.find((item: { password: any; }) => item.password === password);
                 const user = data.find((item: { email: any; }) => item.email === email);
-                if (user) {
+                
+                if (user && pass) {
+
+                 
                     localStorage.setItem("email", JSON.stringify(user));
                     alert("Log-in success, Welcome !")
                     axiosInstance.defaults.headers.common = {
