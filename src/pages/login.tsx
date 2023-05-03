@@ -3,6 +3,7 @@ import { AuthPage } from "@refinedev/mui";
 export const Login = () => {
   return (
     <AuthPage
+
       type="login"
       contentProps={{
         sx: {
@@ -29,7 +30,7 @@ export const Login = () => {
       );
   }}
       formProps={{
-        defaultValues: { email: "", password: "" },
+        defaultValues: { email: "", password: "121231" },
       }}
       
     />
