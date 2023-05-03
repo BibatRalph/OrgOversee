@@ -94,7 +94,7 @@ useEffect(() => {
             }
               return Promise.reject();
             },
-            register: async ({ email, password }) => {
+            register: async ({ email, password, name }) => {
                 const response = await fetch(
                     "http://localhost:8080/api/v1/users",
                     {
@@ -102,11 +102,12 @@ useEffect(() => {
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             email: email,
-                            name: password
-                            
+                            name: email,
+                            password: password
+                       
                         }),
                     },
-                    
+                   
                 );
                 return Promise.resolve();
             },
