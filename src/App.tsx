@@ -1,6 +1,7 @@
 import {
     Refine,
     LegacyAuthProvider as AuthProvider,
+    useList,
 } from "@refinedev/core";
 import {
     notificationProvider,
@@ -16,7 +17,7 @@ import { Title, Sider, Layout, Header } from "components/layout";
 import { ColorModeContextProvider } from "contexts";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
-
+import { AuthPage } from "@refinedev/mui";
 import {
     Login,
     Home,
@@ -38,6 +39,7 @@ import {
     PeopleAltOutlined,
 } from "@mui/icons-material";
 import AlarmAddIcon from '@mui/icons-material/AlarmAdd';
+import { useEffect, useState } from "react";
 
 
 
@@ -55,88 +57,92 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
     return request;
 });
 
+
+
 function App() {
+
+ const [data, setData] = useState<any[]>([])
+// GET ALL USER DATA for LOGIN
+useEffect(() => {
+    const fetchData = async () => {
+        const response = await fetch(`http://localhost:8080/api/v1/users`);
+        const newData = await response.json();
+        setData(newData);
+      };
+
+      fetchData();
+
+},[]);
+
+//AUTH PROVIDE METHODS
     const authProvider: AuthProvider = {
-        login: async ({ credential }: CredentialResponse) => {
-            const profileObj = credential ? parseJwt(credential) : null;
-
-            //Login MAIN
-            if (profileObj) {
-                const response = await fetch(
-                    "http://localhost:8080/api/v1/users",
-                    {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            name: profileObj.name,
-                            email: profileObj.email,
-                            avatar: profileObj.picture,
-                        }),
-                    },
-                );
-
-                const data = await response.json();
-
-                if (response.status === 200) {
-                    localStorage.setItem(
-                        "user",
-                        JSON.stringify({
-                            ...profileObj,
-                            avatar: profileObj.picture,
-                            userid: data._id,
-                        }),
-                    );
-                } else {
-                    return Promise.reject();
+        login: async ({ email, password, remember }) => {
+       
+            if (data != null) {
+                const user = data.find((item: { email: any; }) => item.email === email);
+                if (user) {
+                    localStorage.setItem("email", JSON.stringify(user));
+                    alert("Log-in success, Welcome !")
+                    axiosInstance.defaults.headers.common = {
+                        Authorization: `Bearer ${user.token}`,
+                    };
+                        return Promise.resolve();
+                // localStorage.setItem("token", `${email}`);
+                    
                 }
+              
             }
-            localStorage.setItem("token", `${credential}`);
-
-            return Promise.resolve();
-        },
-        logout: () => {
-            const token = localStorage.getItem("token");
-
-            if (token && typeof window !== "undefined") {
-                localStorage.removeItem("token");
-                localStorage.removeItem("user");
-                axios.defaults.headers.common = {};
-                window.google?.accounts.id.revoke(token, () => {
-                    return Promise.resolve();
-                });
-            }
-
-            return Promise.resolve();
-        },
-        checkError: () => Promise.resolve(),
-        checkAuth: async () => {
-            const token = localStorage.getItem("token");
-
-            if (token) {
+              return Promise.reject();
+            },
+            register: async ({ email, password }) => {
+                        await fetch(
+                            "http://localhost:8080/api/v1/users",
+                            {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    password: password,
+                                    email: email,
+        
+                                }),
+                                
+                            },);
+                            alert("User succesfully created!")
+                                
                 return Promise.resolve();
-            }
-            return Promise.reject();
-        },
-
-        getPermissions: async () => null,
-        getUserIdentity: async () => {
-            const user = localStorage.getItem("user");
-            if (user) {
-                return Promise.resolve(JSON.parse(user));
-            }
-        },
-    };
-
+            },
+            // Logout
+            logout: () => {
+                localStorage.removeItem("email");
+                return Promise.resolve();
+              },
+            //   Error Handling
+              checkError: () => Promise.resolve(),
+            //   AUTH
+              checkAuth: async () =>
+                localStorage.getItem("email") ? Promise.resolve() : Promise.reject(),
+            // User ROLES
+            getPermissions: () => Promise.resolve(["admin"]),
+            //   GET USER INFO
+             getUserIdentity: async () => {
+                const user = localStorage.getItem("email");
+                if (user) {
+                    return Promise.resolve(JSON.parse(user));
+                }
+            },
+            };
+        
     return (
         <ColorModeContextProvider>
             <CssBaseline />
             <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
             <RefineSnackbarProvider>
                 <Refine
-                    dataProvider={dataProvider("http://localhost:8080/api/v1")}
+                    dataProvider={dataProvider("http://localhost:8080/api/v1", axiosInstance)}
                     notificationProvider={notificationProvider}
                     ReadyPage={ReadyPage}
                     catchAll={<ErrorComponent />}
+       
                     resources={[
                         {   
                             name: "Jobs",
@@ -195,7 +201,15 @@ function App() {
                     Sider={Sider}
                     Layout={Layout}
                     Header={Header}
-                    legacyRouterProvider={routerProvider}
+                    legacyRouterProvider={{
+                        ...routerProvider,
+                        routes: [
+                            {
+                                path: "/register",
+                                element: <AuthPage type="register" />,
+                            },
+                        ],
+                    }}
                     legacyAuthProvider={authProvider}
                     LoginPage={Login}
                     DashboardPage={Home}
