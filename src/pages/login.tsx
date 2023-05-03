@@ -30,7 +30,7 @@ export const Login = () => {
       );
   }}
       formProps={{
-        defaultValues: { email: "", password: "121231" },
+        defaultValues: { email: "", password: ""},
       }}
       
     />
