@@ -26,7 +26,7 @@ const FormEmp = ({
         const { queryResult } = useShow();
         const { data } = queryResult;
         const Info = data?.data ?? {};
-       console.log(Info);
+    
 
     return (
         <>

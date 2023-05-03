@@ -30,7 +30,7 @@ const PropertyDetails = () => {
          v3LegacyAuthProviderCompatible: true,
      });
 
-     console.log(user)
+  
 
      const { queryResult } = useShow();
      const { mutate } = useUpdate();
@@ -120,7 +120,6 @@ const PropertyDetails = () => {
     // check if user is the current user
     const isCurrentUser = user._id === propertyDetails.jobOwner;
 
-console.log(user.userid)
 
     const handleStageChange = () => {
         const response = confirm(
