@@ -76,22 +76,30 @@ useEffect(() => {
         login: async ({ email, password }) => {
             if (data != null) {
 
-                const pass = data.find((item: { password: any; }) => item.password === password);
+               
                 const user = data.find((item: { email: any; }) => item.email === email);
 
-                if (user && pass) {
+                if (user) {
 
-                 
-                    localStorage.setItem("email", JSON.stringify(user));
-                    alert("Log-in success, Welcome !")
-                    axiosInstance.defaults.headers.common = {
-                        Authorization: `Bearer ${user.token}`,
-                    };
-                        return Promise.resolve();
+                    const pass = data.find((item: { password: any; }) => item.password === password);
+
+                    if(pass)
+                    {
+                        localStorage.setItem("email", JSON.stringify(user));
+                        alert("Log-in success, Welcome")
+                        axiosInstance.defaults.headers.common = {
+                            Authorization: `Bearer ${user.token}`,
+                        };
+                            return Promise.resolve();
+                    }
+
+                    alert("Wrong password")
+                    return Promise.reject();
                     
                 }
               
             }
+                alert("Incorrect, Check your email")
               return Promise.reject();
             },
             register: async ({ email, password, name }) => {
