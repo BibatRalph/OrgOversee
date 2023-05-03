@@ -12,7 +12,7 @@ function checkImage(url: any) {
     return img.width !== 0 && img.height !== 0;
 }
 
-const Profile = ({ type, Name, avatar, email, properties,jobs,emp}: ProfileProps) => (
+const Profile = ({ type, Name, avatar, email, properties, jobs, emp}: ProfileProps) => (
     <>
     <Paper
 sx={{
