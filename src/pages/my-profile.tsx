@@ -7,7 +7,7 @@ const MyProfile = () => {
     });
     const { data, isLoading, isError } = useOne({
         resource: "users",
-        id: user?.userid,
+        id: user?._id,
     });
 
     const myProfile = data?.data ?? [];

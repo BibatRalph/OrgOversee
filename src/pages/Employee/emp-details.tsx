@@ -66,7 +66,7 @@ const EmpDetails = () => {
     }
 
     // check if user is the current user
-    const isCurrentUser = user.userid === empDetails.jobOwner;
+    const isCurrentUser = user._id === empDetails.jobOwner;
 
 
     const handleStageChange = () => {
