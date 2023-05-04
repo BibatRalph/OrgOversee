@@ -69,7 +69,7 @@ useEffect(() => {
 
       fetchData();
 
-},[]);
+},[data]);
 
 //AUTH PROVIDE METHODS
     const authProvider: AuthProvider = {
@@ -99,7 +99,7 @@ useEffect(() => {
                 }
               
             }
-                alert("Incorrect, Check your email")
+                alert("Incorrect, Check your email or password")
               return Promise.reject();
             },
             register: async ({ email, password, name }) => {
