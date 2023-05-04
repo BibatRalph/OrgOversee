@@ -62,7 +62,7 @@ function App() {
 // GET ALL USER DATA for LOGIN
 useEffect(() => {
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:8080/api/v1/users`);
+        const response = await fetch(`http://167.172.236.212:8080/api/v1/users`);
         const newData = await response.json();
         setData(newData);
       };
@@ -109,7 +109,7 @@ useEffect(() => {
                     return Promise.reject();
                 }
                 const response = await fetch(
-                    "http://localhost:8080/api/v1/users",
+                    "http://167.172.236.212:8080/api/v1/users",
                     {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -151,7 +151,7 @@ useEffect(() => {
             <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
             <RefineSnackbarProvider>
                 <Refine
-                    dataProvider={dataProvider("http://localhost:8080/api/v1", axiosInstance)}
+                    dataProvider={dataProvider("http://167.172.236.212:8080/api/v1", axiosInstance)}
                     notificationProvider={notificationProvider}
                     ReadyPage={ReadyPage}
                     catchAll={<ErrorComponent />}
