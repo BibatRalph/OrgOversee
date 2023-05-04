@@ -89,7 +89,7 @@ sx={{
                                     {Name}
                                 </Typography>
                                 <Typography fontSize={16} color="#808191">
-                                Talent acquisition specialist
+                                User
                                 </Typography>
                             </Stack>
 

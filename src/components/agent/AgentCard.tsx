@@ -89,7 +89,7 @@ const AgentCard = ({
                         {name}
                     </Typography>
                     <Typography fontSize={14} color="#808191">
-                    Talent acquisition specialist
+                    User
                     </Typography>
                 </Stack>
                 <Stack

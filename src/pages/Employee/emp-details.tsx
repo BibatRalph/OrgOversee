@@ -269,7 +269,10 @@ const EmpDetails = () => {
                             <Typography fontSize={16} color="#808191"mt={1}>
                                 Job Location:{empDetails.jobLocationTarget}
                             </Typography>    
-                           
+                            <Typography fontSize={16} color="#808191"mt={1}>
+                                Hiring Manager:{empDetails.creator.name}
+                            </Typography>   
+                          
                             </Box>
                             <Box>
                        
@@ -370,7 +373,7 @@ const EmpDetails = () => {
                                     fontWeight={600}
                                     color="#11142D"
                                 >
-                                    {empDetails.creator.name}
+                                    {empDetails.email}
                                 </Typography>
                                 <Typography
                                     mt="5px"
