@@ -16,6 +16,7 @@ const Home = () => {
             },
         },
     }); 
+    
 
     const latestApplicant = data?.data ?? [];
 

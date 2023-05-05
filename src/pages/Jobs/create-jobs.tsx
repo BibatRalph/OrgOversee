@@ -2,6 +2,7 @@ import { useGetIdentity } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
 import { FieldValues } from "react-hook-form";
 import FormJob from "components/common/FormJob";
+import { Grid, Stack, Typography } from "@mui/material";
 
 const createJobs = () => {
   //GET all user info
@@ -22,6 +23,9 @@ const onFinishHandler = async (data: FieldValues) => {
 };
 
   return (
+    <>
+  
+    {user.role === "Admin" ?  
  <FormJob 
  type="Create"
  register={register}
@@ -29,7 +33,32 @@ const onFinishHandler = async (data: FieldValues) => {
  formLoading={formLoading}
  handleSubmit={handleSubmit}
  onFinishHandler={onFinishHandler}
- ></FormJob>
+ ></FormJob> : 
+ <Grid item xs={16} md={12}> 
+<Stack
+direction="column"
+justifyContent="center"
+alignItems="center"
+spacing={2}
+>
+<Typography variant="h5" >
+        You do not have access to this section        
+</Typography>
+
+<Typography
+                        mt="5px"
+                        fontSize={14}
+                        fontWeight={400}
+                        color="#808191"
+                    >
+                          *Consult your hiring manager if you think this is a mistake
+                    </Typography>
+   
+    
+ </Stack>
+ </Grid>
+}
+ </>
   )
 }
 

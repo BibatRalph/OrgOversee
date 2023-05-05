@@ -64,7 +64,8 @@ const Form = ({
                             jobTitleTarget: AppInfo.jobTitleTarget,
                             jobDepartmentTarget : AppInfo.jobDepartmentTarget, // job dep
                             jobLocationTarget : AppInfo.jobLocationTarget, // job loc
-                            jobOwner : AppInfo.jobOwner
+                            jobOwner : AppInfo.jobOwner,
+                            role : "Admin"
                             
                         },
                     },
@@ -453,7 +454,7 @@ Update Applicant Details
 
                          <CustomButton
                          disabled={currentStage === 3 ? false : true }
-                        title="ONBOARD"
+                        title={formLoading ? "ONBOARDING..." : "ONBOARD"}
                         backgroundColor={currentStage === 3 ? "#67be23" : "#eeeeee" }
                         color="#fcfcfc"
                         handleClick={handleOnboard}

@@ -1,6 +1,6 @@
 import { Box, Stack, Paper, Grid ,Typography, Select, MenuItem } from "@mui/material";
 import { CreateButton } from "@refinedev/mui";
-import {  useTable } from "@refinedev/core";
+import {  useGetIdentity, useTable } from "@refinedev/core";
 import OffCard from "components/agent/OffCard";
 import { useMemo } from "react";
 
@@ -12,6 +12,11 @@ const PendingOff = () => {
     filters,
     setFilters,
 } = useTable();
+
+const { data: user } = useGetIdentity({
+    v3LegacyAuthProviderCompatible: true,
+});
+
 
     const allOffPending = data?.data ?? [];
  
@@ -41,6 +46,8 @@ sx={{
   my: 0.5,
 }}
 > 
+
+{user.role === "Admin" ?  
 
 <Grid item xs={16} md={12}  >
    {/* TOP BAR */}
@@ -118,6 +125,31 @@ Pending and Approved Time-Offs
             </Typography>
               </Stack>
 </Grid>
+: 
+<Grid item xs={16} md={12}> 
+<Stack
+direction="column"
+justifyContent="center"
+alignItems="center"
+spacing={2}
+>
+<Typography variant="h5" >
+       You do not have access to this section        
+</Typography>
+
+<Typography
+                       mt="5px"
+                       fontSize={14}
+                       fontWeight={400}
+                       color="#808191"
+                   >
+                         *Consult your hiring manager if you think this is a mistake
+                   </Typography>
+  
+   
+</Stack>
+</Grid>
+}
 </Paper>
 </>
   )
