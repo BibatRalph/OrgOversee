@@ -32,10 +32,10 @@ const navigate = useNavigate();
         const { queryResult } = useShow();
         const { data } = queryResult;
         const Info = data?.data ?? {};
-    
+
         const handleAdmin = () =>  {
                         const response = confirm(
-                            "Modify this employee as a Admin?",
+                            "Modify this employee as a Admin? , employee needs to log-out to take effect",
                         );
                         if (response) {
                             mutate({
@@ -43,12 +43,19 @@ const navigate = useNavigate();
                                 values: {
                                     role: "Admin",
                                 },
-                                id: 1,
+                                id: Info.userID,
                              
-                                });
-                                
-                        }
-                        
+                                },
+                                {
+                                    onError: (error, variables, context) => {
+                                        alert('An error occurred!')
+                                    },
+                                    onSuccess: (data, variables, context) => {
+                                        navigate("/Employee");
+                                    },
+                                },
+                                );       
+                        }     
                 }
 
     return (
