@@ -427,8 +427,17 @@ navigate(
                                     fontWeight={400}
                                     color="#808191"
                                 >
+                                    ID:{propertyDetails.userID}
+                                </Typography>
+                                <Typography
+                                    mt="5px"
+                                    fontSize={14}
+                                    fontWeight={400}
+                                    color="#808191"
+                                >
                                     Candidate
                                 </Typography>
+                        
                             </Box>
 
                             <Typography

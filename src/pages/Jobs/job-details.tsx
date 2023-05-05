@@ -60,10 +60,13 @@ const jobDetails = () => {
                     email: user.email, // applicant email
                     jobID: jobDetails._id, // job id 
                     name: user.name, // applicant name
+                    userID: user._id, // ID
                     jobTitleTarget: jobDetails.jobTitle, // job title
                     jobDepartmentTarget : jobDetails.department, // job dep
                     jobLocationTarget : jobDetails.location, // job loc
                     jobOwner: jobDetails.creator // jobOwner
+
+
                 },
             },
             {
