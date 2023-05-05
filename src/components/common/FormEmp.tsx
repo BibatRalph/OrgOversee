@@ -13,6 +13,8 @@ import {
 import { FormPropsJobs } from "interfaces/common";
 import CustomButton from "./CustomButton";
 import {useShow} from "@refinedev/core";
+import { useUpdate } from "@refinedev/core";
+import { useNavigate } from "react-router-dom";
 
 const FormEmp = ({
     type,
@@ -22,11 +24,32 @@ const FormEmp = ({
     onFinishHandler,
 }: FormPropsJobs) => {
 
+    //UPDATE TO ADMIN
+const { mutate } = useUpdate();
+const navigate = useNavigate();
+
         //FETCH DATA from applicant to creating employee
         const { queryResult } = useShow();
         const { data } = queryResult;
         const Info = data?.data ?? {};
     
+        const handleAdmin = () =>  {
+                        const response = confirm(
+                            "Modify this employee as a Admin?",
+                        );
+                        if (response) {
+                            mutate({
+                                resource: "Users",
+                                values: {
+                                    role: "Admin",
+                                },
+                                id: 1,
+                             
+                                });
+                                
+                        }
+                        
+                }
 
     return (
         <>
@@ -280,9 +303,10 @@ const FormEmp = ({
                     
                        {/* SUBMIT */}
                        <Stack
-                        justifyContent="center"
-                        alignItems="center"
-                         mt="10px">
+                      mt="10px"  direction="row"
+                      justifyContent="center"
+                      alignItems="center"
+                      spacing={2}>
                              <CustomButton
                         type="submit"
                         title={formLoading ? "UPDATING..." : "UPDATE"}
@@ -290,7 +314,16 @@ const FormEmp = ({
                         color="#fcfcfc"
                    
                     />
+                        <CustomButton
+                        title={formLoading ? "LOADING..." : "ADMIN"}
+                        backgroundColor="#67be23"
+                        color="#fcfcfc"
+                        handleClick={handleAdmin}
+                        />
+                    
                              </Stack>
+                             
+
                 
                 </form>
                       

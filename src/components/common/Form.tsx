@@ -65,7 +65,7 @@ const Form = ({
                             jobDepartmentTarget : AppInfo.jobDepartmentTarget, // job dep
                             jobLocationTarget : AppInfo.jobLocationTarget, // job loc
                             jobOwner : AppInfo.jobOwner,
-                            role : "Admin"
+                
                             
                         },
                     },
