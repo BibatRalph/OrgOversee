@@ -70,7 +70,7 @@ useEffect(() => {
 
       fetchData();
 
-},[data]);
+},[]);
 
 //AUTH PROVIDE METHODS
     const authProvider: AuthProvider = {

@@ -5,6 +5,8 @@ import { EmpProps, JobProps, ProfileProps, PropertyProps } from "interfaces/comm
 import ApplicantCard from "./ApplicantCard";
 import JobCard from "./JobCard";
 import EmpCard from "./EmpCard";
+import { DeleteButton } from "@refinedev/mui";
+import { useParams } from "react-router-dom";
 
 function checkImage(url: any) {
     const img = new Image();
@@ -12,7 +14,9 @@ function checkImage(url: any) {
     return img.width !== 0 && img.height !== 0;
 }
 
-const Profile = ({ type, Name, avatar, email, properties, jobs, emp}: ProfileProps) => (
+
+const Profile = ({ type, Name, avatar, email, properties, jobs, emp,}: ProfileProps) => (
+    
     <>
     <Paper
 sx={{
@@ -40,7 +44,9 @@ sx={{
 </Stack>
 {/* CONTENT */}
 <Box mt="20px" borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
-            <Box
+            <Box        
+                    border="1px solid #E4E4E4"
+                   borderRadius={1}
                 sx={{
                     display: "flex",
                     flexDirection: { xs: "column", md: "row" },
@@ -161,7 +167,7 @@ sx={{
                                             display="flex"
                                             flexDirection="row"
                                             alignItems="center"
-                                            gap="10px"
+                                            gap="20px"
                                         >
                                             <Email sx={{ color: "#11142D" }} />
                                             <Typography
@@ -170,6 +176,13 @@ sx={{
                                             >
                                                 {email}
                                             </Typography>
+                     
+                            <DeleteButton     
+             
+                confirmTitle="Remove access from this user?"
+                 confirmOkText="Yes"
+                 confirmCancelText="Cancel"
+                 size="small"/>
                                         </Box>
                                     </Stack>
                                 </Stack>
@@ -177,6 +190,8 @@ sx={{
                         </Box>
                     </Box>
                 </Box>
+            
+              
             </Box>
       
         {properties.length > 0 && (
