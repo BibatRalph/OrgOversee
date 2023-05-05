@@ -381,6 +381,14 @@ const EmpDetails = () => {
                                     fontWeight={400}
                                     color="#808191"
                                 >
+                                    {empDetails.userID}
+                                </Typography>
+                                <Typography
+                                    mt="5px"
+                                    fontSize={14}
+                                    fontWeight={400}
+                                    color="#808191"
+                                >
                                     {empDetails.jobTitleTarget}
                                 </Typography>
                             </Box>

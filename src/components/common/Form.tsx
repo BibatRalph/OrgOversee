@@ -39,13 +39,11 @@ const Form = ({
     const { data } = queryResult;
 
     const AppInfo = data?.data ?? {};
-
-
     const currentStage = AppInfo.stats;
 
     const handleOnboard = () =>  {
 // CHECK IF APPLICANT STAGE IS COMPLETED
-        if (currentStage === 3 ) {
+        if (AppInfo.photo != null ) {
             const response = confirm(
                 "Onboarding this applicant for this job?",
             );
@@ -60,13 +58,14 @@ const Form = ({
                             email: AppInfo.email,
                             Employer: user.email,
                             jobID: AppInfo.jobID,
+                            userID: AppInfo.userID,
                             name: AppInfo.name,
                             jobTitleTarget: AppInfo.jobTitleTarget,
                             jobDepartmentTarget : AppInfo.jobDepartmentTarget, // job dep
                             jobLocationTarget : AppInfo.jobLocationTarget, // job loc
                             jobOwner : AppInfo.jobOwner,
-                
                             
+                
                         },
                     },
                     {
@@ -78,7 +77,7 @@ const Form = ({
                 );
             }
         } else {
-            alert("Onboarding failed, Please complete the onboarding stage first in the applicant details for this application.")
+            alert("Please upload a photo for the applicant and click update before onboarding.")
         };
     }
     
@@ -454,7 +453,7 @@ Update Applicant Details
 
                          <CustomButton
                          disabled={currentStage === 3 ? false : true }
-                        title={formLoading ? "ONBOARDING..." : "ONBOARD"}
+                        title="ONBOARD"
                         backgroundColor={currentStage === 3 ? "#67be23" : "#eeeeee" }
                         color="#fcfcfc"
                         handleClick={handleOnboard}
