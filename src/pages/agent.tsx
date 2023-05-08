@@ -60,6 +60,7 @@ const Agents = () => {
                     name={props.name}
                     email={props.email}
                     avatar={props.avatar}
+                    role={props.role}
                     noOfApps={props.allProperties.length}
                     noOfJobs={props.allJobs.length}
                     noOfEmp={props.allEmp.length}

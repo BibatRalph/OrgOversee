@@ -2,10 +2,8 @@ import { Typography, Box, Stack, Paper, Grid } from "@mui/material";
 import { useUpdate, useGetIdentity, useShow } from "@refinedev/core";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-    ChatBubble,
     Edit,
     Place,
-    Star,
 } from "@mui/icons-material";
 import { DeleteButton } from "@refinedev/mui";
 import {useEffect } from "react";
@@ -68,7 +66,6 @@ const EmpDetails = () => {
     // check if user is the current user
     const isCurrentUser = user._id === empDetails.jobOwner;
 
-
     const handleStageChange = () => {
         const response = confirm(
             "Are you sure you want to Update this Employee?",
@@ -100,7 +97,28 @@ const EmpDetails = () => {
         }
     };
   
+    const handleOffBoard = () => {
 
+        mutate({
+            resource: "Users",
+            values: {
+                role: "User", 
+                hiringManager: empDetails.creator.email               
+            },
+            id: empDetails.userID,
+         
+            },
+            {
+                onError: (error, variables, context) => {
+                    alert('An error occurred!')
+                },
+                onSuccess: (data, variables, context) => {
+                    navigate("/Employee");
+                },
+            },
+            );   
+        };
+    
     return (
         < >
         
@@ -223,6 +241,7 @@ const EmpDetails = () => {
                    confirmOkText="Offboard"
                    confirmCancelText="Cancel"
               onSuccess={() => {
+                handleOffBoard();
                  navigate(
                   // DELETE
                   `/Employee/`,  );      

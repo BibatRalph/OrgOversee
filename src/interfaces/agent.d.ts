@@ -5,6 +5,7 @@ export interface AgentCardProp {
     name: string;
     email: string;
     avatar: string;
+    role: string;
     noOfApps: number;
     noOfJobs: number;
     noOfEmp: number;
