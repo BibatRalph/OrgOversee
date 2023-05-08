@@ -32,7 +32,7 @@ const navigate = useNavigate();
         const { queryResult } = useShow();
         const { data } = queryResult;
         const Info = data?.data ?? {};
-
+   
         const handleAdmin = () =>  {
                         const response = confirm(
                             "Modify this employee as a Admin? , employee needs to log-out to take effect",
@@ -42,6 +42,8 @@ const navigate = useNavigate();
                                 resource: "Users",
                                 values: {
                                     role: "Admin",
+                                    hiringManager: Info.creator.email
+                                    
                                 },
                                 id: Info.userID,
                              
