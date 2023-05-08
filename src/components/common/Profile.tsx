@@ -92,9 +92,7 @@ sx={{
                                 >
                                     {Name}
                                 </Typography>
-                                <Typography fontSize={16} color="#808191">
-                                User
-                                </Typography>
+            
                             </Stack>
 
                             <Stack direction="column" gap="30px">
