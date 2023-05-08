@@ -36,7 +36,7 @@ import {
     PeopleAltOutlined,
 } from "@mui/icons-material";
 import AlarmAddIcon from '@mui/icons-material/AlarmAdd';
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 
 
@@ -60,7 +60,6 @@ function App() {
 
  const [data, setData] = useState<any[]>([])
 // GET ALL USER DATA for LOGIN
-useEffect(() => {
     const fetchData = async () => {
         //FOR BUILD `http://167.172.236.212:3080/api/v1/users`
         const response = await fetch(`http://localhost:3080/api/v1/users`);
@@ -68,17 +67,14 @@ useEffect(() => {
         setData(newData);
       };
 
-      fetchData();
-
-},[]);
-
 //AUTH PROVIDE METHODS
     const authProvider: AuthProvider = {
         login: async ({ email, password }) => {
-            if (data != null) {         
+            if (data != null) { 
+                fetchData()        
                 const user = data.find((item: { email: any; }) => item.email === email);
 
-                if (user) {
+                if (user) { 
 
                     const pass = data.find((item: { password: any; }) => item.password === password);
 
@@ -118,9 +114,11 @@ useEffect(() => {
                             password: password
                        
                         }),
+                        
                     },
                    
                 );
+                fetchData();
                 alert("Registered successfully!")
                 return Promise.resolve();
         
