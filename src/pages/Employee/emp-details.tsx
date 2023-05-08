@@ -241,11 +241,22 @@ const EmpDetails = () => {
                    confirmOkText="Offboard"
                    confirmCancelText="Cancel"
               onSuccess={() => {
-                handleOffBoard();
+               
                  navigate(
                   // DELETE
                   `/Employee/`,  );      
-              }} />         
+              }} />  
+                <CustomButton
+                                title="REVOKE ADMIN"
+                                backgroundColor=""
+                                color="#ff4154"
+                                   icon={<Edit />}
+                                handleClick={() => {
+                                   
+                                      handleOffBoard();
+                                   
+                                }}
+                            />      
               </Stack>
              <Typography fontSize={14} color="#808191" textTransform="capitalize" > 
                *This will delete the Employee from the list
