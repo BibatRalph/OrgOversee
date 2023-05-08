@@ -27,7 +27,6 @@ const { data: user } = useGetIdentity({
         "field" in item ? item : [],
     );
 
-    console.log(allOffPending)
     return {
         propsType:
             logicalFilters.find((item) => item.field === "offStats")
