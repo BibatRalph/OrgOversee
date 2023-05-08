@@ -5,8 +5,6 @@ import { EmpProps, JobProps, ProfileProps, PropertyProps } from "interfaces/comm
 import ApplicantCard from "./ApplicantCard";
 import JobCard from "./JobCard";
 import EmpCard from "./EmpCard";
-import { DeleteButton } from "@refinedev/mui";
-import { useParams } from "react-router-dom";
 
 function checkImage(url: any) {
     const img = new Image();
@@ -176,13 +174,6 @@ sx={{
                                             >
                                                 {email}
                                             </Typography>
-                     
-                            <DeleteButton     
-             
-                confirmTitle="Remove access from this user?"
-                 confirmOkText="Yes"
-                 confirmCancelText="Cancel"
-                 size="small"/>
                                         </Box>
                                     </Stack>
                                 </Stack>

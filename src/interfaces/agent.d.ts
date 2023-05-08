@@ -16,6 +16,7 @@ export interface OffCardProp {
     email: string;
     avatar: string;
     offStats: string;
+    hiringManager: string;
 }
 
 export interface InfoBarProps {

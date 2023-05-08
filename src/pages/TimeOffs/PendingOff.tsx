@@ -27,6 +27,7 @@ const { data: user } = useGetIdentity({
         "field" in item ? item : [],
     );
 
+    console.log(allOffPending)
     return {
         propsType:
             logicalFilters.find((item) => item.field === "offStats")
@@ -109,21 +110,13 @@ Pending and Approved Time-Offs
                     email={props.email}
                     avatar={props.avatar}
                     offStats={props.offStats}
+                    hiringManager={props.hiringManager}
                 />
             ))}
          
         
       
     </Box>
-    <Stack
-    mt={3}  
-    direction="row"
-            justifyContent="flex-end"
-            alignItems="flex-end">
-            <Typography fontSize={14} color="#808191">
-            *Click Employee name to navigate to profile
-            </Typography>
-              </Stack>
 </Grid>
 : 
 <Grid item xs={16} md={12}> 
