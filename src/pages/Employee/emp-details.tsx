@@ -241,7 +241,6 @@ const EmpDetails = () => {
                    confirmOkText="Offboard"
                    confirmCancelText="Cancel"
               onSuccess={() => {
-               
                  navigate(
                   // DELETE
                   `/Employee/`,  );      
@@ -252,9 +251,7 @@ const EmpDetails = () => {
                                 color="#ff4154"
                                    icon={<Edit />}
                                 handleClick={() => {
-                                   
-                                      handleOffBoard();
-                                   
+                                      handleOffBoard();                  
                                 }}
                             />      
               </Stack>
