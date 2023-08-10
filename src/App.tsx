@@ -63,7 +63,8 @@ function App() {
     const fetchData = async () => {
         //FOR BUILD `http://167.172.236.212:3080/api/v1/users`
         //FOR DEV `http://localhost:3080/api/v1/users`
-        const response = await fetch(`http://localhost:3080/api/v1/users`);
+        //FOR RENDER `https://orgoversee-server.onrender.com/`
+        const response = await fetch(`https://orgoversee-server.onrender.com/api/v1/users`);
         const newData = await response.json();
         setData(newData);
       };
@@ -105,7 +106,7 @@ function App() {
                     return Promise.reject();
                 }
                 const response = await fetch(
-                    "http://localhost:3080/api/v1/users",
+                    "https://orgoversee-server.onrender.com/api/v1/users",
                     {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -151,7 +152,7 @@ function App() {
             <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
             <RefineSnackbarProvider>
                 <Refine
-                    dataProvider={dataProvider("http://localhost:3080/api/v1", axiosInstance)}
+                    dataProvider={dataProvider("https://orgoversee-server.onrender.com/api/v1", axiosInstance)}
                     notificationProvider={notificationProvider}
                     ReadyPage={ReadyPage}
                     catchAll={<ErrorComponent />}
