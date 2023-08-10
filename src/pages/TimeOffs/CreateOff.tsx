@@ -2,7 +2,7 @@ import { useCreate, useGetIdentity, useShow } from "@refinedev/core";
 import { useNavigate } from "react-router-dom";
 import { CustomButton } from "components";
 import * as React from 'react';
-import { Box, Stack, Paper, Grid ,Typography} from "@mui/material";
+import {  Stack, Paper, Grid ,Typography} from "@mui/material";
 import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Dayjs } from 'dayjs';
@@ -12,6 +12,7 @@ const CreateOff = () => {
   const { data: user } = useGetIdentity({
     v3LegacyAuthProviderCompatible: true,
 });
+
 
 const navigate = useNavigate();
 
@@ -23,6 +24,8 @@ const { queryResult } = useShow();
   const { data } = queryResult;
 
   const offData = data?.data ?? {};
+
+
 
   const handleCreateOff = () => {
     const response = confirm(
@@ -39,7 +42,9 @@ const { queryResult } = useShow();
                     email: user.email, //  email
                     id: user._id, //  id 
                     name: user.name, //  name
-                    avatar: user.avatar
+                    avatar: user.avatar,
+                    hiringManager: user.hiringManager
+
                 },
             },
             {
@@ -59,6 +64,9 @@ sx={{
   my: 0.5,
 }}
 > 
+
+{user.role === "Admin" ?  
+
 <Grid item xs={16} md={12}  >
 
 
@@ -121,6 +129,31 @@ Create Time-Off
                         </Stack>                      
              
 </Grid>
+ : 
+ <Grid item xs={16} md={12}> 
+<Stack
+direction="column"
+justifyContent="center"
+alignItems="center"
+spacing={2}
+>
+<Typography variant="h5" >
+        You do not have access to this section        
+</Typography>
+
+<Typography
+                        mt="5px"
+                        fontSize={14}
+                        fontWeight={400}
+                        color="#808191"
+                    >
+                          *Consult your hiring manager if you think this is a mistake
+                    </Typography>
+   
+    
+ </Stack>
+ </Grid>
+}
 </Paper>
 </>
   )

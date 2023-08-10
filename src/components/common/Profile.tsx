@@ -12,7 +12,9 @@ function checkImage(url: any) {
     return img.width !== 0 && img.height !== 0;
 }
 
-const Profile = ({ type, Name, avatar, email, properties, jobs, emp}: ProfileProps) => (
+
+const Profile = ({ type, Name, avatar, email, properties, jobs, emp,}: ProfileProps) => (
+    
     <>
     <Paper
 sx={{
@@ -40,7 +42,9 @@ sx={{
 </Stack>
 {/* CONTENT */}
 <Box mt="20px" borderRadius="15px" padding="20px" bgcolor="#FCFCFC">
-            <Box
+            <Box        
+                    border="1px solid #E4E4E4"
+                   borderRadius={1}
                 sx={{
                     display: "flex",
                     flexDirection: { xs: "column", md: "row" },
@@ -88,9 +92,7 @@ sx={{
                                 >
                                     {Name}
                                 </Typography>
-                                <Typography fontSize={16} color="#808191">
-                                User
-                                </Typography>
+            
                             </Stack>
 
                             <Stack direction="column" gap="30px">
@@ -161,7 +163,7 @@ sx={{
                                             display="flex"
                                             flexDirection="row"
                                             alignItems="center"
-                                            gap="10px"
+                                            gap="20px"
                                         >
                                             <Email sx={{ color: "#11142D" }} />
                                             <Typography
@@ -177,6 +179,8 @@ sx={{
                         </Box>
                     </Box>
                 </Box>
+            
+              
             </Box>
       
         {properties.length > 0 && (

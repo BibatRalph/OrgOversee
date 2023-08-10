@@ -1,10 +1,9 @@
-import { EmailOutlined, Place} from "@mui/icons-material";
 import { useGetIdentity, useUpdate } from "@refinedev/core";
 import { Box, Stack, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
 import { InfoBarProps, OffCardProp } from "interfaces/agent";
 import { DeleteButton } from "@refinedev/mui";
 import CustomButton from "components/common/CustomButton";
+
 
 function checkImage(url: any) {
     const img = new Image();
@@ -35,6 +34,7 @@ const OffCard = ({
     avatar,
     date,
     offStats,
+    hiringManager
 }: OffCardProp) => {
 
     const { mutate } = useUpdate();
@@ -87,12 +87,12 @@ const OffCard = ({
         v3LegacyAuthProviderCompatible: true,
     });
 
-    const isCurrentUser = currentUser.email === email;
+  
+    const isCurrentUser = currentUser.email === hiringManager;
+    
+   
 
-    const generateLink = () => {
-        if (currentUser.email === email) return "/my-profile";
-        return `/Talents/show/${id}`;
-    };
+  
 
   return (
     <Box
@@ -145,8 +145,7 @@ const OffCard = ({
             flexWrap="wrap"
             alignItems="center"
         >
-            <Typography fontSize={22} fontWeight={600} color="#11142d"      
-            component={Link} to={generateLink()}>
+            <Typography fontSize={22} fontWeight={600} color="#11142d">
                 {name}
             </Typography>
             <Typography fontSize={14} color="#808191">
@@ -166,17 +165,18 @@ const OffCard = ({
             alignItems="center"
             gap={2}
         >
-            <InfoBar
-                icon={<EmailOutlined sx={{ color: "#808191" }} />}
-                name={email}
-            />
+           
+             
       <Typography fontSize={14} color="#808191">
             Request for Time-Off : {date_String}
+            </Typography>
+            <Typography fontSize={14} color="#808191">
+           Hiring Manager : {hiringManager}
             </Typography>
             {/* handleApprove */}
 
             <CustomButton
-                                disabled={isCurrentUser?true:false}
+                                disabled={!isCurrentUser?true:false}
                                 title={offStats === "Approved" ? "Completed" : "APPROVE"}
                                 backgroundColor=""
                                 color="info"
@@ -193,7 +193,7 @@ const OffCard = ({
                             /> 
 
             <DeleteButton    
-                   disabled={isCurrentUser?true:false}
+                   disabled={!isCurrentUser?true:false}
             confirmTitle="Delete this request?"
                  confirmOkText="Yes"
                  confirmCancelText="Cancel"

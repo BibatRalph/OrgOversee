@@ -36,7 +36,7 @@ import {
     PeopleAltOutlined,
 } from "@mui/icons-material";
 import AlarmAddIcon from '@mui/icons-material/AlarmAdd';
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 
 
@@ -60,26 +60,22 @@ function App() {
 
  const [data, setData] = useState<any[]>([])
 // GET ALL USER DATA for LOGIN
-useEffect(() => {
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:8080/api/v1/users`);
+        //FOR BUILD `http://167.172.236.212:3080/api/v1/users`
+        //FOR DEV `http://localhost:3080/api/v1/users`
+        const response = await fetch(`http://localhost:3080/api/v1/users`);
         const newData = await response.json();
         setData(newData);
       };
 
-      fetchData();
-
-},[data]);
-
 //AUTH PROVIDE METHODS
     const authProvider: AuthProvider = {
         login: async ({ email, password }) => {
-            if (data != null) {
-
-               
+            if (data != null) { 
+                fetchData()        
                 const user = data.find((item: { email: any; }) => item.email === email);
 
-                if (user) {
+                if (user) { 
 
                     const pass = data.find((item: { password: any; }) => item.password === password);
 
@@ -102,14 +98,14 @@ useEffect(() => {
                 alert("Incorrect, Check your email or password")
               return Promise.reject();
             },
-            register: async ({ email, password, name }) => {
+            register: async ({ email, password }) => {
                 const user = data.find((item: { email: any; }) => item.email === email);
                 if (user) {
                     alert("User already exist, Try another email")
                     return Promise.reject();
                 }
                 const response = await fetch(
-                    "http://localhost:8080/api/v1/users",
+                    "http://localhost:3080/api/v1/users",
                     {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -119,10 +115,14 @@ useEffect(() => {
                             password: password
                        
                         }),
+                        
                     },
                    
                 );
+                fetchData();
+                alert("Registered successfully!")
                 return Promise.resolve();
+        
             },
             // Logout
             logout: () => {
@@ -151,10 +151,11 @@ useEffect(() => {
             <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
             <RefineSnackbarProvider>
                 <Refine
-                    dataProvider={dataProvider("http://localhost:8080/api/v1", axiosInstance)}
+                    dataProvider={dataProvider("http://localhost:3080/api/v1", axiosInstance)}
                     notificationProvider={notificationProvider}
                     ReadyPage={ReadyPage}
                     catchAll={<ErrorComponent />}
+                    
        
                     resources={[
                         {   

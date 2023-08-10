@@ -7,9 +7,8 @@ import {
     Stack,
     Button,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { PropertyCardProps } from "interfaces/property";
-import { DeleteButton, EditButton } from "@refinedev/mui";
+
 
 const ApplicantCard = ({
     id,

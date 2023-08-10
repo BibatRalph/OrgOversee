@@ -5,6 +5,7 @@ export interface AgentCardProp {
     name: string;
     email: string;
     avatar: string;
+    role: string;
     noOfApps: number;
     noOfJobs: number;
     noOfEmp: number;
@@ -16,6 +17,7 @@ export interface OffCardProp {
     email: string;
     avatar: string;
     offStats: string;
+    hiringManager: string;
 }
 
 export interface InfoBarProps {

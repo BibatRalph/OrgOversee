@@ -1,4 +1,4 @@
-import { useTable } from "@refinedev/core";
+import { useGetIdentity, useTable } from "@refinedev/core";
 import { CreateButton } from "@refinedev/mui";
 import {
     Grid,
@@ -25,7 +25,10 @@ const allJobs = () => {
       filters,
       setFilters,
   } = useTable();
-
+  
+  const { data: user } = useGetIdentity({
+    v3LegacyAuthProviderCompatible: true,
+});
   //If i dont have data, turn it into empty array so no error.
   const allData = data?.data ?? [];
   //SORT
@@ -111,23 +114,26 @@ sx={{
                             gap={2}
                         >
                             
-                               <CreateButton
-                                accessControl={{ enabled: true, hideIfUnauthorized: true }}
-                                sx={{ marginBottom: "5px" }}
+                             
+
+                            {user.role === "Admin"?     
+                            <CreateButton
+                            sx={{ marginBottom: "5px" }}
                             >
                                Create Job
                             </CreateButton>
+                            :
+                            <div></div>}
 
-                             <CustomButton
-                                
+                            <CustomButton
                                 title={`Sort Salary ${
                                     currentPrice === "asc" ? "↑" : "↓"
                                 }`}
                                 handleClick={() => toggleSort("Salary")}
                                 backgroundColor="initial"
                                 color="primary"
-                               
                             />
+                           
 
    </Stack>
        {/* END OF TOP BAR */}

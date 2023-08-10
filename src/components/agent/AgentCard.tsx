@@ -33,6 +33,7 @@ const AgentCard = ({
     noOfApps,
     noOfJobs,
     noOfEmp,
+    role
 }: AgentCardProp) => {
     const { data: currentUser } = useGetIdentity({
         v3LegacyAuthProviderCompatible: true,
@@ -89,7 +90,7 @@ const AgentCard = ({
                         {name}
                     </Typography>
                     <Typography fontSize={14} color="#808191">
-                    User
+                    {role}
                     </Typography>
                 </Stack>
                 <Stack
